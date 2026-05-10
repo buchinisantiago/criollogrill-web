@@ -50,9 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const SUPABASE_URL = 'https://qgriwpjsslovkkmnlntg.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_ZnEVeUYjF7ZII5An9ku5rw_1CrNo3Gl';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     // --- Configuración de Precios (Calculos Auxiliares) ---
-    // Listos para ser migrados a Supabase
-    const CONFIG = {
+    // Valores de respaldo en caso de que falle Supabase
+    let CONFIG = {
         carnePremiumKg: 210,
         carneEuropeaKg: 170,
         panPorPersona: 10,
@@ -66,6 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
         logistica: 2000,
         horasFijasExtra: 4 // 1h armado, 2h coccion, 1h desarmado
     };
+
+    // Fetch config from Supabase
+    async function loadConfig() {
+        try {
+            const { data, error } = await supabase
+                .from('criollo_config')
+                .select('*')
+                .eq('id', 1)
+                .single();
+            
+            if (data && !error) {
+                // Merge Supabase data into CONFIG
+                CONFIG = { ...CONFIG, ...data };
+            }
+        } catch (err) {
+            console.error('Error loading config:', err);
+        }
+        updateCalculator();
+    }
 
     // --- Calculator Logic ---
     const calcMenu = document.getElementById('calc-menu');
@@ -218,5 +241,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Initial Calculation
-    if(calcMenu) updateCalculator();
+    if(calcMenu) loadConfig();
 });
