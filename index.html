@@ -120,18 +120,48 @@
                         <input type="number" id="calc-people" class="calc-input" min="10" value="20">
                     </div>
 
+                    <div class="form-group">
+                        <label for="calc-meat-type">Tipo de Carne</label>
+                        <select id="calc-meat-type" class="calc-input">
+                            <option value="europea">Carne Europea</option>
+                            <option value="premium">Carne Premium Argentina</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="display: flex; gap: 1rem;">
+                        <div style="flex: 1;">
+                            <label for="calc-time-start">Hora Inicio Evento</label>
+                            <input type="time" id="calc-time-start" class="calc-input" value="13:00">
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="calc-time-end">Hora Fin Evento</label>
+                            <input type="time" id="calc-time-end" class="calc-input" value="18:00">
+                        </div>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #aaa; margin-top: -10px; margin-bottom: 15px;">
+                        * Se suman automáticamente 4 hs (1h armado, 2h cocción, 1h desarmado).
+                    </p>
+
+                    <div class="form-group">
+                        <label for="calc-logistics">Logística y Traslado</label>
+                        <select id="calc-logistics" class="calc-input">
+                            <option value="own">Retiro yo mismo con Trailer / Van (Gratis)</option>
+                            <option value="delivery">Logística y envío a cargo de Criollo Grill (+2,000 Kr)</option>
+                        </select>
+                    </div>
+
                     <div id="extras-plato" class="extras-section" style="display: none;">
                         <h3>Adicionales (Asado al Plato)</h3>
                         <label class="checkbox-label">
-                            <input type="checkbox" id="extra-verduras" value="1500">
+                            <input type="checkbox" id="extra-verduras">
                             Guarnición: Verduras asadas y puré de berenjena
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" id="extra-ensaladas" value="1200">
+                            <input type="checkbox" id="extra-ensaladas">
                             Ensaladas Premium: Papas con chimi y hojas verdes
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" id="extra-entrada" value="2500">
+                            <input type="checkbox" id="extra-entrada">
                             Entrada: Tabla de pan casero, aceitunas y quesos
                         </label>
                     </div>
@@ -142,12 +172,20 @@
                     <div class="summary-details">
                         <div class="summary-row">
                             <span id="summary-menu-name">Menú: Comida Callejera</span>
-                            <span id="summary-menu-price">$0</span>
+                            <span id="summary-menu-price">0 Kr</span>
                         </div>
                         <div id="summary-extras-container"></div>
+                        <div class="summary-row" id="summary-staff-row">
+                            <span id="summary-staff-name">Personal (0hs)</span>
+                            <span id="summary-staff-price">0 Kr</span>
+                        </div>
+                        <div class="summary-row" id="summary-logistics-row" style="display: none;">
+                            <span>Logística</span>
+                            <span>2,000 Kr</span>
+                        </div>
                         <div class="summary-row total-row">
                             <span>Total Estimado</span>
-                            <span id="summary-total" class="highlight">$0</span>
+                            <span id="summary-total" class="highlight">0 Kr</span>
                         </div>
                     </div>
                     <button id="btn-whatsapp" class="btn-primary btn-full" style="margin-top: 1.5rem;">
