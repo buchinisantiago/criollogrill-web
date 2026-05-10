@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criollo Grill | Auténtica Parrilla Argentina</title>
+    <meta name="description" content="Servicio de parrilla Tromen para eventos. Especialistas en asado al plato, sándwiches de vacío y choripanes para muchas personas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">CRIOLLO <span>GRILL</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#contacto" class="btn-primary">Reservar</a></li>
+        </ul>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>El Auténtico Sabor <br><span class="highlight">Argentino</span></h1>
+            <p>Llevamos la experiencia de la parrilla Tromen a tus eventos. Asado al plato, vacío, y tradición en cada bocado.</p>
+            <a href="#especialidades" class="btn-primary btn-large">Descubrir el Menú</a>
+        </div>
+    </header>
+
+    <section id="especialidades" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras <span class="highlight">Especialidades</span></h2>
+                <p>Carnes seleccionadas y asadas a la perfección.</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="img/sandwich_vacio_1778408713668.png" alt="Sándwich de Vacío">
+                    </div>
+                    <div class="card-content">
+                        <h3>Sándwiches de Vacío</h3>
+                        <p>Jugosos y tiernos. Nuestro vacío es cocinado a fuego lento y servido en pan crujiente con chimichurri casero.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="img/choripan_premium_1778408726753.png" alt="Choripán Premium">
+                    </div>
+                    <div class="card-content">
+                        <h3>Choripanes Premium</h3>
+                        <p>El clásico argentino elevado a otro nivel. Chorizo de puro cerdo, salsa criolla fresca y pan rústico.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="img/asado_al_plato_1778408740119.png" alt="Asado al Plato">
+                    </div>
+                    <div class="card-content">
+                        <h3>Asado al Plato</h3>
+                        <p>Para los más exigentes. Cortes premium servidos al plato, ideales para cenas formales y grandes festejos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="section section-dark">
+        <div class="container eventos-container">
+            <div class="eventos-text">
+                <h2>Eventos a <span class="highlight">Tu Medida</span></h2>
+                <p>Nos encargamos de alimentar a todos tus invitados con la mejor calidad. Ya sea un cumpleaños, casamiento o evento corporativo, nuestra parrilla Tromen se roba el show.</p>
+                <ul class="features">
+                    <li>✓ Capacidad para grandes grupos</li>
+                    <li>✓ Atención personalizada</li>
+                    <li>✓ Ingredientes de primera calidad</li>
+                    <li>✓ El auténtico show del asador</li>
+                </ul>
+            </div>
+            <div class="eventos-image-placeholder">
+                <div class="fire-animation">🔥</div>
+                <h3>Parrilla Tromen en Acción</h3>
+                <p>Aquí puedes subir fotos de tu Tromen trabajando en los eventos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Reserva tu <span class="highlight">Fecha</span></h2>
+                <p>¿Tienes un evento en mente? Escríbenos y armamos un presupuesto a medida para que disfrutes sin preocuparte por nada.</p>
+                <div class="contact-details">
+                    <p>📍 Buenos Aires, Argentina (Actualizar zona)</p>
+                    <p>📞 +54 9 11 1234-5678</p>
+                    <p>✉️ eventos@criollogrill.com</p>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Tu Nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Tu Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="event" placeholder="Tipo de Evento y Cantidad de Personas" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="4" placeholder="Mensaje adicional" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Solicitar Presupuesto</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">CRIOLLO <span>GRILL</span></div>
+            <p>&copy; 2026 Criollo Grill. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
