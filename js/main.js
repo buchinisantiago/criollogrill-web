@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         message += `Me gustaría saber disponibilidad y confirmar detalles.`;
 
         btnWhatsapp.onclick = () => {
-            const phone = "5491112345678"; // Replace with real phone number
+            const phone = "4551999400"; // Replace with real phone number
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         };
