@@ -29,9 +29,9 @@
         </ul>
         <!-- Language Switcher -->
         <div class="lang-switcher">
-            <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
-            <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
-            <button class="lang-btn" data-lang="dk" title="Dansk">🇩🇰</button>
+            <button class="lang-btn" data-lang="en" title="English">EN</button>
+            <button class="lang-btn" data-lang="es" title="Español">ES</button>
+            <button class="lang-btn" data-lang="dk" title="Dansk">DK</button>
         </div>
         <div class="hamburger" id="hamburger">
             <div class="line"></div>
@@ -208,13 +208,6 @@
                         <label for="calc-people" data-i18n="calc_people_label">Number of People</label>
                         <input type="number" id="calc-people" class="calc-input" min="10" value="20">
                     </div>
-                    <div class="form-group">
-                        <label for="calc-meat-type" data-i18n="calc_meat_label">Meat Type</label>
-                        <select id="calc-meat-type" class="calc-input" data-i18n-opt="calc_meat_opt1,calc_meat_opt2">
-                            <option value="europea">European Meat</option>
-                            <option value="premium">Premium Argentine Meat</option>
-                        </select>
-                    </div>
                     <div class="form-group" style="display:flex;gap:1rem;">
                         <div style="flex:1;">
                             <label for="calc-time-start" data-i18n="calc_start_label">Event Start Time</label>
@@ -232,6 +225,20 @@
                             <option value="own">Pick up myself with Trailer / Van (Free)</option>
                             <option value="delivery">Logistics &amp; delivery by Criollo Grill (+2,000 Kr)</option>
                         </select>
+                    </div>
+                    <!-- VAJILLA -->
+                    <div class="form-group">
+                        <label class="checkbox-label" style="flex-direction:row;align-items:center;gap:0.7rem;">
+                            <input type="checkbox" id="calc-vajilla" style="width:18px;height:18px;accent-color:var(--gold);">
+                            <span data-i18n="calc_vajilla_label">Tableware rental service (plates, glasses, cutlery)</span>
+                        </label>
+                        <small style="color:var(--text-muted);margin-top:4px;display:block;" data-i18n="calc_vajilla_note">+ 500 Kr flat fee per event</small>
+                    </div>
+                    <!-- MOZOS -->
+                    <div class="form-group">
+                        <label for="calc-mozos" data-i18n="calc_mozos_label">Waitstaff / Servers (number)</label>
+                        <input type="number" id="calc-mozos" class="calc-input" min="0" max="10" value="0" placeholder="0 = no waitstaff">
+                        <small style="color:var(--text-muted);margin-top:4px;display:block;" data-i18n="calc_mozos_note">180 Kr/hour per waiter (billed for event duration)</small>
                     </div>
                     <div id="extras-plato" class="extras-section" style="display:none;">
                         <h3 data-i18n="extras_title">Add-ons (Plate Asado)</h3>
@@ -251,6 +258,12 @@
                         </div>
                         <div class="summary-row" id="summary-logistics-row" style="display:none;">
                             <span>Logistics</span><span>2,000 Kr</span>
+                        </div>
+                        <div class="summary-row" id="summary-vajilla-row" style="display:none;">
+                            <span data-i18n="summary_vajilla">Tableware rental</span><span>500 Kr</span>
+                        </div>
+                        <div class="summary-row" id="summary-mozos-row" style="display:none;">
+                            <span>Waitstaff</span><span>0 Kr</span>
                         </div>
                         <div class="summary-row total-row">
                             <span data-i18n="summary_total">Estimated Total</span>

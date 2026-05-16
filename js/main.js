@@ -20,65 +20,40 @@ document.addEventListener('DOMContentLoaded', () => {
             this.size = Math.random() * 10 + 6;
         }
         update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            this.vy *= 0.97;
-            this.vx *= 0.98;
-            this.life -= this.decay;
-            this.size *= 0.97;
+            this.x += this.vx; this.y += this.vy;
+            this.vy *= 0.97; this.vx *= 0.98;
+            this.life -= this.decay; this.size *= 0.97;
         }
         draw(ctx) {
             const alpha = Math.max(0, this.life);
-            // Color shifts: white -> yellow -> orange -> red -> transparent
             let r, g, b;
-            if (alpha > 0.7) { r = 255; g = 240; b = 100; }
-            else if (alpha > 0.4) { r = 255; g = 140; b = 0; }
-            else { r = 200; g = 30; b = 0; }
-
+            if (alpha > 0.7) { r=255; g=240; b=100; }
+            else if (alpha > 0.4) { r=255; g=140; b=0; }
+            else { r=200; g=30; b=0; }
             const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
             grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
             grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = grad;
-            ctx.fill();
+            ctx.fillStyle = grad; ctx.fill();
         }
     }
 
     function animateFire() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Spawn new particles at cursor
-        for (let i = 0; i < 5; i++) {
-            particles.push(new FireParticle(mouseX, mouseY));
-        }
-
-        // Update and draw
+        for (let i = 0; i < 5; i++) particles.push(new FireParticle(mouseX, mouseY));
         for (let i = particles.length - 1; i >= 0; i--) {
-            particles[i].update();
-            particles[i].draw(ctx);
+            particles[i].update(); particles[i].draw(ctx);
             if (particles[i].life <= 0) particles.splice(i, 1);
         }
-
-        // Limit particles
         if (particles.length > 200) particles.splice(0, particles.length - 200);
-
         requestAnimationFrame(animateFire);
     }
 
-    // Setup canvas once
-    function setupCanvas() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+    function setupCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     setupCanvas();
     window.addEventListener('resize', setupCanvas);
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
+    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
     animateFire();
 
 
@@ -91,12 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        });
-    });
+    links.forEach(link => link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    }));
 
 
     // ─── NAVBAR SCROLL ─────────────────────────────────────────
@@ -111,14 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, i * 100);
+                setTimeout(() => entry.target.classList.add('visible'), i * 100);
                 revealObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.12 });
-
     reveals.forEach(el => revealObserver.observe(el));
 
 
@@ -129,13 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = contactForm.querySelector('button[type="submit"]');
             const orig = btn.textContent;
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
+            btn.textContent = 'Sending...'; btn.disabled = true;
             setTimeout(() => {
-                alert('¡Gracias por tu mensaje! Nos contactaremos pronto para armar tu evento en Criollo Grill.');
-                contactForm.reset();
-                btn.textContent = orig;
-                btn.disabled = false;
+                alert('Thank you! We will contact you soon to arrange your Criollo Grill event.');
+                contactForm.reset(); btn.textContent = orig; btn.disabled = false;
             }, 1500);
         });
     }
@@ -148,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let CONFIG = {
         carnePremiumKg: 210,
-        carneEuropeaKg: 170,
         panPorPersona: 10,
         aderezosPorPersona: 6,
         packagingPorPersona: 8,
@@ -158,43 +124,40 @@ document.addEventListener('DOMContentLoaded', () => {
         asadorHora: 240,
         asistenteHora: 200,
         logistica: 2000,
+        vajillaEvento: 500,
+        mozosHora: 180,
         horasFijasExtra: 4
     };
 
     async function loadConfig() {
         try {
             const { data, error } = await supabase
-                .from('criollo_config')
-                .select('*')
-                .eq('id', 1)
-                .single();
+                .from('criollo_config').select('*').eq('id', 1).single();
             if (data && !error) CONFIG = { ...CONFIG, ...data };
-        } catch (err) {
-            console.error('Error loading config:', err);
-        }
+        } catch (err) { console.error('Error loading config:', err); }
         updateCalculator();
     }
 
     const calcMenu      = document.getElementById('calc-menu');
     const calcPeople    = document.getElementById('calc-people');
-    const calcMeatType  = document.getElementById('calc-meat-type');
     const calcTimeStart = document.getElementById('calc-time-start');
     const calcTimeEnd   = document.getElementById('calc-time-end');
     const calcLogistics = document.getElementById('calc-logistics');
+    const calcVajilla   = document.getElementById('calc-vajilla');
+    const calcMozos     = document.getElementById('calc-mozos');
     const extrasPlato   = document.getElementById('extras-plato');
     const cbVerduras    = document.getElementById('extra-verduras');
     const cbEnsaladas   = document.getElementById('extra-ensaladas');
     const cbEntrada     = document.getElementById('extra-entrada');
 
-    const summaryMenuName       = document.getElementById('summary-menu-name');
-    const summaryMenuPrice      = document.getElementById('summary-menu-price');
-    const summaryExtrasContainer= document.getElementById('summary-extras-container');
-    const summaryStaffRow       = document.getElementById('summary-staff-row');
-    const summaryStaffName      = document.getElementById('summary-staff-name');
-    const summaryStaffPrice     = document.getElementById('summary-staff-price');
-    const summaryLogisticsRow   = document.getElementById('summary-logistics-row');
-    const summaryTotal          = document.getElementById('summary-total');
-    const btnWhatsapp           = document.getElementById('btn-whatsapp');
+    const summaryMenuName        = document.getElementById('summary-menu-name');
+    const summaryMenuPrice       = document.getElementById('summary-menu-price');
+    const summaryExtrasContainer = document.getElementById('summary-extras-container');
+    const summaryStaffName       = document.getElementById('summary-staff-name');
+    const summaryStaffPrice      = document.getElementById('summary-staff-price');
+    const summaryLogisticsRow    = document.getElementById('summary-logistics-row');
+    const summaryTotal           = document.getElementById('summary-total');
+    const btnWhatsapp            = document.getElementById('btn-whatsapp');
 
     function updateCalculator() {
         if (!calcMenu || !calcPeople || !calcTimeStart || !calcTimeEnd) return;
@@ -203,93 +166,117 @@ document.addEventListener('DOMContentLoaded', () => {
         let people = parseInt(calcPeople.value) || 0;
         if (people < 10) people = 10;
 
-        const startParts = calcTimeStart.value.split(':');
-        const endParts   = calcTimeEnd.value.split(':');
-        let startHour = parseInt(startParts[0]) + parseInt(startParts[1]) / 60;
-        let endHour   = parseInt(endParts[0])   + parseInt(endParts[1])   / 60;
-        let diff = endHour - startHour;
+        // Hours
+        const [sh, sm] = calcTimeStart.value.split(':').map(Number);
+        const [eh, em] = calcTimeEnd.value.split(':').map(Number);
+        let diff = (eh + em/60) - (sh + sm/60);
         if (diff < 0) diff += 24;
         const totalHours = diff + CONFIG.horasFijasExtra;
 
-        let asadores  = 1;
-        let asistentes = people <= 20 ? 1 : people <= 50 ? 2 : 3;
+        // Staff
+        const asadores  = 1;
+        const asistentes = people <= 20 ? 1 : people <= 50 ? 2 : 3;
         const staffCost = (asadores * CONFIG.asadorHora + asistentes * CONFIG.asistenteHora) * totalHours;
 
-        const meatPriceKg = calcMeatType.value === 'premium' ? CONFIG.carnePremiumKg : CONFIG.carneEuropeaKg;
+        // Food — always premium quality
+        const meatPriceKg = CONFIG.carnePremiumKg;
         let foodCost = 0;
-        let extrasList = [];
         summaryExtrasContainer.innerHTML = '';
 
         if (menuType === 'callejera') {
             extrasPlato.style.display = 'none';
-            cbVerduras.checked = cbEnsaladas.checked = cbEntrada.checked = false;
+            if(cbVerduras) cbVerduras.checked = false;
+            if(cbEnsaladas) cbEnsaladas.checked = false;
+            if(cbEntrada) cbEntrada.checked = false;
+            // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
             foodCost = cpp * people;
-            summaryMenuName.textContent = `Menú Callejera (${people} pax)`;
-            summaryMenuPrice.textContent = `${foodCost.toLocaleString()} Kr`;
+            if(summaryMenuName) summaryMenuName.textContent = `Street Food Menu (${people} pax)`;
+            if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(foodCost).toLocaleString()} Kr`;
         } else {
             extrasPlato.style.display = 'block';
-            let meatKgPerPerson = 0.4;
+            let meatKgPerPerson = 0.4; // 400g/person plate asado
             let extrasCost = 0;
+            const extrasList = [];
 
-            if (cbEntrada.checked) {
+            if (cbEntrada && cbEntrada.checked) {
                 meatKgPerPerson = 0.3;
                 extrasCost += ((0.1 * CONFIG.picadaKg) + (0.1 * CONFIG.ensaladaKg)) * people;
-                extrasList.push('Entrada de Quesos/Fiambres');
-            } else if (cbEnsaladas.checked) {
+                extrasList.push('Cheese/Deli Starter');
+            } else if (cbEnsaladas && cbEnsaladas.checked) {
                 meatKgPerPerson = 0.3;
                 extrasCost += (0.2 * CONFIG.ensaladaKg) * people;
-                extrasList.push('Ensaladas Premium');
+                extrasList.push('Premium Salads');
             }
-            if (cbVerduras.checked) {
+            if (cbVerduras && cbVerduras.checked) {
                 extrasCost += CONFIG.verdurasPorPersona * people;
-                extrasList.push('Guarnición de Verduras');
+                extrasList.push('Grilled Veg Side');
             }
 
             const baseFoodCost = (meatKgPerPerson * meatPriceKg) * people;
             foodCost = baseFoodCost + extrasCost;
-            summaryMenuName.textContent = `Asado al Plato (${people} pax)`;
-            summaryMenuPrice.textContent = `${baseFoodCost.toLocaleString()} Kr`;
+            if(summaryMenuName) summaryMenuName.textContent = `Plate Asado (${people} pax)`;
+            if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(baseFoodCost).toLocaleString()} Kr`;
 
             if (extrasCost > 0) {
                 const div = document.createElement('div');
                 div.className = 'summary-row';
-                div.innerHTML = `<span>+ Adicionales Seleccionados</span><span>${extrasCost.toLocaleString()} Kr</span>`;
+                div.innerHTML = `<span>+ Add-ons selected</span><span>${Math.round(extrasCost).toLocaleString()} Kr</span>`;
                 summaryExtrasContainer.appendChild(div);
             }
         }
 
+        // Logistics
         let logisticsCost = 0;
-        let logisticsText = 'Retiro propio (Trailer/Van)';
-        if (calcLogistics.value === 'delivery') {
+        if (calcLogistics && calcLogistics.value === 'delivery') {
             logisticsCost = CONFIG.logistica;
-            summaryLogisticsRow.style.display = 'flex';
-            logisticsText = 'Logística y envío de Criollo Grill';
+            if(summaryLogisticsRow) summaryLogisticsRow.style.display = 'flex';
         } else {
-            summaryLogisticsRow.style.display = 'none';
+            if(summaryLogisticsRow) summaryLogisticsRow.style.display = 'none';
         }
 
-        const total = foodCost + staffCost + logisticsCost;
-        if (summaryStaffName) summaryStaffName.textContent = `Personal (${totalHours}hs — ${asadores} Asador, ${asistentes} Asis.)`;
-        if (summaryStaffPrice) summaryStaffPrice.textContent = `${staffCost.toLocaleString()} Kr`;
-        if (summaryTotal) summaryTotal.textContent = `${total.toLocaleString()} Kr`;
+        // Vajilla (tableware rental)
+        let vajillaCost = 0;
+        const vajillaRow = document.getElementById('summary-vajilla-row');
+        if (calcVajilla && calcVajilla.checked) {
+            vajillaCost = CONFIG.vajillaEvento;
+            if (vajillaRow) { vajillaRow.style.display = 'flex'; vajillaRow.querySelector('span:last-child').textContent = `${CONFIG.vajillaEvento.toLocaleString()} Kr`; }
+        } else {
+            if (vajillaRow) vajillaRow.style.display = 'none';
+        }
 
-        let msg = `Hola Criollo Grill! Quisiera consultar por un presupuesto:\n\n`;
-        msg += `👥 *Personas:* ${people}\n`;
-        msg += `🥩 *Menú:* ${menuType === 'callejera' ? 'Comida Callejera' : 'Asado al Plato'} (${calcMeatType.value === 'premium' ? 'Carne Premium Arg.' : 'Carne Europea'})\n`;
-        msg += `⏰ *Horario:* ${calcTimeStart.value} a ${calcTimeEnd.value} (${totalHours} horas totales)\n`;
-        if (extrasList.length) msg += `➕ *Adicionales:* ${extrasList.join(', ')}\n`;
-        msg += `🚚 *Logística:* ${logisticsText}\n`;
-        msg += `\n💰 *Total Estimado:* ${total.toLocaleString()} Kr\n\nMe gustaría confirmar disponibilidad y detalles.`;
+        // Mozos (waitstaff)
+        let mozosCost = 0;
+        const mozosRow = document.getElementById('summary-mozos-row');
+        const numMozos = calcMozos ? parseInt(calcMozos.value) || 0 : 0;
+        if (numMozos > 0) {
+            mozosCost = numMozos * CONFIG.mozosHora * totalHours;
+            if (mozosRow) { mozosRow.style.display = 'flex'; mozosRow.querySelector('span:last-child').textContent = `${Math.round(mozosCost).toLocaleString()} Kr`; mozosRow.querySelector('span:first-child').textContent = `Waitstaff (${numMozos} × ${totalHours}h)`; }
+        } else {
+            if (mozosRow) mozosRow.style.display = 'none';
+        }
+
+        const total = foodCost + staffCost + logisticsCost + vajillaCost + mozosCost;
+        if (summaryStaffName) summaryStaffName.textContent = `Staff (${totalHours}h — ${asadores} Grillmaster, ${asistentes} Assist.)`;
+        if (summaryStaffPrice) summaryStaffPrice.textContent = `${Math.round(staffCost).toLocaleString()} Kr`;
+        if (summaryTotal) summaryTotal.textContent = `${Math.round(total).toLocaleString()} Kr`;
+
+        // WhatsApp message
+        let msg = `Hello Criollo Grill! I'd like a quote:\n\n`;
+        msg += `👥 *People:* ${people}\n`;
+        msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : 'Plate Asado'} (Premium Quality Meat)\n`;
+        msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
+        if (calcLogistics && calcLogistics.value === 'delivery') msg += `🚚 *Logistics:* Criollo Grill delivery\n`;
+        if (vajillaCost > 0) msg += `🍽️ *Tableware rental:* Yes\n`;
+        if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} waiters\n`;
+        msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
         if (btnWhatsapp) {
-            btnWhatsapp.onclick = () => {
-                window.open(`https://wa.me/4551999400?text=${encodeURIComponent(msg)}`, '_blank');
-            };
+            btnWhatsapp.onclick = () => window.open(`https://wa.me/4551999400?text=${encodeURIComponent(msg)}`, '_blank');
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcMeatType, calcTimeStart, calcTimeEnd, calcLogistics, cbVerduras, cbEnsaladas, cbEntrada];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeEnd, calcLogistics, calcVajilla, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
@@ -311,11 +298,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let current = 0;
         const total = slides.length;
 
-        // Build dots
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', `Foto ${i + 1}`);
+            dot.setAttribute('aria-label', `Photo ${i + 1}`);
             dot.addEventListener('click', () => goTo(i));
             dotsContainer.appendChild(dot);
         });
@@ -323,15 +309,12 @@ document.addEventListener('DOMContentLoaded', () => {
         function goTo(index) {
             current = (index + total) % total;
             track.style.transform = `translateX(-${current * 100}%)`;
-            document.querySelectorAll('.carousel-dot').forEach((d, i) => {
-                d.classList.toggle('active', i === current);
-            });
+            document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
         }
 
         prevBtn.addEventListener('click', () => goTo(current - 1));
         nextBtn.addEventListener('click', () => goTo(current + 1));
 
-        // Touch swipe support
         let touchStartX = 0;
         track.parentElement.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
         track.parentElement.addEventListener('touchend', e => {
@@ -339,7 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
         });
 
-        // Auto-advance every 4 seconds
         let autoPlay = setInterval(() => goTo(current + 1), 4000);
         const carousel = document.getElementById('eventosCarousel');
         carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));

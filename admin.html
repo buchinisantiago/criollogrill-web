@@ -1,67 +1,182 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Criollo Grill</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Override global cursor:none from styles.css */
         body, * { cursor: auto !important; }
-        .admin-container { max-width: 600px; margin: 4rem auto; padding: 2rem; background: var(--bg-card); border-radius: 8px; }
+        .admin-wrap { max-width: 720px; margin: 3rem auto; padding: 1rem 2rem; }
         .hidden { display: none; }
-        .admin-title { text-align: center; margin-bottom: 2rem; color: var(--primary); }
-        .form-group label { font-size: 0.9rem; color: #ccc; margin-bottom: 0.5rem; display: block; }
-        .form-group input { width: 100%; padding: 0.8rem; background: var(--bg-dark); border: 1px solid #333; color: white; border-radius: 4px; margin-bottom: 1rem; }
-        .btn-primary { cursor: pointer !important; }
-        input, button { cursor: auto !important; }
+        .admin-box { background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border); padding: 2rem; margin-bottom: 2rem; }
+        .admin-box h2 { color: var(--gold); font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; }
+        .admin-box h3 { color: var(--gold); font-family: var(--font-heading); font-size: 0.95rem; letter-spacing: 1.5px; margin: 1.5rem 0 0.8rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { font-size: 0.82rem; color: #ccc; margin-bottom: 0.4rem; display: block; font-family: var(--font-heading); letter-spacing: 1px; text-transform: uppercase; }
+        .form-group input { width: 100%; padding: 0.8rem; background: var(--bg-dark); border: 1px solid #333; color: white; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+        .form-group input:focus { outline: none; border-color: var(--gold); }
+        .calc-info { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 1rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+        .calc-info strong { color: var(--gold); }
+        .calc-info code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #fff; font-size: 0.85rem; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .section-sep { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+        .btn-primary, .btn-outline { cursor: pointer !important; }
+        .back-btn { display: inline-block; color: var(--gold); text-decoration: none; font-size: 0.82rem; border: 1px solid rgba(201,168,76,0.35); padding: 0.4rem 1rem; border-radius: 20px; transition: all 0.3s; font-family: var(--font-heading); letter-spacing: 1px; }
+        .back-btn:hover { background: rgba(201,168,76,0.12); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Login Form -->
-        <div id="login-section" class="admin-container">
-            <h2 class="admin-title">Acceso Restringido</h2>
-            <div class="form-group">
-                <input type="password" id="admin-pin" placeholder="Ingresa el PIN de seguridad">
-            </div>
-            <button id="btn-login" class="btn-primary btn-full">Ingresar</button>
+<div class="admin-wrap">
+
+    <!-- LOGIN -->
+    <div id="login-section" class="admin-box" style="max-width:420px;margin:5rem auto;">
+        <h2 style="text-align:center;">🔒 ACCESO RESTRINGIDO</h2>
+        <div class="form-group">
+            <label>PIN de Seguridad</label>
+            <input type="password" id="admin-pin" placeholder="Ingresa el PIN">
         </div>
-
-        <!-- Admin Dashboard -->
-        <div id="dashboard-section" class="admin-container hidden">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
-                <h2 class="admin-title" style="margin:0;">Configuración de Precios (Kr)</h2>
-                <a href="index.html" style="color:var(--gold);text-decoration:none;font-size:0.85rem;border:1px solid rgba(201,168,76,0.4);padding:0.4rem 1rem;border-radius:20px;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.15)'" onmouseout="this.style.background='transparent'">&#8592; Volver al Sitio</a>
-            </div>
-            <p style="text-align:center; color:#aaa; font-size:0.9rem; margin-top:-1rem; margin-bottom:2rem;">
-                Estos valores se guardan en Supabase y actualizan la calculadora principal en vivo.
-            </p>
-
-            <form id="config-form">
-                <div class="form-group"><label>Carne Premium Arg (x Kg)</label><input type="number" id="carnePremiumKg" required></div>
-                <div class="form-group"><label>Carne Europea (x Kg)</label><input type="number" id="carneEuropeaKg" required></div>
-                <div class="form-group"><label>Pan (x persona)</label><input type="number" id="panPorPersona" required></div>
-                <div class="form-group"><label>Aderezos (x persona)</label><input type="number" id="aderezosPorPersona" required></div>
-                <div class="form-group"><label>Packaging (x persona)</label><input type="number" id="packagingPorPersona" required></div>
-                <div class="form-group"><label>Ensalada (x Kg)</label><input type="number" id="ensaladaKg" required></div>
-                <div class="form-group"><label>Picada (x Kg)</label><input type="number" id="picadaKg" required></div>
-                <div class="form-group"><label>Guarnición de Verduras estimadas (x persona)</label><input type="number" id="verdurasPorPersona" required></div>
-                <div class="form-group"><label>Costo Asador (x Hora)</label><input type="number" id="asadorHora" required></div>
-                <div class="form-group"><label>Costo Asistente (x Hora)</label><input type="number" id="asistenteHora" required></div>
-                <div class="form-group"><label>Costo de Logística / Envío</label><input type="number" id="logistica" required></div>
-                
-                <button type="submit" class="btn-primary btn-full" id="btn-save">Guardar Cambios en Supabase</button>
-            </form>
-            <p id="save-status" style="text-align:center; margin-top:1rem; color: #4CAF50; display:none;">¡Guardado exitosamente!</p>
-
-            <a href="index.html" class="btn-outline btn-full" style="display:block; text-align:center; margin-top:1rem; text-decoration:none;">&#8592; Volver a la Página Principal</a>
-        </div>
+        <button id="btn-login" class="btn-primary btn-full">Ingresar</button>
     </div>
 
-    <!-- Supabase JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/admin.js"></script>
+    <!-- DASHBOARD -->
+    <div id="dashboard-section" class="hidden">
+
+        <!-- HEADER -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+            <div>
+                <h1 style="font-family:var(--font-heading);color:var(--gold);font-size:1.4rem;letter-spacing:3px;margin:0;">⚙️ PANEL DE ADMIN</h1>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin:0.3rem 0 0;">Los cambios se guardan en Supabase y se actualizan en vivo en la calculadora.</p>
+            </div>
+            <a href="index.html" class="back-btn">← Volver al Sitio</a>
+        </div>
+
+        <form id="config-form">
+
+        <!-- ─── CÓMO SE CALCULAN LOS MENÚS ─── -->
+        <div class="admin-box">
+            <h2>📐 CÓMO SE CALCULAN LOS MENÚS</h2>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.2rem;">Esta sección explica la lógica que usa la calculadora para armar el presupuesto. Todos los valores numéricos son modificables en la sección de precios más abajo.</p>
+
+            <h3>🌭 MENÚ STREET FOOD (Callejera)</h3>
+            <div class="calc-info">
+                <strong>Qué incluye:</strong> Sándwiches de Vacío, Choripanes, Sándwich Vegetariano<br>
+                <strong>Cálculo de comida por persona:</strong><br>
+                &nbsp; <code>(0.25 kg de carne × precio_carne_kg) + pan_por_persona + aderezos_por_persona + packaging_por_persona</code><br>
+                <strong>Total comida:</strong> <code>costo_por_persona × cantidad_personas</code><br><br>
+                <strong>Ejemplo con valores actuales (20 personas):</strong><br>
+                &nbsp; (0.25 × 210) + 10 + 6 + 8 = <strong>76.5 Kr/persona</strong> × 20 = <strong>1,530 Kr</strong>
+            </div>
+
+            <h3>🥩 MENÚ ASADO AL PLATO (Plate Asado)</h3>
+            <div class="calc-info">
+                <strong>Qué incluye:</strong> Vacío, Chorizo, Entraña — servidos al plato<br>
+                <strong>Carne base:</strong> <code>0.4 kg por persona × precio_carne_kg</code><br>
+                <strong>Si se agrega Entrada (tabla):</strong> baja a <code>0.3 kg carne</code> + se suma <code>(0.1 × picada_kg + 0.1 × ensalada_kg) × personas</code><br>
+                <strong>Si se agrega Ensalada:</strong> baja a <code>0.3 kg carne</code> + se suma <code>0.2 × ensalada_kg × personas</code><br>
+                <strong>Si se agrega Verduras:</strong> se suma <code>verduras_por_persona × personas</code><br><br>
+                <strong>Ejemplo base (20 personas, sin adicionales):</strong><br>
+                &nbsp; 0.4 × 210 × 20 = <strong>1,680 Kr</strong>
+            </div>
+
+            <h3>👥 PERSONAL (Asador + Asistentes)</h3>
+            <div class="calc-info">
+                <strong>Asadores:</strong> siempre 1<br>
+                <strong>Asistentes:</strong> <code>1 si ≤20 personas | 2 si ≤50 personas | 3 si +50 personas</code><br>
+                <strong>Horas totales:</strong> <code>horas del evento + 4 horas fijas</code> (1h armado + 2h cocción + 1h desarmado)<br>
+                <strong>Costo:</strong> <code>(1 × asador_hora + asistentes × asistente_hora) × horas_totales</code><br><br>
+                <strong>Ejemplo (5h evento → 9h totales, 20 personas):</strong><br>
+                &nbsp; (1×240 + 1×200) × 9 = <strong>3,960 Kr</strong>
+            </div>
+
+            <h3>🚚 LOGÍSTICA / 🍽️ VAJILLA / 🤵 MOZOS</h3>
+            <div class="calc-info">
+                <strong>Logística:</strong> precio fijo <code>logistica_kr</code> si el cliente pide envío<br>
+                <strong>Vajilla:</strong> precio fijo <code>vajilla_evento_kr</code> por evento (alquiler de platos, vasos, cubiertos)<br>
+                <strong>Mozos:</strong> <code>cantidad_mozos × mozo_hora_kr × horas_totales</code>
+            </div>
+        </div>
+
+        <!-- ─── PRECIOS DE INGREDIENTES ─── -->
+        <div class="admin-box">
+            <h2>🥩 PRECIOS DE INGREDIENTES (Kr)</h2>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Carne Premium (x Kg)</label>
+                    <input type="number" id="carnePremiumKg" required>
+                </div>
+                <div class="form-group">
+                    <label>Pan (x Persona)</label>
+                    <input type="number" id="panPorPersona" required>
+                </div>
+                <div class="form-group">
+                    <label>Aderezos (x Persona)</label>
+                    <input type="number" id="aderezosPorPersona" required>
+                </div>
+                <div class="form-group">
+                    <label>Packaging (x Persona)</label>
+                    <input type="number" id="packagingPorPersona" required>
+                </div>
+                <div class="form-group">
+                    <label>Ensalada (x Kg)</label>
+                    <input type="number" id="ensaladaKg" required>
+                </div>
+                <div class="form-group">
+                    <label>Picada (x Kg)</label>
+                    <input type="number" id="picadaKg" required>
+                </div>
+                <div class="form-group">
+                    <label>Guarnición Verduras (x Persona)</label>
+                    <input type="number" id="verdurasPorPersona" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── PERSONAL ─── -->
+        <div class="admin-box">
+            <h2>👥 TARIFAS DE PERSONAL (Kr/Hora)</h2>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Asador (x Hora)</label>
+                    <input type="number" id="asadorHora" required>
+                </div>
+                <div class="form-group">
+                    <label>Asistente (x Hora)</label>
+                    <input type="number" id="asistenteHora" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── SERVICIOS EXTRA ─── -->
+        <div class="admin-box">
+            <h2>🍽️ SERVICIOS ADICIONALES (Kr)</h2>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Logística / Envío (precio fijo)</label>
+                    <input type="number" id="logistica" required>
+                </div>
+                <div class="form-group">
+                    <label>Vajilla — Alquiler x Evento</label>
+                    <input type="number" id="vajillaEvento" required>
+                </div>
+                <div class="form-group">
+                    <label>Mozo / Waiter (x Hora)</label>
+                    <input type="number" id="mozosHora" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAVE -->
+        <button type="submit" class="btn-primary btn-full" id="btn-save">💾 Guardar Cambios en Supabase</button>
+        <p id="save-status" style="text-align:center;margin-top:1rem;display:none;font-family:var(--font-heading);font-size:0.9rem;"></p>
+        <a href="index.html" class="btn-outline btn-full" style="display:block;text-align:center;margin-top:1rem;text-decoration:none;">← Volver a la Página Principal</a>
+
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>
