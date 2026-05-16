@@ -177,7 +177,7 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   gap: 10px;
 }
 .nav-logo-img {
-  height: 36px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   filter: invert(1) brightness(2) drop-shadow(0 0 8px rgba(139,26,26,0.6));
