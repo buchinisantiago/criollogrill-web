@@ -7,11 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* Override global cursor:none from styles.css */
+        body, * { cursor: auto !important; }
         .admin-container { max-width: 600px; margin: 4rem auto; padding: 2rem; background: var(--bg-card); border-radius: 8px; }
         .hidden { display: none; }
         .admin-title { text-align: center; margin-bottom: 2rem; color: var(--primary); }
         .form-group label { font-size: 0.9rem; color: #ccc; margin-bottom: 0.5rem; display: block; }
         .form-group input { width: 100%; padding: 0.8rem; background: var(--bg-dark); border: 1px solid #333; color: white; border-radius: 4px; margin-bottom: 1rem; }
+        .btn-primary { cursor: pointer !important; }
+        input, button { cursor: auto !important; }
     </style>
 </head>
 <body>

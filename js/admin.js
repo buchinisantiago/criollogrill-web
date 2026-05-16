@@ -97,21 +97,30 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const { error } = await supabase
+            // Try UPDATE first (row id=1 must already exist)
+            const { data: updated, error: updateError } = await supabase
                 .from('criollo_config')
-                .upsert(newData);
+                .update(newData)
+                .eq('id', 1)
+                .select();
 
-            if (error) {
-                throw error;
+            if (updateError) throw updateError;
+
+            // If no row was updated, INSERT a new one
+            if (!updated || updated.length === 0) {
+                const { error: insertError } = await supabase
+                    .from('criollo_config')
+                    .insert(newData);
+                if (insertError) throw insertError;
             }
 
             saveStatus.style.display = 'block';
-            setTimeout(() => {
-                saveStatus.style.display = 'none';
-            }, 3000);
+            saveStatus.textContent = '✅ ¡Guardado exitosamente!';
+            setTimeout(() => { saveStatus.style.display = 'none'; }, 3000);
+
         } catch (err) {
             console.error('Error al guardar:', err);
-            alert('Error al guardar en Supabase. Revisa que la tabla exista.');
+            alert(`Error al guardar: ${err.message || 'Revisa la consola para más detalles.'}`);
         } finally {
             btnSave.textContent = 'Guardar Cambios en Supabase';
             btnSave.disabled = false;
