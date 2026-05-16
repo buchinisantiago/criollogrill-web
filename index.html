@@ -3,107 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criollo Grill | Auténtica Parrilla Argentina</title>
-    <meta name="description" content="Servicio de parrilla Tromen para eventos. Especialistas en asado al plato, sándwiches de vacío y choripanes para muchas personas.">
+    <title>Criollo Grill | Auténtica Parrilla Argentina en Copenhagen</title>
+    <meta name="description" content="Criollo Grill — Catering y experiencia de parrilla argentina en Copenhagen. Asado al plato, choripanes y sándwiches de vacío para tus eventos.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">CRIOLLO <span>GRILL</span></div>
-        <ul class="nav-links">
+    <!-- FIRE CURSOR -->
+    <canvas id="fire-cursor" width="40" height="40"></canvas>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">
+            <img src="img/Criollo logo blanco.png" alt="Criollo Grill Logo">
+        </div>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#especialidades">Especialidades</a></li>
             <li><a href="#eventos">Eventos</a></li>
             <li><a href="#cotizador">Cotizar</a></li>
             <li><a href="#contacto" class="btn-primary">Reservar</a></li>
         </ul>
-        <div class="hamburger">
+        <div class="hamburger" id="hamburger">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
         </div>
     </nav>
 
+    <!-- HERO -->
     <header id="inicio" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>El Auténtico Sabor <br><span class="highlight">Argentino</span></h1>
-            <p>Llevamos la experiencia de la parrilla Tromen a tus eventos. Asado al plato, vacío, y tradición en cada bocado.</p>
-            <a href="#especialidades" class="btn-primary btn-large">Descubrir el Menú</a>
+            <span class="hero-badge">🔥 Argentinian Grill &bull; Copenhagen</span>
+            <img src="img/Criollo logo blanco.png" alt="Criollo" class="hero-logo">
+            <h1>El Sabor Auténtico<em>de la Parrilla</em></h1>
+            <p>Llevamos el fuego y la tradición del asado argentino directamente a tu evento. Catering, festivales y experiencias únicas.</p>
+            <div class="hero-cta">
+                <a href="#especialidades" class="btn-primary btn-large">Descubrir el Menú</a>
+                <a href="#cotizador" class="btn-outline btn-large">Calcular Precio</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Descubrir</span>
+            <div class="scroll-line"></div>
         </div>
     </header>
 
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-inner container">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Eventos Realizados</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">5000+</span>
+                <span class="stat-label">Personas Servidas</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Carne de Calidad</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">1</span>
+                <span class="stat-label">Parrilla Tromen</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ESPECIALIDADES -->
     <section id="especialidades" class="section">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title reveal">
                 <h2>Nuestras <span class="highlight">Especialidades</span></h2>
-                <p>Carnes seleccionadas y asadas a la perfección.</p>
+                <div class="divider"><span>🔥</span></div>
+                <p>Carnes seleccionadas, asadas a la perfección sobre fuego vivo.</p>
             </div>
-            
             <div class="grid">
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-img">
                         <img src="img/sandwich_vacio_1778408713668.png" alt="Sándwich de Vacío">
+                        <span class="card-badge">Clásico</span>
                     </div>
                     <div class="card-content">
                         <h3>Sándwiches de Vacío</h3>
-                        <p>Jugosos y tiernos. Nuestro vacío es cocinado a fuego lento y servido en pan crujiente con chimichurri casero.</p>
+                        <p>Jugoso y tierno. Nuestro vacío cocinado a fuego lento, servido en pan crujiente con chimichurri casero.</p>
+                        <div class="card-footer">
+                            <span class="card-icon">🥩</span>
+                            <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;">DESDE 10 PERSONAS</small>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-img">
                         <img src="img/choripan_premium_1778408726753.png" alt="Choripán Premium">
+                        <span class="card-badge">Favorito</span>
                     </div>
                     <div class="card-content">
                         <h3>Choripanes Premium</h3>
-                        <p>El clásico argentino elevado a otro nivel. Chorizo de puro cerdo, salsa criolla fresca y pan rústico.</p>
+                        <p>El clásico argentino elevado. Chorizo de puro cerdo, salsa criolla fresca y pan rústico artesanal.</p>
+                        <div class="card-footer">
+                            <span class="card-icon">🌭</span>
+                            <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;">STREET FOOD</small>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-img">
                         <img src="img/asado_al_plato_1778408740119.png" alt="Asado al Plato">
+                        <span class="card-badge">Premium</span>
                     </div>
                     <div class="card-content">
                         <h3>Asado al Plato</h3>
                         <p>Para los más exigentes. Cortes premium servidos al plato, ideales para cenas formales y grandes festejos.</p>
+                        <div class="card-footer">
+                            <span class="card-icon">🍽️</span>
+                            <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;">EXPERIENCIA COMPLETA</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- EVENTOS -->
     <section id="eventos" class="section section-dark">
         <div class="container eventos-container">
-            <div class="eventos-text">
-                <h2>Eventos a <span class="highlight">Tu Medida</span></h2>
-                <p>Nos encargamos de alimentar a todos tus invitados con la mejor calidad. Ya sea un cumpleaños, casamiento o evento corporativo, nuestra parrilla Tromen se roba el show.</p>
+            <div class="eventos-text reveal">
+                <span style="font-family:var(--font-heading);font-size:0.7rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase;">Para Todo Tipo de Eventos</span>
+                <h2 style="margin-top:0.8rem;">Eventos a <span class="highlight">Tu Medida</span></h2>
+                <div class="divider" style="justify-content:flex-start;"><span>🔥</span></div>
+                <p style="margin-top:1rem;">Nos encargamos de alimentar a todos tus invitados con la mejor calidad. Ya sea un cumpleaños, casamiento, festival o evento corporativo, nuestra parrilla Tromen se roba el show.</p>
                 <ul class="features">
-                    <li>✓ Capacidad para grandes grupos</li>
-                    <li>✓ Atención personalizada</li>
-                    <li>✓ Ingredientes de primera calidad</li>
-                    <li>✓ El auténtico show del asador</li>
+                    <li><span class="feature-icon">🔥</span> El auténtico show del asador en vivo</li>
+                    <li><span class="feature-icon">👥</span> Capacidad para grandes grupos</li>
+                    <li><span class="feature-icon">⭐</span> Ingredientes de primera calidad</li>
+                    <li><span class="feature-icon">🤝</span> Atención personalizada y flexible</li>
+                    <li><span class="feature-icon">🚚</span> Logística integral disponible</li>
                 </ul>
+                <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+                    <a href="#cotizador" class="btn-primary">Calcular Precio</a>
+                    <a href="#contacto" class="btn-outline">Contactar</a>
+                </div>
             </div>
-            <div class="eventos-image">
-                <img src="img/4.jpeg" alt="Parrilla Tromen en Acción" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="eventos-image reveal">
+                <img src="img/4.jpeg" alt="Parrilla Tromen Criollo Grill en acción">
             </div>
         </div>
     </section>
 
-    <section id="cotizador" class="section">
+    <!-- GALLERY ROW -->
+    <section class="section" style="padding:3rem 0;">
         <div class="container">
-            <div class="section-title">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;border-radius:8px;overflow:hidden;">
+                <img src="img/1.jpeg" alt="Asado Criollo" style="width:100%;height:280px;object-fit:cover;display:block;">
+                <img src="img/2.jpeg" alt="Fuego Criollo" style="width:100%;height:280px;object-fit:cover;display:block;">
+                <img src="img/3.jpeg" alt="Parrilla Criollo" style="width:100%;height:280px;object-fit:cover;display:block;">
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR -->
+    <section id="cotizador" class="section section-dark">
+        <div class="container">
+            <div class="section-title reveal">
                 <h2>Arma tu <span class="highlight">Cotización</span></h2>
+                <div class="divider"><span>🔥</span></div>
                 <p>Calcula un presupuesto estimado al instante según tus necesidades.</p>
             </div>
-            
-            <div class="calculator-container">
+            <div class="calculator-container reveal">
                 <div class="calc-form">
                     <div class="form-group">
                         <label for="calc-menu">Elige tu Menú</label>
@@ -126,19 +207,17 @@
                         </select>
                     </div>
 
-                    <div class="form-group" style="display: flex; gap: 1rem;">
-                        <div style="flex: 1;">
+                    <div class="form-group" style="display:flex;gap:1rem;">
+                        <div style="flex:1;">
                             <label for="calc-time-start">Hora Inicio Evento</label>
                             <input type="time" id="calc-time-start" class="calc-input" value="13:00">
                         </div>
-                        <div style="flex: 1;">
+                        <div style="flex:1;">
                             <label for="calc-time-end">Hora Fin Evento</label>
                             <input type="time" id="calc-time-end" class="calc-input" value="18:00">
                         </div>
                     </div>
-                    <p style="font-size: 0.8rem; color: #aaa; margin-top: -10px; margin-bottom: 15px;">
-                        * Se suman automáticamente 4 hs (1h armado, 2h cocción, 1h desarmado).
-                    </p>
+                    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:-10px;">* Se suman automáticamente 4hs (1h armado, 2h cocción, 1h desarmado).</p>
 
                     <div class="form-group">
                         <label for="calc-logistics">Logística y Traslado</label>
@@ -148,7 +227,7 @@
                         </select>
                     </div>
 
-                    <div id="extras-plato" class="extras-section" style="display: none;">
+                    <div id="extras-plato" class="extras-section" style="display:none;">
                         <h3>Adicionales (Asado al Plato)</h3>
                         <label class="checkbox-label">
                             <input type="checkbox" id="extra-verduras">
@@ -177,7 +256,7 @@
                             <span id="summary-staff-name">Personal (0hs)</span>
                             <span id="summary-staff-price">0 Kr</span>
                         </div>
-                        <div class="summary-row" id="summary-logistics-row" style="display: none;">
+                        <div class="summary-row" id="summary-logistics-row" style="display:none;">
                             <span>Logística</span>
                             <span>2,000 Kr</span>
                         </div>
@@ -186,56 +265,116 @@
                             <span id="summary-total" class="highlight">0 Kr</span>
                         </div>
                     </div>
-                    <button id="btn-whatsapp" class="btn-primary btn-full" style="margin-top: 1.5rem;">
-                        <span class="icon">💬</span> Enviar cotización por WhatsApp
+                    <button id="btn-whatsapp" class="btn-primary btn-full" style="margin-top:1.5rem;">
+                        💬 &nbsp;Enviar cotización por WhatsApp
                     </button>
-                    <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem;">* Los precios son estimados y pueden variar según la fecha y ubicación.</p>
+                    <p style="font-size:0.8rem;text-align:center;margin-top:1rem;color:var(--text-muted);">* Los precios son estimados y pueden variar según la fecha y ubicación.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="section section-dark">
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
         <div class="container contact-container">
-            <div class="contact-info">
-                <h2>Reserva tu <span class="highlight">Fecha</span></h2>
-                <p>¿Tienes un evento en mente? Escríbenos y armamos un presupuesto a medida para que disfrutes sin preocuparte por nada.</p>
+            <div class="contact-info reveal">
+                <span style="font-family:var(--font-heading);font-size:0.7rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase;">Hablemos</span>
+                <h2 style="margin-top:0.8rem;">Reserva tu <span class="highlight">Fecha</span></h2>
+                <div class="divider" style="justify-content:flex-start;"><span>🔥</span></div>
+                <p style="margin-top:1rem;">¿Tienes un evento en mente? Escríbenos y armamos un presupuesto a medida para que disfrutes sin preocuparte por nada.</p>
                 <div class="contact-details">
-                    <p>📍 Copenhagen</p>
-                    <p>📞 +45 51 99 94 00</p>
-                    <p>✉️ info@criollogrill.com</p>
+                    <div class="contact-detail-item">
+                        <span class="detail-icon">📍</span>
+                        <div class="detail-text">
+                            <small>Ubicación</small>
+                            Copenhagen, Denmark
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <span class="detail-icon">📞</span>
+                        <div class="detail-text">
+                            <small>Teléfono</small>
+                            +45 51 99 94 00
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <span class="detail-icon">✉️</span>
+                        <div class="detail-text">
+                            <small>Email</small>
+                            info@criollogrill.com
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <span class="detail-icon">🕐</span>
+                        <div class="detail-text">
+                            <small>Respuesta</small>
+                            En menos de 24 horas
+                        </div>
+                    </div>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Tu Nombre" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="Tu Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="event" placeholder="Tipo de Evento y Cantidad de Personas" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" rows="4" placeholder="Mensaje adicional" required></textarea>
-                </div>
-                <button type="submit" class="btn-primary btn-full">Solicitar Presupuesto</button>
-            </form>
+            <div class="contact-form reveal">
+                <h3>Solicitar Presupuesto</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Tu Nombre</label>
+                        <input type="text" id="name" placeholder="Ej: Santiago García" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Tu Email</label>
+                        <input type="email" id="email" placeholder="hola@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event">Tipo de Evento</label>
+                        <input type="text" id="event" placeholder="Ej: Cumpleaños para 50 personas" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje Adicional</label>
+                        <textarea id="message" rows="4" placeholder="Fecha tentativa, lugar, necesidades especiales..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Solicitar Presupuesto</button>
+                </form>
+            </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-        <div class="container footer-content">
-            <div class="logo">CRIOLLO <span>GRILL</span></div>
-            <p>&copy; 2026 Criollo Grill. Todos los derechos reservados.</p>
-            <div class="social-links">
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
-                <a href="#">WhatsApp</a>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="img/Criollo logo blanco.png" alt="Criollo Grill">
+                    <p>Auténtica parrilla argentina en el corazón de Copenhagen.</p>
+                </div>
+                <div class="footer-services">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li>🔥 Catering para eventos</li>
+                        <li>🎪 Festivales y ferias</li>
+                        <li>🏢 Eventos corporativos</li>
+                        <li>🎉 Celebraciones sociales</li>
+                        <li>🍖 Live Barbecue Experience</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p style="color:var(--text-muted);">📍 Copenhagen, Denmark</p>
+                    <p style="color:var(--text-muted);">📞 +45 51 99 94 00</p>
+                    <p style="color:var(--text-muted);">✉️ info@criollogrill.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Criollo Grill &mdash; Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">IG</a>
+                    <a href="#" title="Facebook">FB</a>
+                    <a href="#" title="WhatsApp">WA</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/main.js"></script>
 </body>
