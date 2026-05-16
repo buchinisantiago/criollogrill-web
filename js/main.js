@@ -242,13 +242,29 @@ document.addEventListener('DOMContentLoaded', () => {
             if (vajillaRow) vajillaRow.style.display = 'none';
         }
 
-        // Mozos (waitstaff)
+        // Mozos (waitstaff - auto-calculated based on guests: 1 waiter every 15 people)
         let mozosCost = 0;
+        let numMozos = 0;
         const mozosRow = document.getElementById('summary-mozos-row');
-        const numMozos = calcMozos ? parseInt(calcMozos.value) || 0 : 0;
-        if (numMozos > 0) {
+        if (calcMozos && calcMozos.checked) {
+            numMozos = Math.ceil(people / 15);
             mozosCost = numMozos * CONFIG.mozosHora * totalHours;
-            if (mozosRow) { mozosRow.style.display = 'flex'; mozosRow.querySelector('span:last-child').textContent = `${Math.round(mozosCost).toLocaleString()} Kr`; mozosRow.querySelector('span:first-child').textContent = `Waitstaff (${numMozos} × ${totalHours}h)`; }
+            if (mozosRow) {
+                mozosRow.style.display = 'flex';
+                mozosRow.querySelector('span:last-child').textContent = `${Math.round(mozosCost).toLocaleString()} Kr`;
+                
+                // Dynamic translation based on current selected language for waitstaff
+                const currentLang = localStorage.getItem('criollo_lang') || 'en';
+                let labelText = `Waitstaff (${numMozos} waiters × ${totalHours}h)`;
+                if (currentLang === 'es') {
+                    const word = numMozos === 1 ? 'mozo' : 'mozos';
+                    labelText = `Mozos (${numMozos} ${word} × ${totalHours}h)`;
+                } else if (currentLang === 'dk') {
+                    const word = numMozos === 1 ? 'tjener' : 'tjenere';
+                    labelText = `Servering (${numMozos} ${word} × ${totalHours}t)`;
+                }
+                mozosRow.querySelector('span:first-child').textContent = labelText;
+            }
         } else {
             if (mozosRow) mozosRow.style.display = 'none';
         }
@@ -265,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (vajillaCost > 0) msg += `🍽️ *Tableware rental:* Yes\n`;
-        if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} waiters\n`;
+        if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
         if (btnWhatsapp) {

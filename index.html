@@ -234,9 +234,11 @@
                     </div>
                     <!-- MOZOS -->
                     <div class="form-group">
-                        <label for="calc-mozos" data-i18n="calc_mozos_label">Waitstaff / Servers (number)</label>
-                        <input type="number" id="calc-mozos" class="calc-input" min="0" max="10" value="0" placeholder="0 = no waitstaff">
-                        <small style="color:var(--text-muted);margin-top:4px;display:block;" data-i18n="calc_mozos_note">180 Kr/hour per waiter (billed for event duration)</small>
+                        <label class="checkbox-label" style="flex-direction:row;align-items:center;gap:0.7rem;">
+                            <input type="checkbox" id="calc-mozos" style="width:18px;height:18px;accent-color:var(--gold);">
+                            <span data-i18n="calc_mozos_label">Request waitstaff service</span>
+                        </label>
+                        <small style="color:var(--text-muted);margin-top:4px;display:block;" data-i18n="calc_mozos_note">1 waiter per 15 guests (180 Kr/hour per waiter)</small>
                     </div>
                     <div id="extras-plato" class="extras-section" style="display:none;">
                         <h3 data-i18n="extras_title">Add-ons (Plate Asado)</h3>

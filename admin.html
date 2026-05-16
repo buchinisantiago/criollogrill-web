@@ -92,9 +92,10 @@
 
             <h3>🚚 LOGÍSTICA / 🍽️ VAJILLA / 🤵 MOZOS</h3>
             <div class="calc-info">
-                <strong>Logística:</strong> precio fijo <code>logistica_kr</code> si el cliente pide envío<br>
-                <strong>Vajilla:</strong> precio fijo <code>vajilla_evento_kr</code> por evento (alquiler de platos, vasos, cubiertos)<br>
-                <strong>Mozos:</strong> <code>cantidad_mozos × mozo_hora_kr × horas_totales</code>
+                <strong>Logística:</strong> precio fijo <code>logistica_kr</code> (traslado, armado y desarmado)<br>
+                <strong>Vajilla:</strong> precio fijo <code>vajilla_evento_kr</code> por evento (alquiler de vajilla completa)<br>
+                <strong>Mozos (Auto-calculado):</strong> <code>mozos_requeridos × mozo_hora_kr × horas_totales</code><br>
+                &nbsp; * El número de mozos es <strong>1 mozo cada 15 personas</strong> (ej: 1-15 personas = 1 mozo; 16-30 personas = 2 mozos; 31-45 personas = 3 mozos).
             </div>
         </div>
 
