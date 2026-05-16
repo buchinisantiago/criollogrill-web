@@ -97,30 +97,45 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            // Try UPDATE first (row id=1 must already exist)
             const { data: updated, error: updateError } = await supabase
                 .from('criollo_config')
                 .update(newData)
                 .eq('id', 1)
                 .select();
 
-            if (updateError) throw updateError;
+            if (updateError) {
+                // RLS policy blocking writes
+                if (updateError.message && updateError.message.includes('row-level security')) {
+                    throw new Error('Permiso denegado por Supabase (RLS). Seguí los pasos en la consola del navegador para habilitarlo.');
+                }
+                throw updateError;
+            }
 
-            // If no row was updated, INSERT a new one
             if (!updated || updated.length === 0) {
+                // Row might not exist yet — try insert
                 const { error: insertError } = await supabase
                     .from('criollo_config')
-                    .insert(newData);
-                if (insertError) throw insertError;
+                    .insert({ ...newData, id: 1 });
+
+                if (insertError) {
+                    if (insertError.message && insertError.message.includes('row-level security')) {
+                        throw new Error('RLS bloqueó la escritura. En Supabase → Table Editor → criollo_config → RLS Policies → agregá una política UPDATE para "anon".');
+                    }
+                    throw insertError;
+                }
             }
 
             saveStatus.style.display = 'block';
             saveStatus.textContent = '✅ ¡Guardado exitosamente!';
+            saveStatus.style.color = '#4CAF50';
             setTimeout(() => { saveStatus.style.display = 'none'; }, 3000);
 
         } catch (err) {
             console.error('Error al guardar:', err);
-            alert(`Error al guardar: ${err.message || 'Revisa la consola para más detalles.'}`);
+            saveStatus.style.display = 'block';
+            saveStatus.style.color = '#ff4444';
+            saveStatus.textContent = '❌ ' + (err.message || 'Error desconocido. Ver consola.');
+            setTimeout(() => { saveStatus.style.display = 'none'; }, 6000);
         } finally {
             btnSave.textContent = 'Guardar Cambios en Supabase';
             btnSave.disabled = false;
