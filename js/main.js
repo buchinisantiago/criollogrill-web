@@ -46,19 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animateFire() {
-        // Resize canvas to viewport
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '99999';
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Spawn new particles at cursor
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 5; i++) {
             particles.push(new FireParticle(mouseX, mouseY));
         }
 
@@ -75,13 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateFire);
     }
 
-    // Resize canvas on load
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
+    // Setup canvas once
+    function setupCanvas() {
+        canvas.width  = window.innerWidth;
         canvas.height = window.innerHeight;
-    });
+    }
+    setupCanvas();
+    window.addEventListener('resize', setupCanvas);
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
