@@ -232,12 +232,24 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryLogisticsRow.querySelector('span:last-child').textContent = `${logisticsCost.toLocaleString()} Kr`;
         }
 
-        // Vajilla (tableware rental)
+        // Vajilla (tableware rental: 30 Kr per guest + CONFIG.vajillaEvento flat logistics/cleaning fee)
         let vajillaCost = 0;
         const vajillaRow = document.getElementById('summary-vajilla-row');
         if (calcVajilla && calcVajilla.checked) {
-            vajillaCost = CONFIG.vajillaEvento;
-            if (vajillaRow) { vajillaRow.style.display = 'flex'; vajillaRow.querySelector('span:last-child').textContent = `${CONFIG.vajillaEvento.toLocaleString()} Kr`; }
+            const flatFee = CONFIG.vajillaEvento || 500;
+            vajillaCost = (30 * people) + flatFee;
+            if (vajillaRow) {
+                vajillaRow.style.display = 'flex';
+                vajillaRow.querySelector('span:last-child').textContent = `${Math.round(vajillaCost).toLocaleString()} Kr`;
+                
+                const currentLang = localStorage.getItem('criollo_lang') || 'en';
+                let labelText = `Tableware rental`;
+                if (currentLang === 'es') labelText = `Alquiler de vajilla (${people} pax)`;
+                else if (currentLang === 'dk') labelText = `Serviceudlejning (${people} pers.)`;
+                else labelText = `Tableware rental (${people} pax)`;
+                
+                vajillaRow.querySelector('span:first-child').textContent = labelText;
+            }
         } else {
             if (vajillaRow) vajillaRow.style.display = 'none';
         }

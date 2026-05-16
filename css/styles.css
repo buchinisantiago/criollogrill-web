@@ -306,18 +306,28 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   animation: fadeInDown 0.8s ease-out both;
 }
 
-.hero-flame-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  animation: flickerFlame 2s infinite alternate ease-in-out, fadeInDown 0.9s 0.1s ease-out both;
-  display: block;
-  filter: drop-shadow(0 0 20px rgba(255,140,0,0.8));
+.hero-logo-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  animation: flickerFlame 2.5s infinite alternate ease-in-out, fadeInDown 0.9s 0.1s ease-out both;
 }
-
+.hero-logo-center img {
+  height: 220px;
+  width: auto;
+  object-fit: contain;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  filter: drop-shadow(0 0 15px rgba(255,100,0,0.85)) drop-shadow(0 0 25px rgba(255,60,0,0.55));
+}
 @keyframes flickerFlame {
-  0%   { transform: scale(1)   rotate(-3deg); }
-  50%  { transform: scale(1.1) rotate(2deg); }
-  100% { transform: scale(0.95) rotate(-2deg); }
+  0%   { transform: scale(1)   rotate(-93deg); }
+  50%  { transform: scale(1.06) rotate(-88deg); }
+  100% { transform: scale(0.96) rotate(-92deg); }
 }
 
 .hero-content h1 {
@@ -726,22 +736,28 @@ footer {
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1fr;
   gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   align-items: start;
 }
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 .footer-brand img {
-  height: 300px;
+  height: 140px;
   width: auto;
   object-fit: contain;
   display: block;
-  margin: 2rem auto;
-  filter: drop-shadow(0 0 10px rgba(139,26,26,0.5));
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(139,26,26,0.3));
   transform: rotate(-90deg);
   transform-origin: center center;
 }
-.footer-brand p { font-size: 0.9rem; }
+.footer-brand p { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6; }
 
 .footer-services h4 {
   font-family: var(--font-heading);
