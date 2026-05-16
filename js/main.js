@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verdurasPorPersona: 15,
         asadorHora: 240,
         asistenteHora: 200,
-        logistica: 2000,
+        logistica: 3500,
         vajillaEvento: 500,
         mozosHora: 180,
         horasFijasExtra: 4
@@ -142,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcPeople    = document.getElementById('calc-people');
     const calcTimeStart = document.getElementById('calc-time-start');
     const calcTimeEnd   = document.getElementById('calc-time-end');
-    const calcLogistics = document.getElementById('calc-logistics');
     const calcVajilla   = document.getElementById('calc-vajilla');
     const calcMozos     = document.getElementById('calc-mozos');
     const extrasPlato   = document.getElementById('extras-plato');
@@ -226,13 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Logistics
-        let logisticsCost = 0;
-        if (calcLogistics && calcLogistics.value === 'delivery') {
-            logisticsCost = CONFIG.logistica;
-            if(summaryLogisticsRow) summaryLogisticsRow.style.display = 'flex';
-        } else {
-            if(summaryLogisticsRow) summaryLogisticsRow.style.display = 'none';
+        // Logistics (Flat delivery, setup & teardown fee is always included)
+        let logisticsCost = CONFIG.logistica || 3500;
+        if(summaryLogisticsRow) {
+            summaryLogisticsRow.style.display = 'flex';
+            summaryLogisticsRow.querySelector('span:last-child').textContent = `${logisticsCost.toLocaleString()} Kr`;
         }
 
         // Vajilla (tableware rental)
@@ -266,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `👥 *People:* ${people}\n`;
         msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : 'Plate Asado'} (Premium Quality Meat)\n`;
         msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
-        if (calcLogistics && calcLogistics.value === 'delivery') msg += `🚚 *Logistics:* Criollo Grill delivery\n`;
+        msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (vajillaCost > 0) msg += `🍽️ *Tableware rental:* Yes\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} waiters\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
@@ -276,13 +273,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeEnd, calcLogistics, calcVajilla, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeEnd, calcVajilla, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
             input.addEventListener(evt, updateCalculator);
         }
     });
+
 
     if (calcMenu) loadConfig();
 
