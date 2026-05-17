@@ -1,5 +1,5 @@
 // i18n.js — Criollo Grill Translations
-const translations = {
+window.translations = {
   en: {
     nav_home:"Home", nav_specialties:"Specialties", nav_events:"Events",
     nav_quote:"Quote", nav_book:"Book Now",
@@ -207,7 +207,7 @@ const translations = {
 };
 
 function applyLang(lang) {
-  const t = translations[lang];
+  const t = window.translations[lang];
   if (!t) return;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -230,7 +230,11 @@ function applyLang(lang) {
   if (activeBtn) activeBtn.classList.add('active');
   localStorage.setItem('criollo_lang', lang);
   document.documentElement.lang = lang === 'dk' ? 'da' : lang;
+  
+  // Notify other scripts that language has changed
+  window.dispatchEvent(new Event('languageChanged'));
 }
+window.applyLang = applyLang;
 
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('criollo_lang') || 'en';

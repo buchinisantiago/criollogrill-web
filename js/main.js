@@ -133,10 +133,21 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const { data, error } = await supabase
                 .from('criollo_config').select('*').eq('id', 1).single();
-            if (data && !error) CONFIG = { ...CONFIG, ...data };
+            if (data && !error) {
+                CONFIG = { ...CONFIG, ...data };
+                if (window.translations && CONFIG.logistica !== 3500) {
+                    const cost = CONFIG.logistica.toLocaleString();
+                    window.translations.en.calc_log_flat_note = `A flat fee of ${cost} DKK is automatically added for transportation, professional setup and teardown of the grill.`;
+                    window.translations.es.calc_log_flat_note = `Se cobra una tarifa fija de ${cost} DKK por el traslado, armado y desarmado profesional de la parrilla.`;
+                    window.translations.dk.calc_log_flat_note = `Et fast gebyr på ${cost} DKK tilføjes automatisk for transport, professionel opsætning og nedtagning af grillen.`;
+                    if (window.applyLang) window.applyLang(localStorage.getItem('criollo_lang') || 'en');
+                }
+            }
         } catch (err) { console.error('Error loading config:', err); }
         updateCalculator();
     }
+    
+    window.addEventListener('languageChanged', updateCalculator);
 
     const calcMenu      = document.getElementById('calc-menu');
     const calcPeople    = document.getElementById('calc-people');
@@ -190,7 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
             foodCost = cpp * people;
-            if(summaryMenuName) summaryMenuName.textContent = `Street Food Menu (${people} pax)`;
+            const currentLang = localStorage.getItem('criollo_lang') || 'en';
+            let label = 'Street Food Menu';
+            if (currentLang === 'es') label = 'Menú Street Food';
+            if (currentLang === 'dk') label = 'Street Food Menu';
+            if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
             if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(foodCost).toLocaleString()} Kr`;
         } else {
             extrasPlato.style.display = 'block';
@@ -214,13 +229,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const baseFoodCost = (meatKgPerPerson * meatPriceKg) * people;
             foodCost = baseFoodCost + extrasCost;
-            if(summaryMenuName) summaryMenuName.textContent = `Plate Asado (${people} pax)`;
+            const currentLang = localStorage.getItem('criollo_lang') || 'en';
+            let label = 'Plate Asado';
+            if (currentLang === 'es') label = 'Asado al Plato';
+            if (currentLang === 'dk') label = 'Tallerken Asado';
+            if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
             if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(baseFoodCost).toLocaleString()} Kr`;
 
             if (extrasCost > 0) {
                 const div = document.createElement('div');
                 div.className = 'summary-row';
-                div.innerHTML = `<span>+ Add-ons selected</span><span>${Math.round(extrasCost).toLocaleString()} Kr</span>`;
+                const currentLang = localStorage.getItem('criollo_lang') || 'en';
+                let addOnLabel = '+ Add-ons selected';
+                if (currentLang === 'es') addOnLabel = '+ Adicionales seleccionados';
+                if (currentLang === 'dk') addOnLabel = '+ Tilvalg valgt';
+                div.innerHTML = `<span>${addOnLabel}</span><span>${Math.round(extrasCost).toLocaleString()} Kr</span>`;
                 summaryExtrasContainer.appendChild(div);
             }
         }
@@ -229,6 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let logisticsCost = CONFIG.logistica || 3500;
         if(summaryLogisticsRow) {
             summaryLogisticsRow.style.display = 'flex';
+            const currentLang = localStorage.getItem('criollo_lang') || 'en';
+            let logisticsLabel = 'Logistics';
+            if (currentLang === 'es') logisticsLabel = 'Logística';
+            if (currentLang === 'dk') logisticsLabel = 'Logistik';
+            summaryLogisticsRow.querySelector('span:first-child').textContent = logisticsLabel;
             summaryLogisticsRow.querySelector('span:last-child').textContent = `${logisticsCost.toLocaleString()} Kr`;
         }
 
@@ -282,7 +310,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const total = foodCost + staffCost + logisticsCost + vajillaCost + mozosCost;
-        if (summaryStaffName) summaryStaffName.textContent = `Staff (${totalHours}h — ${asadores} Grillmaster, ${asistentes} Assist.)`;
+        
+        const currentLang = localStorage.getItem('criollo_lang') || 'en';
+        let staffLabel = 'Staff';
+        let grillLabel = 'Grillmaster';
+        let asstLabel = 'Assist.';
+        if (currentLang === 'es') { staffLabel = 'Personal'; grillLabel = 'Parrillero'; asstLabel = 'Ayu.'; }
+        if (currentLang === 'dk') { staffLabel = 'Personale'; grillLabel = 'Grillmester'; asstLabel = 'Ass.'; }
+        if (summaryStaffName) summaryStaffName.textContent = `${staffLabel} (${totalHours}h — ${asadores} ${grillLabel}, ${asistentes} ${asstLabel})`;
         if (summaryStaffPrice) summaryStaffPrice.textContent = `${Math.round(staffCost).toLocaleString()} Kr`;
         if (summaryTotal) summaryTotal.textContent = `${Math.round(total).toLocaleString()} Kr`;
 
