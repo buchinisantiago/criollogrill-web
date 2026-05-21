@@ -295,9 +295,15 @@
                         <div class="summary-row" id="summary-mozos-row" style="display:none;">
                             <span>Waitstaff</span><span>0 Kr</span>
                         </div>
-                        <div class="summary-row total-row">
-                            <span data-i18n="summary_total">Estimated Total</span>
-                            <span id="summary-total" class="highlight">0 Kr</span>
+                        <div class="summary-row total-row" style="flex-wrap: wrap;">
+                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                <span data-i18n="summary_total">Estimated Total</span>
+                                <span id="summary-total" class="highlight">0 Kr</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.5rem; font-size: 0.95rem; color: var(--text-muted); font-family: var(--font-body); font-weight: 400; text-transform: none; letter-spacing: normal;">
+                                <span data-i18n="calc_per_person">Approx. per person</span>
+                                <span id="summary-per-person">0 Kr / person</span>
+                            </div>
                         </div>
                     </div>
                     <button id="btn-whatsapp" class="btn-primary btn-full" style="margin-top:1.5rem;" data-i18n="btn_whatsapp">💬  Send quote via WhatsApp</button>

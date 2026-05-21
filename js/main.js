@@ -99,11 +99,59 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = contactForm.querySelector('button[type="submit"]');
             const orig = btn.textContent;
-            btn.textContent = 'Sending...'; btn.disabled = true;
-            setTimeout(() => {
-                alert('Thank you! We will contact you soon to arrange your Criollo Grill event.');
-                contactForm.reset(); btn.textContent = orig; btn.disabled = false;
-            }, 1500);
+            
+            // Localized sending state
+            const currentLang = localStorage.getItem('criollo_lang') || 'en';
+            let sendingText = 'Sending...';
+            if (currentLang === 'es') sendingText = 'Enviando...';
+            if (currentLang === 'dk') sendingText = 'Sender...';
+            
+            btn.textContent = sendingText; 
+            btn.disabled = true;
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const event = document.getElementById('event').value;
+            const message = document.getElementById('message').value;
+
+            // Fetch to FormSubmit AJAX endpoint
+            fetch("https://formsubmit.co/ajax/info@criollogrill.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    event: event,
+                    message: message,
+                    _cc: "buchinisantiago@gmail.com",
+                    _subject: `New Event Quote Request - ${name}`
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success === "true" || data.success === true) {
+                    // Localized success notification
+                    let successMsg = 'Thank you! We have received your request and will contact you within 24 hours.';
+                    if (window.translations && window.translations[currentLang] && window.translations[currentLang].form_success) {
+                        successMsg = window.translations[currentLang].form_success;
+                    }
+                    alert(successMsg);
+                    contactForm.reset();
+                } else {
+                    alert("Error: " + (data.message || "Failed to send email. Please try again."));
+                }
+            })
+            .catch(err => {
+                console.error("FormSubmit Error:", err);
+                alert("Failed to send email. Please check your connection and try again.");
+            })
+            .finally(() => {
+                btn.textContent = orig; 
+                btn.disabled = false;
+            });
         });
     }
 
@@ -320,6 +368,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (summaryStaffName) summaryStaffName.textContent = `${staffLabel} (${totalHours}h — ${asadores} ${grillLabel}, ${asistentes} ${asstLabel})`;
         if (summaryStaffPrice) summaryStaffPrice.textContent = `${Math.round(staffCost).toLocaleString()} Kr`;
         if (summaryTotal) summaryTotal.textContent = `${Math.round(total).toLocaleString()} Kr`;
+
+        // Update Price per Person
+        const summaryPerPerson = document.getElementById('summary-per-person');
+        if (summaryPerPerson) {
+            const perPerson = Math.round(total / people);
+            let personLabel = '/ person';
+            if (currentLang === 'es') personLabel = '/ persona';
+            if (currentLang === 'dk') personLabel = '/ person';
+            summaryPerPerson.textContent = `${perPerson.toLocaleString()} Kr ${personLabel}`;
+        }
 
         // WhatsApp message
         let msg = `Hello Criollo Grill! I'd like a quote:\n\n`;
