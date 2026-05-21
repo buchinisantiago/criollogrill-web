@@ -322,6 +322,7 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   width: 450px;
   height: 260px;
   position: relative;
+  left: 20px; /* Visually offset to perfectly center with hero text */
   animation: flickerFlame 2.5s infinite alternate ease-in-out, fadeInDown 0.9s 0.1s ease-out both;
 }
 .hero-logo-center img {
@@ -956,6 +957,7 @@ footer {
     width: 220px;
     height: 130px;
     margin: 0 auto 1.5rem;
+    left: 10px; /* Visually offset to perfectly center with hero text on mobile */
   }
   .hero-logo-center img {
     height: 220px;
