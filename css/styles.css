@@ -319,23 +319,23 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   align-items: center;
   justify-content: center;
   margin: -1rem auto 1rem;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 400px;
   position: relative;
   animation: flickerFlame 2.5s infinite alternate ease-in-out, fadeInDown 0.9s 0.1s ease-out both;
 }
 .hero-logo-center img {
-  height: 440px;
+  height: 400px;
   width: auto;
   object-fit: contain;
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
   transform-origin: center center;
   filter: drop-shadow(0 0 25px rgba(255,100,0,0.9)) drop-shadow(0 0 45px rgba(255,60,0,0.6));
 }
 @keyframes flickerFlame {
-  0%   { transform: scale(1)   rotate(-93deg); }
-  50%  { transform: scale(1.06) rotate(-88deg); }
-  100% { transform: scale(0.96) rotate(-92deg); }
+  0%   { transform: scale(1)   rotate(-3deg); }
+  50%  { transform: scale(1.06) rotate(2deg); }
+  100% { transform: scale(0.96) rotate(-2deg); }
 }
 
 .hero-content h1 {
@@ -771,7 +771,7 @@ footer {
   display: block;
   margin: 0 auto 1.5rem;
   filter: drop-shadow(0 0 10px rgba(139,26,26,0.3));
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
   transform-origin: center center;
 }
 .footer-brand p { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6; }
@@ -915,8 +915,8 @@ footer {
   }
   .hero-logo-center {
     width: 120px;
-    height: 120px;
-    margin: 0 auto 1.5rem;
+    height: 180px;
+    margin: 0 auto 1rem;
   }
   .hero-logo-center img {
     height: 180px;
