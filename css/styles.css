@@ -418,6 +418,44 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
 /* ─── SPECIALTIES ─── */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 
+.specialty-category {
+  margin-top: 3.5rem;
+}
+.specialty-category:first-of-type {
+  margin-top: 1.5rem;
+}
+.category-title {
+  font-family: var(--font-heading);
+  color: var(--gold);
+  font-size: 1.25rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.category-title::before,
+.category-title::after {
+  content: '';
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.category-title::after {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+
+/* Center two cards elegantly if they are alone in a row */
+.specialty-category .grid {
+  justify-content: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 .card {
   background: var(--bg-card);
   border-radius: var(--radius);

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=5">
+    <link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 <body>
 
@@ -101,42 +101,67 @@
                 <div class="divider"><span>🔥</span></div>
                 <p data-i18n="spec_sub">Selected meats, grilled to perfection over live fire.</p>
             </div>
-            <div class="grid">
-                <div class="card reveal">
-                    <div class="card-img">
-                        <img src="img/sandwich_vacio_1778408713668.png" alt="Vacío Sandwich">
-                        <span class="card-badge" data-i18n="card1_badge">Classic</span>
+            <!-- STREET FOOD CATEGORY -->
+            <div class="specialty-category reveal">
+                <h3 class="category-title" data-i18n="cat_street_food">Street Food</h3>
+                <div class="grid">
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <img src="img/sandwich_vacio_1778408713668.png" alt="Vacío Sandwich">
+                            <span class="card-badge" data-i18n="card1_badge">Classic</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="card1_title">Vacío Sandwiches</h3>
+                            <p data-i18n="card1_desc">Juicy and tender. Our vacío cooked low and slow, served in crispy bread with homemade chimichurri.</p>
+                            <div class="card-footer">
+                                <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card2_label">STREET FOOD</small>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <h3 data-i18n="card1_title">Vacío Sandwiches</h3>
-                        <p data-i18n="card1_desc">Juicy and tender. Our vacío cooked low and slow, served in crispy bread with homemade chimichurri.</p>
-                        <div class="card-footer">
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <img src="img/choripan_premium_1778408726753.png" alt="Choripán Premium">
+                            <span class="card-badge" data-i18n="card2_badge">Favourite</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="card2_title">Premium Choripanes</h3>
+                            <p data-i18n="card2_desc">The Argentine classic elevated. Pure pork chorizo, fresh criolla sauce and artisan rustic bread.</p>
+                            <div class="card-footer">
+                                <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card2_label">STREET FOOD</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card reveal">
-                    <div class="card-img">
-                        <img src="img/choripan_premium_1778408726753.png" alt="Choripán Premium">
-                        <span class="card-badge" data-i18n="card2_badge">Favourite</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 data-i18n="card2_title">Premium Choripanes</h3>
-                        <p data-i18n="card2_desc">The Argentine classic elevated. Pure pork chorizo, fresh criolla sauce and artisan rustic bread.</p>
-                        <div class="card-footer">
-                            <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card2_label">STREET FOOD</small>
+            </div>
+
+            <!-- FULL EXPERIENCE CATEGORY -->
+            <div class="specialty-category reveal" style="margin-top: 4rem;">
+                <h3 class="category-title" data-i18n="cat_full_experience">Full Experience</h3>
+                <div class="grid">
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <img src="img/asado_al_plato_1778408740119.png" alt="Plate Asado">
+                            <span class="card-badge" data-i18n="card3_badge">Premium</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="card3_title">Plate Asado</h3>
+                            <p data-i18n="card3_desc">For the most demanding. Premium cuts served on a plate, ideal for formal dinners and big celebrations.</p>
+                            <div class="card-footer">
+                                <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card3_label">FULL EXPERIENCE</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card reveal">
-                    <div class="card-img">
-                        <img src="img/asado_al_plato_1778408740119.png" alt="Plate Asado">
-                        <span class="card-badge" data-i18n="card3_badge">Premium</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 data-i18n="card3_title">Plate Asado</h3>
-                        <p data-i18n="card3_desc">For the most demanding. Premium cuts served on a plate, ideal for formal dinners and big celebrations.</p>
-                        <div class="card-footer">
-                            <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card3_label">FULL EXPERIENCE</small>
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <img src="img/verduras_asadas.png" alt="Verduras Asadas">
+                            <span class="card-badge" data-i18n="card4_badge" style="background: #2e7d32;">Vegetarian</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 data-i18n="card4_title">Verduras Asadas</h3>
+                            <p data-i18n="card4_desc">Vegetarian Menu. Grilled bell peppers filled with egg and cheese, served with tender roasted eggplants.</p>
+                            <div class="card-footer">
+                                <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card4_label">VEGETARIAN MENU</small>
+                            </div>
                         </div>
                     </div>
                 </div>
