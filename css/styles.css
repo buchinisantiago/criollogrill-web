@@ -30,6 +30,11 @@
 /* ─── RESET ─── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   font-family: var(--font-body);
@@ -37,7 +42,7 @@ html {
   background: var(--bg-dark);
 }
 
-body { overflow-x: hidden; cursor: none; }
+body { cursor: none; }
 
 /* ─── FIRE CURSOR ─── */
 #fire-cursor {
@@ -198,6 +203,9 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   gap: 6px;
   align-items: center;
   margin-left: 1rem;
+}
+.mobile-only {
+  display: none;
 }
 .lang-btn {
   background: transparent;
@@ -707,7 +715,7 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   text-transform: uppercase;
   color: var(--gold);
 }
-.form-group input,
+.form-group input:not([type="checkbox"]),
 .form-group textarea {
   width: 100%;
   padding: 0.9rem 1.1rem;
@@ -719,7 +727,7 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   font-size: 1rem;
   transition: all 0.3s ease;
 }
-.form-group input:focus,
+.form-group input:not([type="checkbox"]):focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--gold);
@@ -727,6 +735,15 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
+
+/* ─── TIME GROUP ─── */
+.time-group {
+  display: flex;
+  gap: 1rem;
+}
+.time-group > div {
+  flex: 1;
+}
 
 /* ─── FOOTER ─── */
 footer {
@@ -840,7 +857,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .calculator-container { grid-template-columns: 1fr; }
+  .calculator-container {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+  }
 
   .nav-links {
     position: fixed;
@@ -852,13 +873,65 @@ footer {
     width: 100%;
     height: calc(100vh - var(--nav-height));
     justify-content: center;
-    transition: right 0.4s ease;
+    transition: right 0.4s ease, visibility 0.4s ease;
     border-top: 1px solid var(--border);
+    visibility: hidden;
   }
-  .nav-links.active { right: 0; }
+  .nav-links.active {
+    right: 0;
+    visibility: visible;
+  }
   .hamburger { display: flex; }
-  .hero-cta { flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-  .hero-logo-center { width: 200px; height: 200px; }
-  .hero-logo-center img { height: 280px; }
+
+  /* Navbar Logo Scale */
+  .nav-logo-img {
+    height: 45px !important;
+  }
+
+  /* Language Switchers */
+  .navbar > .lang-switcher {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+    margin-top: 1.8rem;
+  }
+  .mobile-lang-switcher {
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  /* Compact Hero Layout */
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 0 60px;
+  }
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+  .hero-logo-center {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+  }
+  .hero-logo-center img {
+    height: 180px;
+  }
+
+  /* Hide scroll indicator to free up space and prevent CTA overlap */
+  .hero-scroll {
+    display: none !important;
+  }
+
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* Event Calculator Responsive Scaling */
+  .time-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
 }
