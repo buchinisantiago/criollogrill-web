@@ -885,7 +885,8 @@ footer {
 
   /* Navbar Logo Scale */
   .nav-logo-img {
-    height: 90px !important;
+    height: 110px !important;
+    max-width: 60vw !important;
   }
 
   /* Language Switchers */
