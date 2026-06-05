@@ -172,8 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         asadorHora: 240,
         asistenteHora: 200,
         logistica: 3500,
-        mozosHora: 180,
-        horasFijasExtra: 4
+        mozosHora: 180
     };
 
     async function loadConfig() {
@@ -228,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const [eh, em] = calcTimeEnd.value.split(':').map(Number);
         let diff = (eh + em/60) - (sh + sm/60);
         if (diff < 0) diff += 24;
-        const totalHours = diff + CONFIG.horasFijasExtra;
+        const totalHours = diff;
 
         // Staff
         const asadores  = 1;
