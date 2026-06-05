@@ -172,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         asadorHora: 240,
         asistenteHora: 200,
         logistica: 3500,
-        vajillaEvento: 500,
         mozosHora: 180,
         horasFijasExtra: 4
     };
@@ -201,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcPeople    = document.getElementById('calc-people');
     const calcTimeStart = document.getElementById('calc-time-start');
     const calcTimeEnd   = document.getElementById('calc-time-end');
-    const calcVajilla   = document.getElementById('calc-vajilla');
+
     const calcMozos     = document.getElementById('calc-mozos');
     const extrasPlato   = document.getElementById('extras-plato');
     const cbVerduras    = document.getElementById('extra-verduras');
@@ -308,28 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryLogisticsRow.querySelector('span:last-child').textContent = `${logisticsCost.toLocaleString()} Kr`;
         }
 
-        // Vajilla (tableware rental: 30 Kr per guest + CONFIG.vajillaEvento flat logistics/cleaning fee)
-        let vajillaCost = 0;
-        const vajillaRow = document.getElementById('summary-vajilla-row');
-        if (calcVajilla && calcVajilla.checked) {
-            const flatFee = CONFIG.vajillaEvento || 500;
-            vajillaCost = (30 * people) + flatFee;
-            if (vajillaRow) {
-                vajillaRow.style.display = 'flex';
-                vajillaRow.querySelector('span:last-child').textContent = `${Math.round(vajillaCost).toLocaleString()} Kr`;
-                
-                const currentLang = localStorage.getItem('criollo_lang') || 'en';
-                let labelText = `Tableware rental`;
-                if (currentLang === 'es') labelText = `Alquiler de vajilla (${people} pax)`;
-                else if (currentLang === 'dk') labelText = `Serviceudlejning (${people} pers.)`;
-                else labelText = `Tableware rental (${people} pax)`;
-                
-                vajillaRow.querySelector('span:first-child').textContent = labelText;
-            }
-        } else {
-            if (vajillaRow) vajillaRow.style.display = 'none';
-        }
-
         // Mozos (waitstaff - auto-calculated based on guests: 1 waiter every 15 people)
         let mozosCost = 0;
         let numMozos = 0;
@@ -357,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (mozosRow) mozosRow.style.display = 'none';
         }
 
-        const total = foodCost + staffCost + logisticsCost + vajillaCost + mozosCost;
+        const total = foodCost + staffCost + logisticsCost + mozosCost;
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
@@ -385,7 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : 'Plate Asado'} (Premium Quality Meat)\n`;
         msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
-        if (vajillaCost > 0) msg += `🍽️ *Tableware rental:* Yes\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
@@ -394,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeEnd, calcVajilla, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';

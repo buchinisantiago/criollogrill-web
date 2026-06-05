@@ -22,9 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verdurasPorPersona: 15,
         asadorHora: 240,
         asistenteHora: 200,
-        logistica: 2000,
-        vajillaEvento: 500,
-        mozosHora: 180
+        logistica: 2000
     };
 
     const FIELDS = Object.keys(DEFAULT_CONFIG).filter(k => k !== 'id');

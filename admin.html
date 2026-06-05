@@ -90,11 +90,9 @@
                 &nbsp; (1×240 + 1×200) × 9 = <strong>3,960 Kr</strong>
             </div>
 
-            <h3>🚚 LOGÍSTICA / 🍽️ VAJILLA / 🤵 MOZOS</h3>
+            <h3>🚚 LOGÍSTICA / 🤵 MOZOS</h3>
             <div class="calc-info">
                 <strong>Logística:</strong> precio fijo <code>logistica_kr</code> (traslado, armado y desarmado de la parrilla)<br>
-                <strong>Vajilla (Alquiler & Limpieza):</strong> <code>(30 Kr × cantidad_personas) + vajilla_evento_kr</code><br>
-                &nbsp; * Se cobran 30 Kr por persona más el costo fijo de logística y limpieza (<code>vajilla_evento_kr</code>).<br>
                 <strong>Mozos (Auto-calculado):</strong> <code>mozos_requeridos × mozo_hora_kr × horas_totales</code><br>
                 &nbsp; * El número de mozos es <strong>1 mozo cada 15 personas</strong> (ej: 1-15 personas = 1 mozo; 16-30 personas = 2 mozos; 31-45 personas = 3 mozos).
             </div>
@@ -158,14 +156,7 @@
                     <label>Logística / Envío (precio fijo)</label>
                     <input type="number" id="logistica" required>
                 </div>
-                <div class="form-group">
-                    <label>Vajilla — Alquiler x Evento</label>
-                    <input type="number" id="vajillaEvento" required>
-                </div>
-                <div class="form-group">
-                    <label>Mozo / Waiter (x Hora)</label>
-                    <input type="number" id="mozosHora" required>
-                </div>
+
             </div>
         </div>
 
