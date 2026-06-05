@@ -334,7 +334,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (mozosRow) mozosRow.style.display = 'none';
         }
 
-        const total = foodCost + staffCost + logisticsCost + mozosCost;
+        let total = foodCost + staffCost + logisticsCost + mozosCost;
+        total = total * 1.25; // Apply 25% markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
