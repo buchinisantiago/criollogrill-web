@@ -90,11 +90,13 @@
                 &nbsp; (1×240 + 1×200) × 9 = <strong>3,960 Kr</strong>
             </div>
 
-            <h3>🚚 LOGÍSTICA / 🤵 MOZOS</h3>
+            <h3>🚚 LOGÍSTICA / 🤵 MOZOS / 📈 MARKUP</h3>
             <div class="calc-info">
                 <strong>Logística:</strong> precio fijo <code>logistica_kr</code> (traslado, armado y desarmado de la parrilla)<br>
                 <strong>Mozos (Auto-calculado):</strong> <code>mozos_requeridos × mozo_hora_kr × horas_totales</code><br>
-                &nbsp; * El número de mozos es <strong>1 mozo cada 15 personas</strong> (ej: 1-15 personas = 1 mozo; 16-30 personas = 2 mozos; 31-45 personas = 3 mozos).
+                &nbsp; * El número de mozos es <strong>1 mozo cada 15 personas</strong> (ej: 1-15 personas = 1 mozo; 16-30 personas = 2 mozos; 31-45 personas = 3 mozos).<br>
+                <strong>Margen de Ganancia:</strong> <code>Costo Total × (1 + markup_porcentaje / 100)</code><br>
+                &nbsp; * Ejemplo: Si el costo total es 10,000 Kr y el markup es 25%, el precio final será 12,500 Kr.
             </div>
         </div>
 
@@ -156,7 +158,10 @@
                     <label>Logística / Envío (precio fijo)</label>
                     <input type="number" id="logistica" required>
                 </div>
-
+                <div class="form-group">
+                    <label>Margen de Ganancia (%)</label>
+                    <input type="number" id="markup" required>
+                </div>
             </div>
         </div>
 

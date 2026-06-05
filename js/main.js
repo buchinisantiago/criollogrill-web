@@ -173,7 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
         asistenteHora: 200,
         logistica: 3500,
         mozosHora: 180,
-        horasFijasExtra: 4
+        horasFijasExtra: 4,
+        markup: 25
     };
 
     async function loadConfig() {
@@ -335,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let total = foodCost + staffCost + logisticsCost + mozosCost;
-        total = total * 1.25; // Apply 25% markup
+        total = total * (1 + (CONFIG.markup / 100)); // Apply dynamic markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
