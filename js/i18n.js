@@ -73,7 +73,12 @@ window.translations = {
     footer_s1:"🔥 Event catering", footer_s2:"🎪 Festivals & fairs",
     footer_s3:"🏢 Corporate events", footer_s4:"🎉 Social celebrations",
     footer_s5:"🍖 Live Barbecue Experience",
-    footer_contact_title:"Contact", footer_copy:"© 2026 Criollo Grill — All rights reserved."
+    footer_contact_title:"Contact", footer_copy:"© 2026 Criollo Grill — All rights reserved.",
+    blog_title_1:"Our", blog_title_highlight:"Articles",
+    blog_sub:"Learn more about the Argentine grill tradition and our services.",
+    blog_1_title:"What is an Argentine Asado", blog_1_desc:"Discover the secrets, cuts, and tradition behind an authentic Argentine BBQ.", blog_1_btn:"Read more",
+    blog_2_title:"What to order for a meat catering", blog_2_desc:"A practical guide to choosing the perfect BBQ menu for events in Denmark.", blog_2_btn:"Read more",
+    blog_3_title:"Events in Copenhagen", blog_3_desc:"Give your celebrations in Copenhagen a unique touch with the best of Argentine gastronomy.", blog_3_btn:"Read more"
   },
   es: {
     nav_home:"Inicio", nav_specialties:"Especialidades", nav_events:"Eventos",
@@ -148,7 +153,12 @@ window.translations = {
     footer_s1:"🔥 Catering para eventos", footer_s2:"🎪 Festivales y ferias",
     footer_s3:"🏢 Eventos corporativos", footer_s4:"🎉 Celebraciones sociales",
     footer_s5:"🍖 Live Barbecue Experience",
-    footer_contact_title:"Contacto", footer_copy:"© 2026 Criollo Grill — Todos los derechos reservados."
+    footer_contact_title:"Contacto", footer_copy:"© 2026 Criollo Grill — Todos los derechos reservados.",
+    blog_title_1:"Nuestros", blog_title_highlight:"Artículos",
+    blog_sub:"Aprende más sobre la tradición del asado y nuestros servicios.",
+    blog_1_title:"Cómo es un asado argentino", blog_1_desc:"Descubre los secretos, los cortes y la tradición detrás de una auténtica barbacoa argentina.", blog_1_btn:"Leer más",
+    blog_2_title:"Qué pedir en un catering de carne", blog_2_desc:"Guía práctica para elegir el menú perfecto de asado para eventos en Dinamarca.", blog_2_btn:"Leer más",
+    blog_3_title:"Eventos en Copenhague", blog_3_desc:"Dale un toque único a tus celebraciones en Copenhague con lo mejor de la gastronomía argentina.", blog_3_btn:"Leer más"
   },
   dk: {
     nav_home:"Hjem", nav_specialties:"Specialiteter", nav_events:"Arrangementer",
@@ -223,7 +233,12 @@ window.translations = {
     footer_s1:"🔥 Event catering", footer_s2:"🎪 Festivaler & messer",
     footer_s3:"🏢 Firmaarrangementer", footer_s4:"🎉 Sociale fejringer",
     footer_s5:"🍖 Live Barbecue Experience",
-    footer_contact_title:"Kontakt", footer_copy:"© 2026 Criollo Grill — Alle rettigheder forbeholdes."
+    footer_contact_title:"Kontakt", footer_copy:"© 2026 Criollo Grill — Alle rettigheder forbeholdes.",
+    blog_title_1:"Vores", blog_title_highlight:"Artikler",
+    blog_sub:"Lær mere om den argentinske grilltradition og vores tjenester.",
+    blog_1_title:"Hvad er en argentinsk Asado", blog_1_desc:"Opdag hemmelighederne, udskæringerne og traditionen bag en autentisk argentinsk grill.", blog_1_btn:"Læs mere",
+    blog_2_title:"Hvad man skal bestille til kødcatering", blog_2_desc:"En praktisk guide til at vælge den perfekte grillmenu til events i Danmark.", blog_2_btn:"Læs mere",
+    blog_3_title:"Events i København", blog_3_desc:"Giv dine fejringer i København et unikt præg med det bedste fra argentinsk gastronomi.", blog_3_btn:"Læs mere"
   }
 };
 
