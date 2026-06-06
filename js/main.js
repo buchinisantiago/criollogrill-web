@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let total = foodCost + staffCost + logisticsCost + mozosCost;
-        total = total * 1.15; // Apply 15% markup
+        total = total * 1.20; // Apply 20% markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
