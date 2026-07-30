@@ -52,35 +52,40 @@
 <body style="background: var(--bg-dark); cursor: auto;">
 
     <!-- NAVBAR SIMPLE -->
-    <nav class="navbar" style="background: rgba(18,18,18,0.95); position: relative; border-bottom: 1px solid var(--border);">
+    <nav class="navbar" style="background: rgba(18,18,18,0.95); position: relative; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%;">
         <div class="nav-logo">
             <a href="index.html"><img src="img/Criollo 2.png" alt="Criollo" class="nav-logo-img"></a>
+        </div>
+        <div class="lang-selector" style="display: flex; gap: 0.5rem; z-index: 1000;">
+            <button class="lang-btn" data-lang="en" title="English">EN</button>
+            <button class="lang-btn" data-lang="es" title="Español">ES</button>
+            <button class="lang-btn" data-lang="dk" title="Dansk">DK</button>
         </div>
     </nav>
 
     <div class="blog-content">
-        <a href="index.html#blog" class="back-link">← Volver al inicio</a>
+        <a href="index.html#blog" class="back-link" data-i18n="blog_back">← Volver al inicio</a>
         
-        <h1>Cómo es un asado argentino: La guía definitiva</h1>
+        <h1 data-i18n="b1_title">Cómo es un asado argentino: La guía definitiva</h1>
         <img src="img/3.jpeg" alt="Asado Argentino en Dinamarca" class="blog-img" style="max-height: 400px; object-fit: cover;">
         
-        <p>Si alguna vez has estado en Argentina, sabes que el <strong>asado</strong> no es solo una forma de cocinar carne, es un ritual. En <em>Criollo Grill</em>, hemos traído esa pasión directamente a Copenhague para que puedas experimentar la verdadera <strong>barbacoa argentina</strong> en tus propios eventos.</p>
+        <p data-i18n="b1_p1">Si alguna vez has estado en Argentina, sabes que el <strong>asado</strong> no es solo una forma de cocinar carne, es un ritual. En <em>Criollo Grill</em>, hemos traído esa pasión directamente a Copenhague para que puedas experimentar la verdadera <strong>barbacoa argentina</strong> en tus propios eventos.</p>
         
-        <h2>El Fuego y la Paciencia</h2>
-        <p>Todo comienza con el fuego. No usamos gas ni métodos rápidos. Un asado genuino requiere leña, carbón y mucha paciencia. El asador controla la temperatura moviendo las brasas debajo de la parrilla para asegurar que cortes gruesos como el <strong>vacío</strong> se cocinen lenta y uniformemente. Esto sella los jugos y crea una costra crujiente e irresistible por fuera.</p>
+        <h2 data-i18n="b1_h2_1">El Fuego y la Paciencia</h2>
+        <p data-i18n="b1_p2">Todo comienza con el fuego. No usamos gas ni métodos rápidos. Un asado genuino requiere leña, carbón y mucha paciencia. El asador controla la temperatura moviendo las brasas debajo de la parrilla para asegurar que cortes gruesos como el <strong>vacío</strong> se cocinen lenta y uniformemente. Esto sella los jugos y crea una costra crujiente e irresistible por fuera.</p>
 
-        <h2>Los Cortes de Carne</h2>
-        <p>A diferencia de una barbacoa tradicional europea o americana, el asado argentino se centra en resaltar el sabor natural de la carne de primera calidad. Solo usamos sal gruesa. Algunos de los cortes estrella de nuestro <strong>catering en Copenhague</strong> incluyen el <em>vacío</em> (flank steak argentino), la entraña, y por supuesto, el chorizo puro de cerdo para nuestros famosos <em>choripanes</em>.</p>
+        <h2 data-i18n="b1_h2_2">Los Cortes de Carne</h2>
+        <p data-i18n="b1_p3">A diferencia de una barbacoa tradicional europea o americana, el asado argentino se centra en resaltar el sabor natural de la carne de primera calidad. Solo usamos sal gruesa. Algunos de los cortes estrella de nuestro <strong>catering en Copenhague</strong> incluyen el <em>vacío</em> (flank steak argentino), la entraña, y por supuesto, el chorizo puro de cerdo para nuestros famosos <em>choripanes</em>.</p>
 
-        <h2>El Acompañamiento Perfecto: Chimichurri</h2>
-        <p>No hay asado sin chimichurri. Esta salsa a base de perejil, ajo, orégano, ají molido, vinagre y aceite es el compañero perfecto para cualquier corte. Aporta un contraste fresco y ligeramente picante que corta la grasa de la carne y realza cada bocado.</p>
+        <h2 data-i18n="b1_h2_3">El Acompañamiento Perfecto: Chimichurri</h2>
+        <p data-i18n="b1_p4">No hay asado sin chimichurri. Esta salsa a base de perejil, ajo, orégano, ají molido, vinagre y aceite es el compañero perfecto para cualquier corte. Aporta un contraste fresco y ligeramente picante que corta la grasa de la carne y realza cada bocado.</p>
 
-        <h2>Asado para Eventos en Dinamarca</h2>
-        <p>Ofrecer un asado en tu evento no es solo proveer comida; es ofrecer entretenimiento. Ver al asador trabajar frente al fuego en vivo es un espectáculo que tus invitados recordarán. Si buscas un <strong>asado para eventos en Dinamarca</strong>, ya sea para una boda, una fiesta corporativa o un cumpleaños, en Criollo Grill te garantizamos la experiencia más auténtica y deliciosa.</p>
+        <h2 data-i18n="b1_h2_4">Asado para Eventos en Dinamarca</h2>
+        <p data-i18n="b1_p5">Ofrecer un asado en tu evento no es solo proveer comida; es ofrecer entretenimiento. Ver al asador trabajar frente al fuego en vivo es un espectáculo que tus invitados recordarán. Si buscas un <strong>asado para eventos en Dinamarca</strong>, ya sea para una boda, una fiesta corporativa o un cumpleaños, en Criollo Grill te garantizamos la experiencia más auténtica y deliciosa.</p>
         
         <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-            <p style="color: var(--gold); font-family: var(--font-heading);">¿Listo para vivir la experiencia?</p>
-            <a href="index.html#cotizador" class="btn-primary">Cotiza tu evento hoy</a>
+            <p style="color: var(--gold); font-family: var(--font-heading);" data-i18n="b1_cta_text">¿Listo para vivir la experiencia?</p>
+            <a href="index.html#cotizador" class="btn-primary" data-i18n="b1_cta_btn">Cotiza tu evento hoy</a>
         </div>
     </div>
 
@@ -89,5 +94,6 @@
             <p>© 2026 Criollo Grill — Catering de Asado en Copenhague</p>
         </div>
     </footer>
+    <script src="js/i18n.js"></script>
 </body>
 </html>

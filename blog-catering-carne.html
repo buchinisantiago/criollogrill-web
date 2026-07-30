@@ -51,39 +51,44 @@
 </head>
 <body style="background: var(--bg-dark); cursor: auto;">
 
-    <nav class="navbar" style="background: rgba(18,18,18,0.95); position: relative; border-bottom: 1px solid var(--border);">
+    <nav class="navbar" style="background: rgba(18,18,18,0.95); position: relative; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%;">
         <div class="nav-logo">
             <a href="index.html"><img src="img/Criollo 2.png" alt="Criollo" class="nav-logo-img"></a>
+        </div>
+        <div class="lang-selector" style="display: flex; gap: 0.5rem; z-index: 1000;">
+            <button class="lang-btn" data-lang="en" title="English">EN</button>
+            <button class="lang-btn" data-lang="es" title="Español">ES</button>
+            <button class="lang-btn" data-lang="dk" title="Dansk">DK</button>
         </div>
     </nav>
 
     <div class="blog-content">
-        <a href="index.html#blog" class="back-link">← Volver al inicio</a>
+        <a href="index.html#blog" class="back-link" data-i18n="blog_back">← Volver al inicio</a>
         
-        <h1>Qué pedir en un catering de carne para tu evento</h1>
+        <h1 data-i18n="b2_title">Qué pedir en un catering de carne para tu evento</h1>
         <img src="img/fotos/4.jpeg" alt="Catering de Carne en Copenhague" class="blog-img" style="max-height: 400px; object-fit: cover; object-position: center;">
         
-        <p>Elegir la comida adecuada puede hacer o deshacer un evento. Si has decidido sorprender a tus invitados con una experiencia de barbacoa auténtica, necesitas asegurarte de pedir el menú correcto. En Criollo Grill, expertos en <strong>catering Copenhague</strong>, ofrecemos opciones adaptadas a cada tipo de celebración.</p>
+        <p data-i18n="b2_p1">Elegir la comida adecuada puede hacer o deshacer un evento. Si has decidido sorprender a tus invitados con una experiencia de barbacoa auténtica, necesitas asegurarte de pedir el menú correcto. En Criollo Grill, expertos en <strong>catering Copenhague</strong>, ofrecemos opciones adaptadas a cada tipo de celebración.</p>
         
-        <h2>1. Eventos Informales: Street Food Argentino</h2>
-        <p>Si estás organizando un evento relajado, como un cumpleaños, una reunión de oficina al aire libre o un festival, nuestra opción de <em>Street Food</em> es imbatible. No requiere mesas formales y es fácil de comer de pie.</p>
+        <h2 data-i18n="b2_h2_1">1. Eventos Informales: Street Food Argentino</h2>
+        <p data-i18n="b2_p2">Si estás organizando un evento relajado, como un cumpleaños, una reunión de oficina al aire libre o un festival, nuestra opción de <em>Street Food</em> es imbatible. No requiere mesas formales y es fácil de comer de pie.</p>
         <ul>
-            <li style="margin-bottom: 0.5rem;"><strong>Sándwiches de Vacío:</strong> Carne cocinada a fuego lento que se deshace en la boca, servida en pan crujiente.</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Choripanes:</strong> El clásico argentino por excelencia. Pan, chorizo premium y mucho chimichurri.</li>
+            <li style="margin-bottom: 0.5rem;" data-i18n="b2_li_1"><strong>Sándwiches de Vacío:</strong> Carne cocinada a fuego lento que se deshace en la boca, servida en pan crujiente.</li>
+            <li style="margin-bottom: 0.5rem;" data-i18n="b2_li_2"><strong>Choripanes:</strong> El clásico argentino por excelencia. Pan, chorizo premium y mucho chimichurri.</li>
         </ul>
 
-        <h2>2. Bodas y Cenas Formales: Asado al Plato</h2>
-        <p>Para ocasiones que requieren más elegancia y un servicio tradicional de mesa, recomendamos el <em>Asado al Plato</em>. Es la <strong>barbacoa argentina en Copenhague</strong> llevada a su máxima expresión gourmet. Incluye una selección de carnes premium (vacío, entraña, chorizo) servidas en plato con acompañamientos como puré de berenjena, papas al chimichurri y vegetales asados.</p>
+        <h2 data-i18n="b2_h2_2">2. Bodas y Cenas Formales: Asado al Plato</h2>
+        <p data-i18n="b2_p3">Para ocasiones que requieren más elegancia y un servicio tradicional de mesa, recomendamos el <em>Asado al Plato</em>. Es la <strong>barbacoa argentina en Copenhague</strong> llevada a su máxima expresión gourmet. Incluye una selección de carnes premium (vacío, entraña, chorizo) servidas en plato con acompañamientos como puré de berenjena, papas al chimichurri y vegetales asados.</p>
 
-        <h2>3. Opciones para todos: No olvides a los vegetarianos</h2>
-        <p>Un buen <strong>asado para eventos en Dinamarca</strong> debe ser inclusivo. Por eso, en Criollo Grill ofrecemos un delicioso menú vegetariano que incluye pimientos asados rellenos de huevo y queso, asegurando que todos los invitados disfruten de la magia del fuego y el sabor ahumado.</p>
+        <h2 data-i18n="b2_h2_3">3. Opciones para todos: No olvides a los vegetarianos</h2>
+        <p data-i18n="b2_p4">Un buen <strong>asado para eventos en Dinamarca</strong> debe ser inclusivo. Por eso, en Criollo Grill ofrecemos un delicioso menú vegetariano que incluye pimientos asados rellenos de huevo y queso, asegurando que todos los invitados disfruten de la magia del fuego y el sabor ahumado.</p>
 
-        <h2>4. El Show en Vivo</h2>
-        <p>Recuerda que un catering de asado no es solo comida, es una experiencia visual y aromática. Asegúrate de preguntar por la logística: nosotros llevamos nuestra parrilla estilo Duomo al lugar del evento, creando un ambiente inigualable alrededor del fuego.</p>
+        <h2 data-i18n="b2_h2_4">4. El Show en Vivo</h2>
+        <p data-i18n="b2_p5">Recuerda que un catering de asado no es solo comida, es una experiencia visual y aromática. Asegúrate de preguntar por la logística: nosotros llevamos nuestra parrilla estilo Duomo al lugar del evento, creando un ambiente inigualable alrededor del fuego.</p>
         
         <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-            <p style="color: var(--gold); font-family: var(--font-heading);">Arma el menú de tu evento en 1 minuto</p>
-            <a href="index.html#cotizador" class="btn-primary">Usar la calculadora</a>
+            <p style="color: var(--gold); font-family: var(--font-heading);" data-i18n="b2_cta_text">Arma el menú de tu evento en 1 minuto</p>
+            <a href="index.html#cotizador" class="btn-primary" data-i18n="b2_cta_btn">Usar la calculadora</a>
         </div>
     </div>
 
@@ -92,5 +97,6 @@
             <p>© 2026 Criollo Grill — Catering Copenhague</p>
         </div>
     </footer>
+    <script src="js/i18n.js"></script>
 </body>
 </html>
