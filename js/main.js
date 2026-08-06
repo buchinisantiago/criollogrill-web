@@ -230,9 +230,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalHours = diff;
 
         // Staff
-        const asadores  = 1;
-        const asistentes = people <= 20 ? 1 : people <= 50 ? 2 : 3;
-        const staffCost = (asadores * CONFIG.asadorHora + asistentes * CONFIG.asistenteHora) * totalHours;
+        let asadores  = 1;
+        let asistentes = people <= 20 ? 1 : people <= 50 ? 2 : 3;
+        let staffCost = (asadores * CONFIG.asadorHora + asistentes * CONFIG.asistenteHora) * totalHours;
+        
+        if (menuType === 'hazlo-tu-mismo') {
+            asadores = 0;
+            asistentes = 0;
+            staffCost = 0;
+        }
 
         // Food — always premium quality
         const meatPriceKg = CONFIG.carnePremiumKg;
@@ -277,8 +283,14 @@ document.addEventListener('DOMContentLoaded', () => {
             foodCost = baseFoodCost + extrasCost;
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
             let label = 'Plate Asado';
-            if (currentLang === 'es') label = 'Asado al Plato';
-            if (currentLang === 'dk') label = 'Tallerken Asado';
+            if (menuType === 'hazlo-tu-mismo') {
+                label = 'Grill it Yourself';
+                if (currentLang === 'es') label = 'Hazlo tú mismo';
+                if (currentLang === 'dk') label = 'Grill Det Selv';
+            } else {
+                if (currentLang === 'es') label = 'Asado al Plato';
+                if (currentLang === 'dk') label = 'Tallerken Asado';
+            }
             if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
             if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(baseFoodCost).toLocaleString()} Kr`;
 
@@ -296,12 +308,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Logistics (Flat delivery, setup & teardown fee is always included)
         let logisticsCost = CONFIG.logistica || 3500;
+        let logisticsLabel = 'Logistics';
+        if (menuType === 'hazlo-tu-mismo') {
+            logisticsCost = 250;
+            logisticsLabel = 'Delivery';
+        }
+        
         if(summaryLogisticsRow) {
             summaryLogisticsRow.style.display = 'flex';
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
-            let logisticsLabel = 'Logistics';
-            if (currentLang === 'es') logisticsLabel = 'Logística';
-            if (currentLang === 'dk') logisticsLabel = 'Logistik';
+            
+            if (menuType !== 'hazlo-tu-mismo') {
+                if (currentLang === 'es') logisticsLabel = 'Logística';
+                if (currentLang === 'dk') logisticsLabel = 'Logistik';
+            }
             summaryLogisticsRow.querySelector('span:first-child').textContent = logisticsLabel;
             summaryLogisticsRow.querySelector('span:last-child').textContent = `${logisticsCost.toLocaleString()} Kr`;
         }
@@ -310,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let mozosCost = 0;
         let numMozos = 0;
         const mozosRow = document.getElementById('summary-mozos-row');
-        if (calcMozos && calcMozos.checked) {
+        if (calcMozos && calcMozos.checked && menuType !== 'hazlo-tu-mismo') {
             numMozos = Math.ceil(people / 15);
             mozosCost = numMozos * CONFIG.mozosHora * totalHours;
             if (mozosRow) {
@@ -334,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let total = foodCost + staffCost + logisticsCost + mozosCost;
-        total = total * 1.15; // Apply 15% markup
+        total = total * 1.25; // Apply 25% markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
@@ -359,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // WhatsApp message
         let msg = `Hello Criollo Grill! I'd like a quote:\n\n`;
         msg += `👥 *People:* ${people}\n`;
-        msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : 'Plate Asado'} (Premium Quality Meat)\n`;
+        msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : menuType === 'hazlo-tu-mismo' ? 'Grill it Yourself' : 'Plate Asado'} (Premium Quality Meat)\n`;
         msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
