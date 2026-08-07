@@ -326,6 +326,25 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryLogisticsRow.querySelector('span:last-child').textContent = `${logisticsCost.toLocaleString()} Kr`;
         }
 
+
+        // Packaging (15% of food cost for Grill it Yourself)
+        let packagingCost = 0;
+        const summaryPackagingRow = document.getElementById('summary-packaging-row');
+        if (menuType === 'hazlo-tu-mismo') {
+            packagingCost = foodCost * 0.15;
+            if (summaryPackagingRow) {
+                summaryPackagingRow.style.display = 'flex';
+                const currentLang = localStorage.getItem('criollo_lang') || 'en';
+                let pkgLabel = 'Packaging';
+                if (currentLang === 'es') pkgLabel = 'Embalaje';
+                if (currentLang === 'dk') pkgLabel = 'Emballage';
+                summaryPackagingRow.querySelector('span:first-child').textContent = pkgLabel;
+                summaryPackagingRow.querySelector('span:last-child').textContent = `${Math.round(packagingCost).toLocaleString()} Kr`;
+            }
+        } else {
+            if (summaryPackagingRow) summaryPackagingRow.style.display = 'none';
+        }
+
         // Mozos (waitstaff - auto-calculated based on guests: 1 waiter every 15 people)
         let mozosCost = 0;
         let numMozos = 0;
@@ -353,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (mozosRow) mozosRow.style.display = 'none';
         }
 
-        let total = foodCost + staffCost + logisticsCost + mozosCost;
+        let total = foodCost + staffCost + logisticsCost + mozosCost + packagingCost;
         total = total * 1.25; // Apply 25% markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
@@ -382,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : menuType === 'hazlo-tu-mismo' ? 'Grill it Yourself' : 'Plate Asado'} (Premium Quality Meat)\n`;
         msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
+        if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
