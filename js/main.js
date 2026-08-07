@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(cbEntrada) cbEntrada.checked = false;
             // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
-            foodCost = cpp * people;
+            foodCost = (cpp * people) * 1.25; // 25% extra margin on food
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
             let label = 'Street Food Menu';
             if (currentLang === 'es') label = 'Menú Street Food';
@@ -279,7 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 extrasList.push('Grilled Veg Side');
             }
 
-            const baseFoodCost = (meatKgPerPerson * meatPriceKg) * people;
+            let baseFoodCost = (meatKgPerPerson * meatPriceKg) * people;
+            baseFoodCost *= 1.25; // 25% extra margin
+            extrasCost *= 1.25; // 25% extra margin on extras
             foodCost = baseFoodCost + extrasCost;
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
             let label = 'Plate Asado';
