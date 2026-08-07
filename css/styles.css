@@ -698,7 +698,7 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   color: var(--text-main);
   font-family: var(--font-heading);
 }
-#summary-total { font-size: 2rem; color: var(--gold); }
+#summary-per-person { font-size: 2rem; color: var(--gold); font-weight: bold; }
 
 /* ─── CONTACT ─── */
 .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }

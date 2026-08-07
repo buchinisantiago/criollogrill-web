@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(cbEntrada) cbEntrada.checked = false;
             // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
-            foodCost = (cpp * people) * 1.15; // 15% extra margin on food
+            foodCost = (cpp * people) * 1.05; // 5% extra margin on food
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
             let label = 'Street Food Menu';
             if (currentLang === 'es') label = 'Menú Street Food';
@@ -280,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let baseFoodCost = (meatKgPerPerson * meatPriceKg) * people;
-            baseFoodCost *= 1.15; // 15% extra margin
-            extrasCost *= 1.15; // 15% extra margin on extras
+            baseFoodCost *= 1.05; // 5% extra margin
+            extrasCost *= 1.05; // 5% extra margin on extras
             foodCost = baseFoodCost + extrasCost;
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
             let label = 'Plate Asado';
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let total = foodCost + staffCost + logisticsCost + mozosCost + packagingCost;
-        total = total * 1.25; // Apply 25% markup
+        total = total * 1.18; // Apply 18% markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
