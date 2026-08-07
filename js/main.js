@@ -329,11 +329,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        // Packaging (15% of food cost for Grill it Yourself)
+        // Packaging (30% of food cost for Grill it Yourself)
         let packagingCost = 0;
         const summaryPackagingRow = document.getElementById('summary-packaging-row');
         if (menuType === 'hazlo-tu-mismo') {
-            packagingCost = foodCost * 0.15;
+            packagingCost = foodCost * 0.30;
             if (summaryPackagingRow) {
                 summaryPackagingRow.style.display = 'flex';
                 const currentLang = localStorage.getItem('criollo_lang') || 'en';
