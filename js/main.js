@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let logisticsCost = CONFIG.logistica || 3500;
         let logisticsLabel = 'Logistics';
         if (menuType === 'hazlo-tu-mismo') {
-            logisticsCost = 250;
+            logisticsCost = 300;
             logisticsLabel = 'Delivery';
         }
         
