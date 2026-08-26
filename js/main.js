@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcMenu      = document.getElementById('calc-menu');
     const calcPeople    = document.getElementById('calc-people');
     const calcTimeStart = document.getElementById('calc-time-start');
+    const calcTimeFood = document.getElementById('calc-time-food');
     const calcTimeEnd   = document.getElementById('calc-time-end');
 
     const calcMozos     = document.getElementById('calc-mozos');
@@ -216,18 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnWhatsapp            = document.getElementById('btn-whatsapp');
 
     function updateCalculator() {
-        if (!calcMenu || !calcPeople || !calcTimeStart || !calcTimeEnd) return;
+        if (!calcMenu || !calcPeople || !calcTimeStart || !calcTimeEnd || !calcTimeFood) return;
 
         const menuType = calcMenu.value;
         let people = parseInt(calcPeople.value) || 0;
         if (people < 10) people = 10;
 
         // Hours
-        const [sh, sm] = calcTimeStart.value.split(':').map(Number);
-        const [eh, em] = calcTimeEnd.value.split(':').map(Number);
-        let diff = (eh + em/60) - (sh + sm/60);
-        if (diff < 0) diff += 24;
-        const totalHours = diff;
+        const totalHours = 7; // Fixed at 7 hours based on request
 
         // Staff
         let asadores  = 1;
@@ -401,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let msg = `Hello Criollo Grill! I'd like a quote:\n\n`;
         msg += `👥 *People:* ${people}\n`;
         msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : menuType === 'hazlo-tu-mismo' ? 'Grill it Yourself' : 'Plate Asado'} (Premium Quality Meat)\n`;
-        msg += `⏰ *Schedule:* ${calcTimeStart.value} to ${calcTimeEnd.value} (${totalHours}h total)\n`;
+        msg += `⏰ *Schedule:* Event: ${calcTimeStart.value} | Food: ${calcTimeFood.value} | End: ${calcTimeEnd.value} (7h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
@@ -412,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
