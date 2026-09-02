@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (people < 10) people = 10;
 
         // Hours
-        const totalHours = 7; // Fixed at 7 hours based on request
+        const totalHours = 6; // Fixed at 6 hours based on request
 
         // Staff
         let asadores  = 1;
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let msg = `Hello Criollo Grill! I'd like a quote:\n\n`;
         msg += `👥 *People:* ${people}\n`;
         msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : menuType === 'hazlo-tu-mismo' ? 'Grill it Yourself' : 'Plate Asado'} (Premium Quality Meat)\n`;
-        msg += `⏰ *Schedule:* Event: ${calcTimeStart.value} | Food: ${calcTimeFood.value} | End: ${calcTimeEnd.value} (7h total)\n`;
+        msg += `⏰ *Schedule:* Event: ${calcTimeStart.value} | Food: ${calcTimeFood.value} | End: ${calcTimeEnd.value} (6h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
