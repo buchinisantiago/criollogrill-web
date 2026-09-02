@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const summaryStaffPrice      = document.getElementById('summary-staff-price');
     const summaryLogisticsRow    = document.getElementById('summary-logistics-row');
     const summaryTotal           = document.getElementById('summary-total');
+    const diyRec                 = document.getElementById('diy-recommendation');
     const btnWhatsapp            = document.getElementById('btn-whatsapp');
 
     function updateCalculator() {
@@ -372,7 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let total = foodCost + staffCost + logisticsCost + mozosCost + packagingCost;
-        total = total * 1.18; // Apply 18% markup
+        let markup = people <= 35 ? 1.15 : 1.18;
+        total = total * markup; // Apply dynamic markup
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
