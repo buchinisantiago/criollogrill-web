@@ -375,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let total = foodCost + staffCost + logisticsCost + mozosCost + packagingCost;
         let markup = people <= 35 ? 1.15 : 1.18;
         total = total * markup; // Apply dynamic markup
+        total = total * 0.90; // Apply global 10% discount
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
