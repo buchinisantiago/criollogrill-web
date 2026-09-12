@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) - Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18421533753"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18421533753');
+    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Criollo Grill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=16">
+    <style>
+        .thankyou-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            background-image: url('img/fotos/asado-equipo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        .thankyou-box {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid var(--gold);
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        .thankyou-box h1 {
+            font-family: var(--font-heading);
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .thankyou-box p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .logo-gracias {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="thankyou-section">
+        <a href="index.html">
+            <img src="img/Criollo logo blanco.png" alt="Criollo Grill" class="logo-gracias">
+        </a>
+        <div class="thankyou-box reveal">
+            <h1 id="ty-title">Thank You!</h1>
+            <p id="ty-msg">We have received your quote request. We will review your details and get back to you as soon as possible.</p>
+            <a href="index.html" class="btn-primary" id="ty-btn" style="display:inline-block; margin-top:1rem;">Return to Homepage</a>
+        </div>
+    </section>
+
+    <script>
+        // Inline translations for the Thank You page
+        const lang = localStorage.getItem('criollo_lang') || 'en';
+        const dict = {
+            'en': { title: 'Thank You!', msg: 'We have received your quote request. We will review your details and get back to you as soon as possible.', btn: 'Return to Homepage' },
+            'es': { title: '¡Gracias!', msg: 'Hemos recibido tu solicitud de cotización. Revisaremos los detalles y nos pondremos en contacto contigo a la brevedad.', btn: 'Volver a la Web' },
+            'dk': { title: 'Tak!', msg: 'Vi har modtaget din forespørgsel. Vi vil gennemgå dine oplysninger og vende tilbage hurtigst muligt.', btn: 'Tilbage til forsiden' }
+        };
+        document.getElementById('ty-title').textContent = dict[lang].title;
+        document.getElementById('ty-msg').textContent = dict[lang].msg;
+        document.getElementById('ty-btn').textContent = dict[lang].btn;
+    </script>
+</body>
+</html>

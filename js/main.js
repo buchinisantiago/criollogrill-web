@@ -133,13 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success === "true" || data.success === true) {
-                    // Localized success notification
-                    let successMsg = 'Thank you! We have received your request and will contact you within 24 hours.';
-                    if (window.translations && window.translations[currentLang] && window.translations[currentLang].form_success) {
-                        successMsg = window.translations[currentLang].form_success;
-                    }
-                    alert(successMsg);
                     contactForm.reset();
+                    // Redirect to Thank You page
+                    window.location.href = 'gracias.html';
                 } else {
                     alert("Error: " + (data.message || "Failed to send email. Please try again."));
                 }
@@ -415,6 +411,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     window.open(finalUrl, '_blank');
                 }
+                setTimeout(() => {
+                    window.location.href = 'gracias.html';
+                }, 800);
             };
         }
     }
