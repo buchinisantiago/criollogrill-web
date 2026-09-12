@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=16">
+    <link rel="stylesheet" href="css/styles.css?v=17">
     <style>
         .thankyou-section {
             min-height: 100vh;
@@ -26,7 +26,7 @@
             justify-content: center;
             text-align: center;
             padding: 2rem;
-            background-color: var(--bg-dark); /* Negro / oscuro */
+            background-color: var(--bg-dark);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -39,9 +39,9 @@
             bottom: -50px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 25vw; /* Muy grande */
+            font-size: 25vw;
             line-height: 1;
-            opacity: 0.15; /* Sutil */
+            opacity: 0.15;
             filter: blur(10px) drop-shadow(0 0 50px var(--primary));
             animation: pulse-flame 4s infinite alternate;
             z-index: -1;
@@ -87,7 +87,7 @@
         <a href="index.html">
             <img src="img/Criollo logo blanco.png" alt="Criollo Grill" class="logo-gracias">
         </a>
-        <div class="thankyou-box reveal">
+        <div class="thankyou-box">
             <h1 id="ty-title">Thank You!</h1>
             <p id="ty-msg">We have received your quote request. We will review your details and get back to you as soon as possible.</p>
             <a href="index.html" class="btn-primary" id="ty-btn" style="display:inline-block; margin-top:1rem;">Return to Homepage</a>
@@ -95,7 +95,6 @@
     </section>
 
     <script>
-        // Inline translations for the Thank You page
         const lang = localStorage.getItem('criollo_lang') || 'en';
         const dict = {
             'en': { title: 'Thank You!', msg: 'We have received your quote request. We will review your details and get back to you as soon as possible.', btn: 'Return to Homepage' },
