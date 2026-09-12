@@ -26,20 +26,42 @@
             justify-content: center;
             text-align: center;
             padding: 2rem;
-            background-color: var(--bg-color);
-            background-image: url('img/fotos/asado-equipo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
+            background-color: var(--bg-dark); /* Negro / oscuro */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
+
+        /* Efecto de llamas de fondo (decorativo) */
+        .thankyou-section::before {
+            content: "🔥";
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 25vw; /* Muy grande */
+            line-height: 1;
+            opacity: 0.15; /* Sutil */
+            filter: blur(10px) drop-shadow(0 0 50px var(--primary));
+            animation: pulse-flame 4s infinite alternate;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-flame {
+            0% { transform: translateX(-50%) scale(1) translateY(10px); opacity: 0.1; filter: blur(10px) drop-shadow(0 0 20px var(--primary)); }
+            100% { transform: translateX(-50%) scale(1.1) translateY(-10px); opacity: 0.25; filter: blur(15px) drop-shadow(0 0 60px var(--gold)); }
+        }
+
         .thankyou-box {
-            background: rgba(20, 20, 20, 0.85);
+            background: rgba(10, 10, 10, 0.7);
             border: 1px solid var(--gold);
             padding: 3rem;
             border-radius: 8px;
             max-width: 600px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.8), 0 0 20px rgba(139,26,26,0.2);
+            backdrop-filter: blur(8px);
+            z-index: 2;
         }
         .thankyou-box h1 {
             font-family: var(--font-heading);
@@ -56,6 +78,7 @@
         .logo-gracias {
             width: 150px;
             margin-bottom: 2rem;
+            z-index: 2;
         }
     </style>
 </head>
