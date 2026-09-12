@@ -408,7 +408,14 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
         if (btnWhatsapp) {
-            btnWhatsapp.onclick = () => window.open(`https://wa.me/4551999400?text=${encodeURIComponent(msg)}`, '_blank');
+            btnWhatsapp.onclick = () => {
+                const finalUrl = `https://wa.me/4551999400?text=${encodeURIComponent(msg)}`;
+                if (typeof window.gtagSendEventBlank === 'function') {
+                    window.gtagSendEventBlank(finalUrl);
+                } else {
+                    window.open(finalUrl, '_blank');
+                }
+            };
         }
     }
 
