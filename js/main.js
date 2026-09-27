@@ -375,10 +375,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // --- APPLY MINIMUM PRICE FLOORS ---
         let currentPerPerson = total / people;
-        if (menuType === 'plato' && currentPerPerson < 290) {
-            total = 290 * people;
-        } else if (menuType === 'callejera' && currentPerPerson < 270) {
-            total = 270 * people;
+        if (menuType === 'plato' && currentPerPerson < 295) {
+            total = 295 * people;
+        } else if (menuType === 'callejera' && currentPerPerson < 280) {
+            total = 280 * people;
         }
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
