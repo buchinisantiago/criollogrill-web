@@ -2,7 +2,7 @@ const fs = require('fs');
 const index = fs.readFileSync('index.html', 'utf8');
 
 // The marker where we split header from content
-const heroMarker = '<!-- HERO SECTION -->';
+const heroMarker = '<!-- HERO -->';
 let header = index.substring(0, index.indexOf(heroMarker));
 const footer = index.substring(index.indexOf('<footer>'));
 
