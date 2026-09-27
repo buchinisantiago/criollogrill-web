@@ -412,7 +412,7 @@ function applyLang(lang) {
   if (!t) return;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
+    if (t[key] !== undefined) el.innerHTML = t[key];
   });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
     const key = el.getAttribute('data-i18n-ph');
