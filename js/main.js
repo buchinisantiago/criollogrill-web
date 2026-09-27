@@ -373,6 +373,14 @@ document.addEventListener('DOMContentLoaded', () => {
         total = total * markup; // Apply dynamic markup
         total = total * 0.92; // Apply global 8% discount
         
+        // --- APPLY MINIMUM PRICE FLOORS ---
+        let currentPerPerson = total / people;
+        if (menuType === 'plato' && currentPerPerson < 290) {
+            total = 290 * people;
+        } else if (menuType === 'callejera' && currentPerPerson < 270) {
+            total = 270 * people;
+        }
+        
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
         let grillLabel = 'Grillmaster';
