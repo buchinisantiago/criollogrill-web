@@ -656,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="img/Criollo 2.png" alt="Criollo Grill">
                 </div>
                 <div class="wa-header-info">
-                    <strong>Criollo Grill</strong>
+                    <strong>CATERING CRIOLLO GRILL</strong>
                     <span>Online</span>
                 </div>
                 <button class="wa-close" id="wa-close">&times;</button>
