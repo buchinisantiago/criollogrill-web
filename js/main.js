@@ -282,14 +282,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             foodCost = baseFoodCost + extrasCost;
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
-            let label = 'Plate Asado';
+            let label = 'Plate Asado (Buffet)';
             if (menuType === 'hazlo-tu-mismo') {
                 label = 'Grill it Yourself';
                 if (currentLang === 'es') label = 'Hazlo tú mismo';
                 if (currentLang === 'dk') label = 'Grill Det Selv';
+            } else if (menuType === 'plato-emplatado') {
+                label = 'Plate Asado (Plated)';
+                if (currentLang === 'es') label = 'Asado al Plato (Emplatado)';
+                if (currentLang === 'dk') label = 'Tallerken Asado (Anrettet)';
             } else {
-                if (currentLang === 'es') label = 'Asado al Plato';
-                if (currentLang === 'dk') label = 'Tallerken Asado';
+                if (currentLang === 'es') label = 'Asado al Plato (Buffet)';
+                if (currentLang === 'dk') label = 'Tallerken Asado (Buffet)';
             }
             if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
             if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(baseFoodCost).toLocaleString()} Kr`;
@@ -381,6 +385,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentPerPerson = total / people;
         if (menuType === 'plato' && currentPerPerson < 295) {
             total = 295 * people;
+        } else if (menuType === 'plato-emplatado' && currentPerPerson < 350) {
+            total = 350 * people;
         } else if (menuType === 'callejera' && currentPerPerson < 280) {
             total = 280 * people;
         } else if (menuType === 'hazlo-tu-mismo' && currentPerPerson < 158) {
@@ -410,7 +416,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // WhatsApp message
         let msg = `Hello Criollo Grill! I'd like a quote:\n\n`;
         msg += `👥 *People:* ${people}\n`;
-        msg += `🥩 *Menu:* ${menuType === 'callejera' ? 'Street Food' : menuType === 'hazlo-tu-mismo' ? 'Grill it Yourself' : 'Plate Asado'} (Premium Quality Meat)\n`;
+        let menuNameWA = 'Plate Asado (Buffet)';
+        if (menuType === 'callejera') menuNameWA = 'Street Food';
+        else if (menuType === 'plato-emplatado') menuNameWA = 'Plate Asado (Plated)';
+        else if (menuType === 'hazlo-tu-mismo') menuNameWA = 'Grill it Yourself';
+        msg += `🥩 *Menu:* ${menuNameWA} (Premium Quality Meat)\n`;
         msg += `⏰ *Schedule:* Event: ${calcTimeStart.value} | Food: ${calcTimeFood.value} | End: ${calcTimeEnd.value} (6h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
