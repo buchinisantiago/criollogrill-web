@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcTimeEnd   = document.getElementById('calc-time-end');
 
     const calcMozos     = document.getElementById('calc-mozos');
+    const calcEmpanadas = document.getElementById('calc-empanadas');
     const extrasPlato   = document.getElementById('extras-plato');
     const cbVerduras    = document.getElementById('extra-verduras');
     const cbEnsaladas   = document.getElementById('extra-ensaladas');
@@ -253,6 +254,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentLang === 'dk') label = 'Street Food Menu';
             if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
             if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(foodCost).toLocaleString()} Kr`;
+
+            if (calcEmpanadas && calcEmpanadas.checked) {
+                const div = document.createElement('div');
+                div.className = 'summary-row';
+                const currentLang = localStorage.getItem('criollo_lang') || 'en';
+                let empLabel = `🥟 Empanadas Starter (${people} pax)`;
+                if (currentLang === 'es') empLabel = `🥟 Entrada de Empanadas (${people} pax)`;
+                if (currentLang === 'dk') empLabel = `🥟 Empanadas Forret (${people} pax)`;
+                div.innerHTML = `<span>${empLabel}</span><span>${(35 * people).toLocaleString()} Kr</span>`;
+                summaryExtrasContainer.appendChild(div);
+            }
         } else {
             extrasPlato.style.display = 'block';
             let meatKgPerPerson = 0.4; // 400g/person plate asado
@@ -310,6 +322,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentLang === 'es') addOnLabel = '+ Adicionales seleccionados';
                 if (currentLang === 'dk') addOnLabel = '+ Tilvalg valgt';
                 div.innerHTML = `<span>${addOnLabel}</span><span>${Math.round(extrasCost).toLocaleString()} Kr</span>`;
+                summaryExtrasContainer.appendChild(div);
+            }
+
+            if (calcEmpanadas && calcEmpanadas.checked) {
+                const div = document.createElement('div');
+                div.className = 'summary-row';
+                const currentLang = localStorage.getItem('criollo_lang') || 'en';
+                let empLabel = `🥟 Empanadas Starter (${people} pax)`;
+                if (currentLang === 'es') empLabel = `🥟 Entrada de Empanadas (${people} pax)`;
+                if (currentLang === 'dk') empLabel = `🥟 Empanadas Forret (${people} pax)`;
+                div.innerHTML = `<span>${empLabel}</span><span>${(35 * people).toLocaleString()} Kr</span>`;
                 summaryExtrasContainer.appendChild(div);
             }
         }
@@ -398,6 +421,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (menuType === 'plato-emplatado') {
             total += 35 * people; // Emplatado is always +35 Kr/person compared to buffet
         }
+
+        let empanadasCost = 0;
+        if (calcEmpanadas && calcEmpanadas.checked) {
+            empanadasCost = 35 * people;
+            total += empanadasCost;
+        }
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
         let staffLabel = 'Staff';
@@ -430,6 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `⏰ *Schedule:* Event: ${calcTimeStart.value} | Food: ${calcTimeFood.value} | End: ${calcTimeEnd.value} (6h total)\n`;
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
+        if (empanadasCost > 0) msg += `🥟 *Empanadas Starter:* Included (${empanadasCost.toLocaleString()} Kr)\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
@@ -448,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, calcEmpanadas, cbVerduras, cbEnsaladas, cbEntrada];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
