@@ -198,11 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcTimeEnd   = document.getElementById('calc-time-end');
 
     const calcMozos     = document.getElementById('calc-mozos');
-    const calcEmpanadas = document.getElementById('calc-empanadas');
     const extrasPlato   = document.getElementById('extras-plato');
     const cbVerduras    = document.getElementById('extra-verduras');
     const cbEnsaladas   = document.getElementById('extra-ensaladas');
     const cbEntrada     = document.getElementById('extra-entrada');
+    const cbEmpanadas   = document.getElementById('extra-empanadas');
 
     const summaryMenuName        = document.getElementById('summary-menu-name');
     const summaryMenuPrice       = document.getElementById('summary-menu-price');
@@ -245,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(cbVerduras) cbVerduras.checked = false;
             if(cbEnsaladas) cbEnsaladas.checked = false;
             if(cbEntrada) cbEntrada.checked = false;
+            if(cbEmpanadas) cbEmpanadas.checked = false;
             // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
             foodCost = (cpp * people) * 1.05; // 5% extra margin on food
@@ -255,16 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
             if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(foodCost).toLocaleString()} Kr`;
 
-            if (calcEmpanadas && calcEmpanadas.checked) {
-                const div = document.createElement('div');
-                div.className = 'summary-row';
-                const currentLang = localStorage.getItem('criollo_lang') || 'en';
-                let empLabel = `🥟 Empanadas Starter (${people} pax)`;
-                if (currentLang === 'es') empLabel = `🥟 Entrada de Empanadas (${people} pax)`;
-                if (currentLang === 'dk') empLabel = `🥟 Empanadas Forret (${people} pax)`;
-                div.innerHTML = `<span>${empLabel}</span><span>${(35 * people).toLocaleString()} Kr</span>`;
-                summaryExtrasContainer.appendChild(div);
-            }
+
         } else {
             extrasPlato.style.display = 'block';
             let meatKgPerPerson = 0.4; // 400g/person plate asado
@@ -325,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 summaryExtrasContainer.appendChild(div);
             }
 
-            if (calcEmpanadas && calcEmpanadas.checked) {
+            if (cbEmpanadas && cbEmpanadas.checked) {
                 const div = document.createElement('div');
                 div.className = 'summary-row';
                 const currentLang = localStorage.getItem('criollo_lang') || 'en';
@@ -423,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let empanadasCost = 0;
-        if (calcEmpanadas && calcEmpanadas.checked) {
+        if (cbEmpanadas && cbEmpanadas.checked) {
             empanadasCost = 35 * people;
             total += empanadasCost;
         }
@@ -478,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, calcEmpanadas, cbVerduras, cbEnsaladas, cbEntrada];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada, cbEmpanadas];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
