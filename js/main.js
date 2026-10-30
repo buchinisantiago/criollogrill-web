@@ -383,6 +383,8 @@ document.addEventListener('DOMContentLoaded', () => {
             total = 295 * people;
         } else if (menuType === 'callejera' && currentPerPerson < 280) {
             total = 280 * people;
+        } else if (menuType === 'hazlo-tu-mismo' && currentPerPerson < 158) {
+            total = 158 * people;
         }
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
