@@ -276,6 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let baseFoodCost = (meatKgPerPerson * meatPriceKg) * people;
             baseFoodCost *= 1.05; // 5% extra margin
             extrasCost *= 1.05; // 5% extra margin on extras
+            if (menuType === 'hazlo-tu-mismo') {
+                baseFoodCost *= 1.20; // +20% requested for Grill it Yourself
+                extrasCost *= 1.20;
+            }
             foodCost = baseFoodCost + extrasCost;
             const currentLang = localStorage.getItem('criollo_lang') || 'en';
             let label = 'Plate Asado';
