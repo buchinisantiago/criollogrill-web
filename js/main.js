@@ -295,8 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentLang === 'es') label = 'Asado al Plato (Buffet)';
                 if (currentLang === 'dk') label = 'Tallerken Asado (Buffet)';
             }
+            let displayedMenuCost = baseFoodCost;
+            if (menuType === 'plato-emplatado') {
+                displayedMenuCost += 35 * people;
+            }
             if(summaryMenuName) summaryMenuName.textContent = `${label} (${people} pax)`;
-            if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(baseFoodCost).toLocaleString()} Kr`;
+            if(summaryMenuPrice) summaryMenuPrice.textContent = `${Math.round(displayedMenuCost).toLocaleString()} Kr`;
 
             if (extrasCost > 0) {
                 const div = document.createElement('div');
@@ -383,14 +387,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // --- APPLY MINIMUM PRICE FLOORS ---
         let currentPerPerson = total / people;
-        if (menuType === 'plato' && currentPerPerson < 295) {
+        if ((menuType === 'plato' || menuType === 'plato-emplatado') && currentPerPerson < 295) {
             total = 295 * people;
-        } else if (menuType === 'plato-emplatado' && currentPerPerson < 350) {
-            total = 350 * people;
         } else if (menuType === 'callejera' && currentPerPerson < 280) {
             total = 280 * people;
         } else if (menuType === 'hazlo-tu-mismo' && currentPerPerson < 158) {
             total = 158 * people;
+        }
+
+        if (menuType === 'plato-emplatado') {
+            total += 35 * people; // Emplatado is always +35 Kr/person compared to buffet
         }
         
         const currentLang = localStorage.getItem('criollo_lang') || 'en';
