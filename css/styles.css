@@ -900,6 +900,14 @@ footer {
     grid-template-columns: 1fr;
     padding: 1.5rem 1rem;
     gap: 2rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .time-group {
+    flex-direction: column !important;
+    gap: 0.8rem;
   }
 
   .nav-links {
