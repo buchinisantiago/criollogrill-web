@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cbEnsaladas   = document.getElementById('extra-ensaladas');
     const cbEntrada     = document.getElementById('extra-entrada');
     const cbEmpanadas   = document.getElementById('extra-empanadas');
+    const cbPostres     = document.getElementById('extra-postres');
 
     const summaryMenuName        = document.getElementById('summary-menu-name');
     const summaryMenuPrice       = document.getElementById('summary-menu-price');
@@ -251,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(cbEnsaladas) cbEnsaladas.checked = false;
             if(cbEntrada) cbEntrada.checked = false;
             if(cbEmpanadas) cbEmpanadas.checked = false;
+            if(cbPostres) cbPostres.checked = false;
             // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
             baseFoodCost = (cpp * people) * 1.05;
@@ -358,6 +360,19 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryExtrasContainer.appendChild(div);
         }
 
+        // Postres / Grilled Pancakes (+35 Kr/person)
+        let postresCost = 0;
+        if (cbPostres && cbPostres.checked) {
+            postresCost = 35 * people;
+            const div = document.createElement('div');
+            div.className = 'summary-row';
+            let posLabel = `🥞 Grilled Pancakes Dessert (${people} pax)`;
+            if (currentLang === 'es') posLabel = `🥞 Postre Panqueques a la Parrilla (${people} pax)`;
+            if (currentLang === 'dk') posLabel = `🥞 Grillede Pandekager Dessert (${people} pax)`;
+            div.innerHTML = `<span>${posLabel}</span><span>${postresCost.toLocaleString()} Kr</span>`;
+            summaryExtrasContainer.appendChild(div);
+        }
+
         // Staff Row in summary
         const summaryStaffRow = document.getElementById('summary-staff-row');
         if (summaryStaffRow) {
@@ -412,8 +427,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mozosRow.style.display = 'none';
         }
 
-        // --- 3. FINAL GRAND TOTAL (Base + Mozos + Extras + Empanadas) ---
-        let total = baseTotal + mozosCost + Math.round(extrasCost) + empanadasCost;
+        // --- 3. FINAL GRAND TOTAL (Base + Mozos + Extras + Empanadas + Postres) ---
+        let total = baseTotal + mozosCost + Math.round(extrasCost) + empanadasCost + postresCost;
         
         currentLang = window.getCurrentLang();
         let staffLabel = 'Staff';
@@ -447,6 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `🚚 *Logistics & Setup:* Flat fee included (${logisticsCost.toLocaleString()} Kr)\n`;
         if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
         if (empanadasCost > 0) msg += `🥟 *Empanadas Starter:* Included (${empanadasCost.toLocaleString()} Kr)\n`;
+        if (postresCost > 0) msg += `🥞 *Dessert (Grilled Pancakes):* Included (${postresCost.toLocaleString()} Kr)\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
@@ -465,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada, cbEmpanadas];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada, cbEmpanadas, cbPostres];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
