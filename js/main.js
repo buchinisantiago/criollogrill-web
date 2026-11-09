@@ -1,4 +1,6 @@
 // main.js — Criollo Grill
+window.getCurrentLang = () => localStorage.getItem('criollo_lang') || 'en';
+let currentLang = window.getCurrentLang();
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -101,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const orig = btn.textContent;
             
             // Localized sending state
-            const currentLang = localStorage.getItem('criollo_lang') || 'en';
+            currentLang = window.getCurrentLang();
             let sendingText = 'Sending...';
             if (currentLang === 'es') sendingText = 'Enviando...';
             if (currentLang === 'dk') sendingText = 'Sender...';
@@ -310,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Menu price in summary displays the exact balanced portion so lines sum to baseTotal
         let displayedMenuCost = Math.round(baseTotal - staffCost - logisticsCost - packagingCost);
 
-        const currentLang = localStorage.getItem('criollo_lang') || 'en';
+        currentLang = window.getCurrentLang();
         let label = 'Plate Asado (Buffet)';
         if (menuType === 'hazlo-tu-mismo') {
             label = 'Grill it Yourself';
@@ -413,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- 3. FINAL GRAND TOTAL (Base + Mozos + Extras + Empanadas) ---
         let total = baseTotal + mozosCost + Math.round(extrasCost) + empanadasCost;
         
-        const currentLang = localStorage.getItem('criollo_lang') || 'en';
+        currentLang = window.getCurrentLang();
         let staffLabel = 'Staff';
         let grillLabel = 'Grillmaster';
         let asstLabel = 'Assist.';
@@ -681,7 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
     widget.id = 'wa-widget';
     
     // Check lang for greeting
-    const currentLang = localStorage.getItem('criollo_lang') || 'en';
+    currentLang = window.getCurrentLang();
     let greeting = "Hola ¿cómo estás? ¿te puedo ayudar?";
     if (currentLang === 'en') greeting = "Hi, how are you? How can I help you?";
     if (currentLang === 'dk') greeting = "Hej, hvordan har du det? Kan jeg hjælpe dig?";
@@ -696,19 +698,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     <strong>CATERING CRIOLLO GRILL</strong>
                     <span>Online</span>
                 </div>
-                <button class="wa-close" id="wa-close">&times;</button>
+                <button class="wa-close" id="wa-close" aria-label="Close chat">&times;</button>
             </div>
             <div class="wa-body">
                 <div class="wa-message">${greeting}</div>
             </div>
             <div class="wa-footer">
                 <input type="text" id="wa-input" placeholder="Escribe un mensaje..." autocomplete="off">
-                <button id="wa-send">
+                <button id="wa-send" aria-label="Send message">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
                 </button>
             </div>
         </div>
-        <div class="wa-button" id="wa-button">
+        <div class="wa-button" id="wa-button" role="button" aria-label="Open WhatsApp chat">
             <svg viewBox="0 0 24 24" width="35" height="35" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.739-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.019-5.117-2.877-6.977-1.858-1.859-4.332-2.881-6.973-2.882-5.441 0-9.867 4.42-9.871 9.864-.001 1.77.464 3.498 1.348 5.048l-.995 3.637 3.733-.979zm11.233-7.666c-.301-.15-1.782-.879-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.179-.175.2-.35.225-.65.075-.3-.15-1.266-.467-2.41-1.485-.89-.793-1.49-1.773-1.665-2.073-.175-.3-.019-.462.13-.611.135-.134.3-.35.45-.525.15-.175.2-.3.3-.5s.05-.375-.025-.525C10.944 8.784 10.319 7.24 10.057 6.6c-.256-.615-.514-.532-.705-.542-.182-.01-.39-.01-.599-.01-.208 0-.547.078-.833.39-.286.313-1.094 1.07-1.094 2.61s1.119 3.025 1.275 3.235c.156.21 2.201 3.364 5.333 4.717.745.322 1.327.514 1.78.658.748.238 1.43.204 1.97.124.6-.09 1.782-.729 2.03-1.432.249-.703.249-1.305.174-1.432-.075-.127-.275-.202-.575-.352z"/>
             </svg>

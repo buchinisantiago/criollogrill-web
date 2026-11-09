@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criollo Grill | Authentic Argentine Grill & Catering in Copenhagen</title>
-    <meta name="description" content="Descubre Criollo Grill, el mejor servicio de catering en Copenhague especializado en auténtica barbacoa argentina. Ofrecemos asado para eventos en Dinamarca, desde deliciosos choripanes y sándwiches de vacío (Street Food) hasta asado al plato premium. Nuestro asador a la vista garantiza un show en vivo inolvidable con carnes de calidad superior. Ideal para bodas, eventos corporativos, festivales y fiestas privadas. Contrata nuestro catering de carne en Copenhague y sorprende a tus invitados con la tradición y el verdadero sabor del asado argentino.">
+    <meta name="description" data-i18n-meta="meta_desc" content="Authentic Argentine BBQ catering in Copenhagen. Live-fire asado, premium meats &amp; street food for weddings, corporate events and parties in Denmark.">
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -74,12 +74,12 @@
             <img src="img/Criollo 2.png" alt="Criollo" class="nav-logo-img">
         </div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#inicio" data-i18n="nav_home">Home</a></li>
-            <li><a href="#especialidades" data-i18n="nav_specialties">Specialties</a></li>
-            <li><a href="#eventos" data-i18n="nav_events">Events</a></li>
-            <li><a href="#cotizador" data-i18n="nav_quote">Quote</a></li>
-            <li><a href="admin.html" class="btn-admin">⚙️ Admin</a></li>
-            <li><a href="#contacto" class="btn-primary" data-i18n="nav_book">Book Now</a></li>
+            <li><a href="#home" data-i18n="nav_home">Home</a></li>
+            <li><a href="#specialties" data-i18n="nav_specialties">Specialties</a></li>
+            <li><a href="#events" data-i18n="nav_events">Events</a></li>
+            <li><a href="#quote" data-i18n="nav_quote">Quote</a></li>
+
+            <li><a href="#contact" class="btn-primary" data-i18n="nav_book">Book Now</a></li>
             <li class="mobile-only">
                 <div class="lang-switcher mobile-lang-switcher">
                     <button class="lang-btn" data-lang="en" title="English">EN</button>
@@ -102,18 +102,18 @@
     </nav>
 
     <!-- HERO -->
-    <header id="inicio" class="hero">
+    <header id="home" class="hero"><span id="inicio"></span>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-badge" data-i18n="hero_badge">🔥 Argentinian Grill · Copenhagen</span>
+            <span class="hero-badge" data-i18n="hero_badge">🔥 Argentine Grill · Copenhagen</span>
             <div class="hero-logo-center">
                 <img src="img/Criollo logo blanco.png" alt="Criollo Grill">
             </div>
             <h1><span data-i18n="hero_h1_1">The Authentic Flavour</span><em data-i18n="hero_h1_em">of the Grill</em></h1>
-            <p data-i18n="hero_p">We bring the fire and tradition of Argentine BBQ directly to your event. The best catering in Copenhagen, festivals and unique experiences with top quality asado para eventos en Dinamarca.</p>
+            <p data-i18n="hero_p">We bring the fire and tradition of Argentine BBQ directly to your event. Catering, festivals and unique experiences.</p>
             <div class="hero-cta">
-                <a href="#especialidades" class="btn-primary btn-large" data-i18n="hero_btn1">Discover the Menu</a>
-                <a href="#cotizador" class="btn-outline btn-large" data-i18n="hero_btn2">Calculate Price</a>
+                <a href="#specialties" class="btn-primary btn-large" data-i18n="hero_btn1">Discover the Menu</a>
+                <a href="#quote" class="btn-outline btn-large" data-i18n="hero_btn2">Calculate Price</a>
             </div>
         </div>
         <div class="hero-scroll">
@@ -142,7 +142,7 @@
             <div class="stat-divider"></div>
             <div class="stat-item">
                 <span class="stat-number">1</span>
-                <span class="stat-label" data-i18n="stat_grill">Duomo Style Grill</span>
+                <span class="stat-label" data-i18n="stat_grill">Dome-Style Grill</span>
             </div>
         </div>
     </div>
@@ -171,7 +171,7 @@
     </section>
 
     <!-- ESPECIALIDADES -->
-    <section id="especialidades" class="section">
+    <section id="specialties" class="section"><span id="especialidades"></span>
         <div class="container">
             <div class="section-title reveal">
                 <h2><span data-i18n="spec_title">Our</span> <span class="highlight" data-i18n="spec_highlight">Specialties</span></h2>
@@ -234,7 +234,7 @@
                             <span class="card-badge" data-i18n="card4_badge" style="background: #2e7d32;">Vegetarian</span>
                         </div>
                         <div class="card-content">
-                            <h3 data-i18n="card4_title">Verduras Asadas</h3>
+                            <h3 data-i18n="card4_title">Grilled Vegetables</h3>
                             <p data-i18n="card4_desc">Vegetarian Menu. Grilled bell peppers filled with egg and cheese, served with tender roasted eggplants.</p>
                             <div class="card-footer">
                                 <small style="color:var(--gold);font-family:var(--font-heading);font-size:0.7rem;letter-spacing:2px;" data-i18n="card4_label">VEGETARIAN MENU</small>
@@ -247,13 +247,13 @@
     </section>
 
     <!-- EVENTOS -->
-    <section id="eventos" class="section section-dark">
+    <section id="events" class="section section-dark"><span id="eventos"></span>
         <div class="container eventos-container">
             <div class="eventos-text reveal">
                 <span style="font-family:var(--font-heading);font-size:0.7rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase;" data-i18n="events_eyebrow">For All Types of Events</span>
                 <h2 style="margin-top:0.8rem;"><span data-i18n="events_h2_1">Events to</span> <span class="highlight" data-i18n="events_h2_highlight">Your Measure</span></h2>
                 <div class="divider" style="justify-content:flex-start;"><span>🔥</span></div>
-                <p style="margin-top:1rem;" data-i18n="events_p">We take care of feeding all your guests with the best quality. From corporate gatherings to weddings, experience a true barbacoa argentina en Copenhague.</p>
+                <p style="margin-top:1rem;" data-i18n="events_p">We take care of feeding all your guests with the best quality. Whether it's a birthday, wedding, festival or corporate event, our dome-style grill steals the show.</p>
                 <ul class="features">
                     <li><span class="feature-icon">🔥</span> <span data-i18n="feat1">The authentic live grillmaster show</span></li>
                     <li><span class="feature-icon">👥</span> <span data-i18n="feat2">Capacity for large groups</span></li>
@@ -262,8 +262,8 @@
                     <li><span class="feature-icon">🚚</span> <span data-i18n="feat5">Full logistics available</span></li>
                 </ul>
                 <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
-                    <a href="#cotizador" class="btn-primary" data-i18n="events_btn1">Calculate Price</a>
-                    <a href="#contacto" class="btn-outline" data-i18n="events_btn2">Contact</a>
+                    <a href="#quote" class="btn-primary" data-i18n="events_btn1">Calculate Price</a>
+                    <a href="#contact" class="btn-outline" data-i18n="events_btn2">Contact</a>
                 </div>
             </div>
             <div class="eventos-image reveal">
@@ -331,9 +331,9 @@
                         <img src="img/fotos/asador-trabajando.jpg" alt="Asado Argentino">
                     </div>
                     <div class="card-content" style="padding-bottom:2rem;">
-                        <h3 data-i18n="blog_1_title">Cómo es un asado argentino</h3>
-                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_1_desc">Descubre los secretos, los cortes y la tradición detrás de una auténtica barbacoa argentina.</p>
-                        <a href="blog-asado-argentino.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_1_btn">Leer más</a>
+                        <h3 data-i18n="blog_1_title">What is an Argentine Asado</h3>
+                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_1_desc">Discover the secrets, cuts, and tradition behind an authentic Argentine BBQ.</p>
+                        <a href="blog-asado-argentino.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_1_btn">Read more</a>
                     </div>
                 </div>
                 
@@ -353,9 +353,9 @@
                         <img src="img/fotos/4.jpeg" alt="Catering de Carne">
                     </div>
                     <div class="card-content" style="padding-bottom:2rem;">
-                        <h3 data-i18n="blog_2_title">Qué pedir en un catering de carne</h3>
-                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_2_desc">Guía práctica para elegir el menú perfecto de asado para eventos en Dinamarca.</p>
-                        <a href="blog-catering-carne.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_2_btn">Leer más</a>
+                        <h3 data-i18n="blog_2_title">What to order for a meat catering</h3>
+                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_2_desc">A practical guide to choosing the perfect BBQ menu for events in Denmark.</p>
+                        <a href="blog-catering-carne.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_2_btn">Read more</a>
                     </div>
                 </div>
                 
@@ -375,9 +375,9 @@
                         <img src="img/fotos/grill_kit.jpg" alt="Grill it Yourself" style="height: 250px; object-fit: cover; width: 100%;">
                     </div>
                     <div class="card-content" style="padding-bottom:2rem;">
-                        <h3 data-i18n="blog_4_title">Presentamos nuestro Kit "Grill it Yourself"</h3>
-                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_4_desc">Para aquellos que aman hacer su propia barbacoa pero no quieren preocuparse por las compras ni la preparación.</p>
-                        <a href="blog-grill-it-yourself.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_btn">Leer más</a>
+                        <h3 data-i18n="blog_4_title">Introducing our 'Grill it Yourself' Kit</h3>
+                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_4_desc">For those who love making their own BBQ but don't want to worry about shopping or preparation.</p>
+                        <a href="blog-grill-it-yourself.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_4_btn">Read more</a>
                     </div>
                 </div>
 
@@ -393,9 +393,9 @@
                         <img src="img/fotos/asado-completo-copenhague.jpg" alt="Eventos en Copenhague">
                     </div>
                     <div class="card-content" style="padding-bottom:2rem;">
-                        <h3 data-i18n="blog_3_title">Eventos en Copenhague</h3>
-                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_3_desc">Dale un toque único a tus celebraciones en Copenhague con lo mejor de la gastronomía argentina.</p>
-                        <a href="blog-eventos-copenhague.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_3_btn">Leer más</a>
+                        <h3 data-i18n="blog_3_title">Events in Copenhagen</h3>
+                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_3_desc">Give your celebrations in Copenhagen a unique touch with the best of Argentine gastronomy.</p>
+                        <a href="blog-eventos-copenhague.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_3_btn">Read more</a>
                     </div>
                 </div>
                 <!-- Last auto-update: 2026-06-06T21:17:53.310Z -->
@@ -416,7 +416,7 @@
     </section>
 
     <!-- COTIZADOR -->
-    <section id="cotizador" class="section section-dark">
+    <section id="quote" class="section section-dark"><span id="cotizador"></span><span id="cotizar"></span>
         <div class="container">
             <div class="section-title reveal">
                 <h2><span data-i18n="calc_title_1">Build your</span> <span class="highlight" data-i18n="calc_title_highlight">Quote</span></h2>
@@ -518,7 +518,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="section">
+    <section id="contact" class="section"><span id="contacto"></span>
         <div class="container contact-container">
             <div class="contact-info reveal">
                 <span style="font-family:var(--font-heading);font-size:0.7rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase;" data-i18n="contact_eyebrow">Let's Talk</span>
@@ -604,7 +604,7 @@
                     <ul>
                         <li><a href="grill-catering-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">Grill Catering Copenhagen</a></li>
                         <li><a href="bbq-catering-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">BBQ Catering Copenhagen</a></li>
-                        <li><a href="argentinian-grill-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">Argentinian Grill Copenhagen</a></li>
+                        <li><a href="argentinian-grill-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">Argentine Grill Copenhagen</a></li>
                         <li><a href="asado-catering-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">Asado Catering Copenhagen</a></li>
                         <li><a href="wedding-catering-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">Wedding Catering Copenhagen</a></li>
                         <li><a href="corporate-catering-copenhagen.html" style="color:var(--text-muted); text-decoration:none;">Corporate Catering Copenhagen</a></li>
@@ -620,12 +620,12 @@
             <div class="footer-bottom">
                 <p data-i18n="footer_copy">© 2026 Criollo Grill — All rights reserved.</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/asadorcriollodk" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <a href="https://www.instagram.com/asadorcriollodk" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                         </svg>
                     </a>
-                    <a href="https://wa.me/4551999400" target="_blank" rel="noopener noreferrer" title="WhatsApp" onclick="return window.gtagSendEventBlank(this.href);">
+                    <a href="https://wa.me/4551999400" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp" onclick="return window.gtagSendEventBlank(this.href);">
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.739-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.019-5.117-2.877-6.977-1.858-1.859-4.332-2.881-6.973-2.882-5.441 0-9.867 4.42-9.871 9.864-.001 1.77.464 3.498 1.348 5.048l-.995 3.637 3.733-.979zm11.233-7.666c-.301-.15-1.782-.879-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.179-.175.2-.35.225-.65.075-.3-.15-1.266-.467-2.41-1.485-.89-.793-1.49-1.773-1.665-2.073-.175-.3-.019-.462.13-.611.135-.134.3-.35.45-.525.15-.175.2-.3.3-.5s.05-.375-.025-.525C10.944 8.784 10.319 7.24 10.057 6.6c-.256-.615-.514-.532-.705-.542-.182-.01-.39-.01-.599-.01-.208 0-.547.078-.833.39-.286.313-1.094 1.07-1.094 2.61s1.119 3.025 1.275 3.235c.156.21 2.201 3.364 5.333 4.717.745.322 1.327.514 1.78.658.748.238 1.43.204 1.97.124.6-.09 1.782-.729 2.03-1.432.249-.703.249-1.305.174-1.432-.075-.127-.275-.202-.575-.352z"/>
                         </svg>
@@ -636,7 +636,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/i18n.js?v=21"></script>
-    <script src="js/main.js?v=29"></script>
+    <script src="js/i18n.js?v=22"></script>
+    <script src="js/main.js?v=30"></script>
 </body>
 </html>

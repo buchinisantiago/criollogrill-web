@@ -6,14 +6,16 @@ let header = index.substring(0, index.indexOf(heroMarker));
 const footer = index.substring(index.indexOf('<footer>'));
 
 const createPage = (filename, title, h1, introText, sections, bgImg) => {
-    let newHeader = header.replace(/<title>.*<\/title>/, '<title>' + title + '</title>');
+    let newHeader = header
+        .replace(/<title>.*<\/title>/, '<title>' + title + '</title>')
+        .replace(/href="#(home|specialties|events|quote|contact)"/g, 'href="index.html#$1"');
     
     let content = `
     <section class="hero" style="background-image: linear-gradient(to right, var(--bg-dark), rgba(8,8,8,0.7)), url('${bgImg}'); min-height: 60vh;">
         <div class="container hero-content" style="padding-top: 150px;">
             <h1 style="margin-bottom: 20px; text-transform: uppercase;">${h1}</h1>
             <p class="hero-sub" style="max-width: 800px; line-height: 1.6; font-size: 1.2rem;">${introText}</p>
-            <a href="index.html#cotizar" class="btn-primary" style="margin-top: 30px; display: inline-block;">Get your Quote</a>
+            <a href="index.html#quote" class="btn-primary" style="margin-top: 30px; display: inline-block;">Get your Quote</a>
         </div>
     </section>
     
@@ -30,7 +32,7 @@ const createPage = (filename, title, h1, introText, sections, bgImg) => {
     
     content += `
             <div style="text-align: center; margin-top: 60px;">
-                <a href="index.html#cotizar" class="btn-primary">Calculate your Price Now</a>
+                <a href="index.html#quote" class="btn-primary">Calculate your Price Now</a>
             </div>
         </div>
     </section>
@@ -47,11 +49,11 @@ createPage('grill-catering-copenhagen.html',
     [
         {
             h2: 'Argentine Grill Catering',
-            text: '<p>Experience the tradition of Argentine asado with a live grill at your event. If you are looking for a comprehensive <a href="bbq-catering-copenhagen.html">Argentinian BBQ catering</a> solution, our grillmaster prepares selected cuts over live fire, creating an interactive food experience for your guests.</p>'
+            text: '<p>Experience the tradition of Argentine asado with a live grill at your event. If you are looking for a comprehensive <a href="bbq-catering-copenhagen.html">Argentine BBQ catering</a> solution, our grillmaster prepares selected cuts over live fire, creating an interactive food experience for your guests.</p>'
         },
         {
             h2: 'Live Grill Catering',
-            text: '<p>We bring the fire to you. Our Tromen/Duomo grills are not just a cooking method; they are a visual and aromatic centerpiece that captivates your guests. A true <a href="argentinian-grill-copenhagen.html">Argentinian Grill Copenhagen</a> experience.</p><div style="display:flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;"><img src="img/fotos/4.jpeg" style="flex: 1; min-width: 250px; border-radius: 8px; height: 250px; object-fit: cover;" alt="Live Grill Catering Copenhagen"><img src="img/fotos/asado-equipo.jpg" style="flex: 1; min-width: 250px; border-radius: 8px; height: 250px; object-fit: cover;" alt="Argentine Grillmaster"></div>'
+            text: '<p>We bring the fire to you. Our Tromen dome-style grills are not just a cooking method; they are a visual and aromatic centerpiece that captivates your guests. A true <a href="argentinian-grill-copenhagen.html">Argentine Grill Copenhagen</a> experience.</p><div style="display:flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;"><img src="img/fotos/4.jpeg" style="flex: 1; min-width: 250px; border-radius: 8px; height: 250px; object-fit: cover;" alt="Live Grill Catering Copenhagen"><img src="img/fotos/asado-equipo.jpg" style="flex: 1; min-width: 250px; border-radius: 8px; height: 250px; object-fit: cover;" alt="Argentine Grillmaster"></div>'
         },
         {
             h2: 'Grill Catering for Events',
@@ -85,17 +87,17 @@ createPage('bbq-catering-copenhagen.html',
 
 // 3. Argentinian Grill Copenhagen
 createPage('argentinian-grill-copenhagen.html',
-    'Argentinian Grill Copenhagen | Live Fire BBQ | Criollo Grill',
-    'Argentinian Grill Copenhagen',
-    'Discover the magic of a real Argentinian Grill in Copenhagen. Criollo Grill brings the passion of live fire and premium meats to your venue, delivering an authentic South American feast.',
+    'Argentine Grill Copenhagen | Live Fire BBQ | Criollo Grill',
+    'Argentine Grill Copenhagen',
+    'Discover the magic of a real Argentine Grill in Copenhagen. Criollo Grill brings the passion of live fire and premium meats to your venue, delivering an authentic South American feast.',
     [
         {
-            h2: 'The Authentic Argentinian Grill',
+            h2: 'The Authentic Argentine Grill',
             text: '<p>Our <a href="grill-catering-copenhagen.html">grill catering in Copenhagen</a> revolves around the traditional Argentine method of cooking with wood and charcoal. This slow-cooking process guarantees tender, smoky, and flavorful meats.</p>'
         },
         {
             h2: 'A Culinary Show',
-            text: '<p>When you book our <a href="bbq-catering-copenhagen.html">Argentinian BBQ catering</a>, you get more than food. The sight of the glowing embers and the smell of the asado is a spectacle that your guests will talk about for years.</p>'
+            text: '<p>When you book our <a href="bbq-catering-copenhagen.html">Argentine BBQ catering</a>, you get more than food. The sight of the glowing embers and the smell of the asado is a spectacle that your guests will talk about for years.</p>'
         }
     ],
     'img/fotos/asador-trabajando.jpg'
@@ -109,11 +111,11 @@ createPage('asado-catering-copenhagen.html',
     [
         {
             h2: 'Traditional Argentine Asado Catering',
-            text: '<p>An asado is more than a meal; it is a cultural event. With our <a href="bbq-catering-copenhagen.html">Argentinian BBQ catering</a>, we handle the fire, the timing, and the cutting. You just enjoy the feast with your friends and family.</p>'
+            text: '<p>An asado is more than a meal; it is a cultural event. With our <a href="bbq-catering-copenhagen.html">Argentine BBQ catering</a>, we handle the fire, the timing, and the cutting. You just enjoy the feast with your friends and family.</p>'
         },
         {
             h2: 'Perfect for Any Gathering',
-            text: '<p>Whether you are planning a casual family reunion or looking for unique <a href="wedding-catering-copenhagen.html">Wedding Catering</a>, a live <a href="argentinian-grill-copenhagen.html">Argentinian Grill Copenhagen</a> experience fits perfectly. The relaxed yet elegant nature of an asado brings people together around the fire.</p>'
+            text: '<p>Whether you are planning a casual family reunion or looking for unique <a href="wedding-catering-copenhagen.html">Wedding Catering</a>, a live <a href="argentinian-grill-copenhagen.html">Argentine Grill Copenhagen</a> experience fits perfectly. The relaxed yet elegant nature of an asado brings people together around the fire.</p>'
         }
     ],
     'img/fotos/asado-completo-copenhague.jpg'
@@ -145,11 +147,11 @@ createPage('corporate-catering-copenhagen.html',
     [
         {
             h2: 'Corporate BBQ Events',
-            text: '<p>Nothing builds camaraderie quite like sharing a fantastic meal around a fire. Our <a href="bbq-catering-copenhagen.html">Argentinian BBQ catering</a> is the perfect centerpiece for summer parties, team-building exercises, and milestone celebrations.</p>'
+            text: '<p>Nothing builds camaraderie quite like sharing a fantastic meal around a fire. Our <a href="bbq-catering-copenhagen.html">Argentine BBQ catering</a> is the perfect centerpiece for summer parties, team-building exercises, and milestone celebrations.</p>'
         },
         {
             h2: 'Professional and Reliable',
-            text: '<p>We understand that corporate events require flawless execution. Our team provides comprehensive <a href="grill-catering-copenhagen.html">grill catering in Copenhagen</a>, handling logistics, setup, and service, so you can focus on networking and enjoying the <a href="argentinian-grill-copenhagen.html">Argentinian Grill Copenhagen</a> experience.</p>'
+            text: '<p>We understand that corporate events require flawless execution. Our team provides comprehensive <a href="grill-catering-copenhagen.html">grill catering in Copenhagen</a>, handling logistics, setup, and service, so you can focus on networking and enjoying the <a href="argentinian-grill-copenhagen.html">Argentine Grill Copenhagen</a> experience.</p>'
         }
     ],
     'img/fotos/carrusel_nuevo_2.jpg'

@@ -1,15 +1,16 @@
 // i18n.js — Criollo Grill Translations
 window.translations = {
   en: {
+    meta_desc:"Authentic Argentine BBQ catering in Copenhagen. Live-fire asado, premium meats & street food for weddings, corporate events and parties in Denmark.",
     nav_home:"Home", nav_specialties:"Specialties", nav_events:"Events",
     nav_quote:"Quote", nav_book:"Book Now",
-    hero_badge:"🔥 Argentinian Grill · Copenhagen",
+    hero_badge:"🔥 Argentine Grill · Copenhagen",
     hero_h1_1:"The Authentic Flavour", hero_h1_em:"of the Grill",
     hero_p:"We bring the fire and tradition of Argentine BBQ directly to your event. Catering, festivals and unique experiences.",
     hero_btn1:"Discover the Menu", hero_btn2:"Calculate Price", hero_scroll:"Scroll",
     trust_title:"Top-class service", trust_desc:"At Criollo Grill, we are committed to giving you Copenhagen's best Argentine BBQ experience with fantastic service and personal attention.", trust_google:"5.0 on Google reviews",
     stat_events:"Events Completed", stat_people:"People Served",
-    stat_meat:"Quality Meat", stat_grill:"Duomo Style Grill",
+    stat_meat:"Quality Meat", stat_grill:"Dome-Style Grill",
     spec_title:"Our", spec_highlight:"Specialties",
     spec_sub:"Selected meats, grilled to perfection over live fire.",
     cat_street_food:"Street Food",
@@ -30,7 +31,7 @@ window.translations = {
     form_success:"Thank you! We have received your request and will contact you within 24 hours.",
     events_eyebrow:"For All Types of Events",
     events_h2_1:"Events to", events_h2_highlight:"Your Measure",
-    events_p:"We take care of feeding all your guests with the best quality. Whether it's a birthday, wedding, festival or corporate event, our Duomo style grill steals the show.",
+    events_p:"We take care of feeding all your guests with the best quality. Whether it's a birthday, wedding, festival or corporate event, our dome-style grill steals the show.",
     feat1:"The authentic live grillmaster show", feat2:"Capacity for large groups",
     feat3:"First-class ingredients", feat4:"Personalised and flexible service",
     feat5:"Full logistics available",
@@ -88,6 +89,7 @@ window.translations = {
 
     blog_4_title: "Introducing our 'Grill it Yourself' Kit",
     blog_4_desc: "For those who love making their own BBQ but don't want to worry about shopping or preparation.",
+    blog_4_btn: "Read more", blog_btn: "Read more",
     b4_title: "Introducing our 'Grill it Yourself' Kit: Be the grillmaster",
     b4_p1: "If you are passionate about standing in front of the fire but don't have time to shop or prep the cuts, we have the perfect solution.",
     b4_h2_1: "Premium Meats, Ready for the Grill",
@@ -123,7 +125,7 @@ window.translations = {
     b2_h2_3:"3. Options for everyone: Don't forget the vegetarians",
     b2_p4:"A good <strong>asado for events in Denmark</strong> must be inclusive. That's why at Criollo Grill we offer a delicious vegetarian menu that includes grilled bell peppers filled with egg and cheese, ensuring all guests enjoy the magic of the fire and the smoky flavor.",
     b2_h2_4:"4. The Live Show",
-    b2_p5:"Remember that a BBQ catering is not just food, it's a visual and aromatic experience. Make sure to ask about logistics: we bring our Duomo style grill to the event location, creating an unparalleled atmosphere around the fire.",
+    b2_p5:"Remember that a BBQ catering is not just food, it's a visual and aromatic experience. Make sure to ask about logistics: we bring our dome-style grill to the event location, creating an unparalleled atmosphere around the fire.",
     b2_cta_text:"Build your event menu in 1 minute",
     b2_cta_btn:"Use the calculator",
 
@@ -136,11 +138,12 @@ window.translations = {
     b3_h2_3:"Different and Unforgettable Weddings",
     b3_p4:"More and more couples are looking to step out of the conventional for their wedding banquet. A plate asado offers luxury, quality, and an elegant rustic touch that your guests will adore. We take care of the entire <strong>asado for events in Denmark</strong>, from logistics to waitstaff service if you need it.",
     b3_h2_4:"Festivals and Outdoor Gatherings",
-    b3_p5:"Copenhagen shines during the summer. If you organize a festival, a fair, or an event in nature, our Duomo style grill becomes the center of attention. Our Street Food format (choripanes and vacío sandwiches) allows serving crowds quickly without sacrificing an ounce of quality.",
+    b3_p5:"Copenhagen shines during the summer. If you organize a festival, a fair, or an event in nature, our dome-style grill becomes the center of attention. Our Street Food format (choripanes and vacío sandwiches) allows serving crowds quickly without sacrificing an ounce of quality.",
     b3_cta_text:"Make your event stand out",
     b3_cta_btn:"Contact us today",
   },
   es: {
+    meta_desc:"Catering de asado argentino en Copenhague. Parrilla en vivo, carnes premium y street food para bodas, eventos corporativos y fiestas en Dinamarca.",
     nav_home:"Inicio", nav_specialties:"Especialidades", nav_events:"Eventos",
     nav_quote:"Cotizar", nav_book:"Reservar",
     hero_badge:"🔥 Parrilla Argentina · Copenhagen",
@@ -149,7 +152,7 @@ window.translations = {
     hero_btn1:"Descubrir el Menú", hero_btn2:"Calcular Precio", hero_scroll:"Descubrir",
     trust_title:"Servicio de primera clase", trust_desc:"En Criollo Grill, estamos comprometidos a brindarte la mejor experiencia de asado argentino en Copenhague con un servicio fantástico y atención personalizada.", trust_google:"5.0 en reseñas de Google",
     stat_events:"Eventos Realizados", stat_people:"Personas Servidas",
-    stat_meat:"Carne de Calidad", stat_grill:"Parrilla Estilo Duomo",
+    stat_meat:"Carne de Calidad", stat_grill:"Parrilla Estilo Domo",
     spec_title:"Nuestras", spec_highlight:"Especialidades",
     spec_sub:"Carnes seleccionadas, asadas a la perfección sobre fuego vivo.",
     cat_street_food:"Comida Callejera",
@@ -170,7 +173,7 @@ window.translations = {
     form_success:"¡Gracias! Hemos recibido tu solicitud y te contactaremos en menos de 24 horas.",
     events_eyebrow:"Para Todo Tipo de Eventos",
     events_h2_1:"Eventos a", events_h2_highlight:"Tu Medida",
-    events_p:"Nos encargamos de alimentar a todos tus invitados con la mejor calidad. Ya sea un cumpleaños, casamiento, festival o evento corporativo, nuestra parrilla estilo Duomo se roba el show.",
+    events_p:"Nos encargamos de alimentar a todos tus invitados con la mejor calidad. Ya sea un cumpleaños, casamiento, festival o evento corporativo, nuestra parrilla estilo Domo se roba el show.",
     feat1:"El auténtico show del asador en vivo", feat2:"Capacidad para grandes grupos",
     feat3:"Ingredientes de primera calidad", feat4:"Atención personalizada y flexible",
     feat5:"Logística integral disponible",
@@ -228,6 +231,7 @@ window.translations = {
 
     blog_4_title: "Presentamos nuestro Kit 'Grill it Yourself'",
     blog_4_desc: "Para aquellos que aman hacer su propia barbacoa pero no quieren preocuparse por las compras ni la preparación.",
+    blog_4_btn: "Leer más", blog_btn: "Leer más",
     b4_title: "Presentamos nuestro Kit 'Grill it Yourself': Sé el maestro asador",
     b4_p1: "Si te apasiona estar frente al fuego pero no tienes tiempo para hacer las compras ni preparar los cortes, tenemos la solución perfecta.",
     b4_h2_1: "Carnes Premium, Listas para la Parrilla",
@@ -263,7 +267,7 @@ window.translations = {
     b2_h2_3:"3. Opciones para todos: No olvides a los vegetarianos",
     b2_p4:"Un buen <strong>asado para eventos en Dinamarca</strong> debe ser inclusivo. Por eso, en Criollo Grill ofrecemos un delicioso menú vegetariano que incluye pimientos asados rellenos de huevo y queso, asegurando que todos los invitados disfruten de la magia del fuego y el sabor ahumado.",
     b2_h2_4:"4. El Show en Vivo",
-    b2_p5:"Recuerda que un catering de asado no es solo comida, es una experiencia visual y aromática. Asegúrate de preguntar por la logística: nosotros llevamos nuestra parrilla estilo Duomo al lugar del evento, creando un ambiente inigualable alrededor del fuego.",
+    b2_p5:"Recuerda que un catering de asado no es solo comida, es una experiencia visual y aromática. Asegúrate de preguntar por la logística: nosotros llevamos nuestra parrilla estilo Domo al lugar del evento, creando un ambiente inigualable alrededor del fuego.",
     b2_cta_text:"Arma el menú de tu evento en 1 minuto",
     b2_cta_btn:"Usar la calculadora",
 
@@ -276,11 +280,12 @@ window.translations = {
     b3_h2_3:"Bodas Diferentes e Inolvidables",
     b3_p4:"Cada vez más parejas buscan salir de lo convencional para su banquete de bodas. Un asado al plato ofrece lujo, calidad y un toque rústico elegante que tus invitados adorarán. Nos encargamos de todo el <strong>asado para eventos en Dinamarca</strong>, desde la logística hasta el servicio de mozos si lo necesitas.",
     b3_h2_4:"Festivales y Encuentros al Aire Libre",
-    b3_p5:"Copenhague brilla durante el verano. Si organizas un festival, una feria o un evento en la naturaleza, nuestra parrilla de estilo Duomo se convierte en el centro de atención. Nuestro formato de Street Food (choripanes y sándwiches de vacío) permite servir a multitudes rápidamente sin sacrificar ni un ápice de calidad.",
+    b3_p5:"Copenhague brilla durante el verano. Si organizas un festival, una feria o un evento en la naturaleza, nuestra parrilla de estilo Domo se convierte en el centro de atención. Nuestro formato de Street Food (choripanes y sándwiches de vacío) permite servir a multitudes rápidamente sin sacrificar ni un ápice de calidad.",
     b3_cta_text:"Haz que tu evento destaque",
     b3_cta_btn:"Contáctanos hoy",
   },
   dk: {
+    meta_desc:"Autentisk argentinsk BBQ-catering i København. Grill over åben ild, kvalitetskød og street food til bryllupper, firmafester og events i Danmark.",
     nav_home:"Hjem", nav_specialties:"Specialiteter", nav_events:"Arrangementer",
     nav_quote:"Tilbud", nav_book:"Book Nu",
     hero_badge:"🔥 Argentinsk Grill · København",
@@ -289,7 +294,7 @@ window.translations = {
     hero_btn1:"Udforsk Menuen", hero_btn2:"Beregn Pris", hero_scroll:"Udforsk",
     trust_title:"Førsteklasses service", trust_desc:"Hos Criollo Grill er vi dedikerede til at give dig Københavns bedste argentinske BBQ-oplevelse med fantastisk service og personlig opmærksomhed.", trust_google:"5.0 på Google anmeldelser",
     stat_events:"Gennemførte Events", stat_people:"Gæster Serveret",
-    stat_meat:"Kvalitetskød", stat_grill:"Duomo-stil Grill",
+    stat_meat:"Kvalitetskød", stat_grill:"Domo-stil Grill",
     spec_title:"Vores", spec_highlight:"Specialiteter",
     spec_sub:"Udvalgte kød, grillet til perfektion over åben ild.",
     cat_street_food:"Street Food",
@@ -310,7 +315,7 @@ window.translations = {
     form_success:"Tak! Vi har modtaget din anmodning og kontakter dig inden for 24 timer.",
     events_eyebrow:"Til Alle Typer Arrangementer",
     events_h2_1:"Arrangementer til", events_h2_highlight:"Dine Behov",
-    events_p:"Vi sørger for at brødføde alle dine gæster med den bedste kvalitet. Uanset om det er en fødselsdag, bryllup, festival eller firmaarrangement, stjæler vores Duomo-stil grill showet.",
+    events_p:"Vi sørger for at brødføde alle dine gæster med den bedste kvalitet. Uanset om det er en fødselsdag, bryllup, festival eller firmaarrangement, stjæler vores Domo-stil grill showet.",
     feat1:"Det autentiske live grillmaster-show", feat2:"Kapacitet til store grupper",
     feat3:"Førsteklasses ingredienser", feat4:"Personlig og fleksibel service",
     feat5:"Fuld logistik tilgængelig",
@@ -325,7 +330,7 @@ window.translations = {
     calc_people_label:"Antal Personer",
     calc_meat_label:"Kødtype",
     calc_meat_opt1:"Europæisk Kød", calc_meat_opt2:"Premium Argentinsk Kød",
-    calc_start_label:"Arrangement Starttid", calc_end_label:"Arrangement Sluttid",
+    calc_start_label:"Arrangement Starttid", calc_food_label:"Spisetid", calc_end_label:"Arrangement Sluttid", diy_rec_title:"Intimt Arrangement?", diy_rec_text:"Til små grupper (under 15 personer) anbefaler vi varmt vores <strong>Grill Det Selv</strong> menu! Det er en mere økonomisk og sjov oplevelse.",
     calc_note:"* 4 timer lægges automatisk til (1t opstilling, 2t madlavning, 1t nedtagning).",
     calc_log_label:"Logistik & Opsætning",
     calc_log_flat_note:"Et fast gebyr på 3.500 DKK tilføjes automatisk for transport, professionel opsætning og nedtagning af grillen.",
@@ -368,6 +373,7 @@ window.translations = {
 
     blog_4_title: "Vi præsenterer vores 'Grill Det Selv' Kit",
     blog_4_desc: "For dem, der elsker at lave deres egen BBQ, men ikke vil bekymre sig om indkøb eller forberedelse.",
+    blog_4_btn: "Læs mere", blog_btn: "Læs mere",
     b4_title: "Vi præsenterer vores 'Grill Det Selv' Kit: Vær grillmesteren",
     b4_p1: "Hvis du brænder for at stå foran ilden, men ikke har tid til at købe ind eller forberede udskæringerne, har vi den perfekte løsning.",
     b4_h2_1: "Premium Kød, Klar til Grillen",
@@ -403,7 +409,7 @@ window.translations = {
     b2_h2_3:"3. Muligheder for alle: Glem ikke vegetarerne",
     b2_p4:"En god <strong>asado til events i Danmark</strong> skal være inkluderende. Derfor tilbyder vi hos Criollo Grill en lækker vegetarisk menu, der inkluderer grillede peberfrugter fyldt med æg og ost, og sikrer, at alle gæster nyder magien ved ilden og den røgede smag.",
     b2_h2_4:"4. Det Levende Show",
-    b2_p5:"Husk at et BBQ-catering ikke bare er mad, det er en visuel og aromatisk oplevelse. Sørg for at spørge om logistikken: vi bringer vores Duomo-stil grill til eventets placering og skaber en uovertruffen atmosfære omkring ilden.",
+    b2_p5:"Husk at et BBQ-catering ikke bare er mad, det er en visuel og aromatisk oplevelse. Sørg for at spørge om logistikken: vi bringer vores Domo-stil grill til eventets placering og skaber en uovertruffen atmosfære omkring ilden.",
     b2_cta_text:"Byg din eventmenu på 1 minut",
     b2_cta_btn:"Brug beregneren",
 
@@ -416,7 +422,7 @@ window.translations = {
     b3_h2_3:"Anderledes og Uforglemmelige Bryllupper",
     b3_p4:"Flere og flere par søger at træde ud af det konventionelle til deres bryllupsbanket. En tallerken asado tilbyder luksus, kvalitet og et elegant rustikt præg, som dine gæster vil elske. Vi tager os af hele <strong>asadoen til events i Danmark</strong>, fra logistik til serveringspersonale, hvis du har brug for det.",
     b3_h2_4:"Festivaler og Udendørs Sammenkomster",
-    b3_p5:"København skinner i løbet af sommeren. Hvis du organiserer en festival, en messe eller et event i naturen, bliver vores Duomo-stil grill midtpunktet. Vores Street Food format (choripanes og vacío sandwiches) gør det muligt at servere for mange mennesker hurtigt uden at ofre et gram kvalitet.",
+    b3_p5:"København skinner i løbet af sommeren. Hvis du organiserer en festival, en messe eller et event i naturen, bliver vores Domo-stil grill midtpunktet. Vores Street Food format (choripanes og vacío sandwiches) gør det muligt at servere for mange mennesker hurtigt uden at ofre et gram kvalitet.",
     b3_cta_text:"Få dit event til at skille sig ud",
     b3_cta_btn:"Kontakt os i dag",
   }
@@ -446,6 +452,10 @@ function applyLang(lang) {
   if (activeBtn) activeBtn.classList.add('active');
   localStorage.setItem('criollo_lang', lang);
   document.documentElement.lang = lang === 'dk' ? 'da' : lang;
+  document.querySelectorAll('meta[data-i18n-meta]').forEach(el => {
+    const key = el.getAttribute('data-i18n-meta');
+    if (t[key] !== undefined) el.setAttribute('content', t[key]);
+  });
   
   // Notify other scripts that language has changed
   window.dispatchEvent(new Event('languageChanged'));
