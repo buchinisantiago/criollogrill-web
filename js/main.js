@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cbEntrada     = document.getElementById('extra-entrada');
     const cbEmpanadas   = document.getElementById('extra-empanadas');
     const cbPostres     = document.getElementById('extra-postres');
+    const cbAlfajores   = document.getElementById('extra-alfajores');
 
     const summaryMenuName        = document.getElementById('summary-menu-name');
     const summaryMenuPrice       = document.getElementById('summary-menu-price');
@@ -253,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(cbEntrada) cbEntrada.checked = false;
             if(cbEmpanadas) cbEmpanadas.checked = false;
             if(cbPostres) cbPostres.checked = false;
+            if(cbAlfajores) cbAlfajores.checked = false;
             // 250g meat/person + bread + sauces + packaging
             const cpp = (0.25 * meatPriceKg) + CONFIG.panPorPersona + CONFIG.aderezosPorPersona + CONFIG.packagingPorPersona;
             baseFoodCost = (cpp * people) * 1.05;
@@ -373,6 +375,19 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryExtrasContainer.appendChild(div);
         }
 
+        // Alfajores (2 units/person = +35 Kr/pair)
+        let alfajoresCost = 0;
+        if (cbAlfajores && cbAlfajores.checked) {
+            alfajoresCost = 35 * people;
+            const div = document.createElement('div');
+            div.className = 'summary-row';
+            let alfLabel = `🍪 Dulce de Leche Alfajores — 2/pax (${people} pax)`;
+            if (currentLang === 'es') alfLabel = `🍪 Alfajores de Dulce de Leche — 2/pers. (${people} pax)`;
+            if (currentLang === 'dk') alfLabel = `🍪 Dulce de Leche Alfajores — 2/pers. (${people} pax)`;
+            div.innerHTML = `<span>${alfLabel}</span><span>${alfajoresCost.toLocaleString()} Kr</span>`;
+            summaryExtrasContainer.appendChild(div);
+        }
+
         // Staff Row in summary
         const summaryStaffRow = document.getElementById('summary-staff-row');
         if (summaryStaffRow) {
@@ -427,8 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mozosRow.style.display = 'none';
         }
 
-        // --- 3. FINAL GRAND TOTAL (Base + Mozos + Extras + Empanadas + Postres) ---
-        let total = baseTotal + mozosCost + Math.round(extrasCost) + empanadasCost + postresCost;
+        // --- 3. FINAL GRAND TOTAL (Base + Mozos + Extras + Empanadas + Postres + Alfajores) ---
+        let total = baseTotal + mozosCost + Math.round(extrasCost) + empanadasCost + postresCost + alfajoresCost;
         
         currentLang = window.getCurrentLang();
         let staffLabel = 'Staff';
@@ -463,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (packagingCost > 0) msg += `📦 *Packaging:* ${Math.round(packagingCost).toLocaleString()} Kr\n`;
         if (empanadasCost > 0) msg += `🥟 *Empanadas Starter:* Included (${empanadasCost.toLocaleString()} Kr)\n`;
         if (postresCost > 0) msg += `🥞 *Dessert (Grilled Pancakes):* Included (${postresCost.toLocaleString()} Kr)\n`;
+        if (alfajoresCost > 0) msg += `🍪 *Dessert (Alfajores - 2 units/person):* Included (${alfajoresCost.toLocaleString()} Kr)\n`;
         if (mozosCost > 0) msg += `🤵 *Waitstaff:* ${numMozos} ${numMozos === 1 ? 'waiter' : 'waiters'} included\n`;
         msg += `\n💰 *Estimated Total:* ${Math.round(total).toLocaleString()} Kr\n\nI'd like to confirm availability and details.`;
 
@@ -481,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada, cbEmpanadas, cbPostres];
+    const inputs = [calcMenu, calcPeople, calcTimeStart, calcTimeFood, calcTimeEnd, calcMozos, cbVerduras, cbEnsaladas, cbEntrada, cbEmpanadas, cbPostres, cbAlfajores];
     inputs.forEach(input => {
         if (input) {
             const evt = (input.tagName === 'SELECT' || input.type === 'checkbox') ? 'change' : 'input';
