@@ -272,7 +272,7 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
 .hero {
   height: 100vh;
   min-height: 700px;
-  background-image: url('../img/hero_domo_asado.jpg');
+  background-image: url('../img/hero_domo_asado.jpg?v=2');
   background-size: cover;
   background-position: center 55%;
   background-attachment: fixed;
