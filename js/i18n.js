@@ -77,7 +77,7 @@ window.translations = {
     del_p1_desc:"The most famous Argentine pastry! 12 freshly baked artisan butter croissants ('Medialunas') brushed with traditional sweet glaze. Soft, flaky and irresistible.",
     del_p1_price:"250 Kr / dozen",
     del_p2_badge:"12 Units", del_p2_title:"Dozen Dulce de Leche Alfajorcitos",
-    del_p2_desc:"12 handmade cookies generously filled with authentic Argentine dulce de leche and rolled in coconut.",
+    del_p2_desc:"12 handmade cookies generously filled with authentic Argentine dulce de leche and coated in rich chocolate.",
     del_p2_price:"250 Kr / dozen",
     del_p3_badge:"Special Combo", del_p3_title:"Combo Criollo (6 + 6)",
     del_p3_desc:"The best of both worlds: 6 artisan medialunas + 6 dulce de leche alfajorcitos in one box at a special price.",
