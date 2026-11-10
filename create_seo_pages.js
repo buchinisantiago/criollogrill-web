@@ -8,7 +8,7 @@ const footer = index.substring(index.indexOf('<footer>'));
 const createPage = (filename, title, h1, introText, sections, bgImg) => {
     let newHeader = header
         .replace(/<title>.*<\/title>/, '<title>' + title + '</title>')
-        .replace(/href="#(home|specialties|events|quote|contact)"/g, 'href="index.html#$1"');
+        .replace(/href="#(home|specialties|events|quote|delivery|contact)"/g, 'href="index.html#$1"');
     
     let content = `
     <section class="hero" style="background-image: linear-gradient(to right, var(--bg-dark), rgba(8,8,8,0.7)), url('${bgImg}'); min-height: 60vh;">

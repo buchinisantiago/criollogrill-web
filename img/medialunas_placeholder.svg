@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#22170e"/>
+      <stop offset="100%" stop-color="#0b0908"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c96a"/>
+      <stop offset="100%" stop-color="#C9A84C"/>
+    </linearGradient>
+    <linearGradient id="croissant" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0b865"/>
+      <stop offset="55%" stop-color="#d4882a"/>
+      <stop offset="100%" stop-color="#9e5810"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="300" cy="185" r="120" fill="none" stroke="url(#gold)" stroke-opacity="0.2" stroke-width="1.5"/>
+  <circle cx="300" cy="185" r="105" fill="none" stroke="url(#gold)" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="4 6"/>
+  <!-- Stylized Medialuna Illustration -->
+  <g transform="translate(300, 190)">
+    <ellipse cx="0" cy="40" rx="80" ry="18" fill="rgba(0,0,0,0.55)"/>
+    <!-- Crescent body -->
+    <path d="M -65,20 C -85,-35 -40,-70 0,-70 C 40,-70 85,-35 65,20 C 58,36 42,32 38,16 C 32,-12 18,-25 0,-25 C -18,-25 -32,-12 -38,16 C -42,32 -58,36 -65,20 Z" fill="url(#croissant)" stroke="#f6cf86" stroke-width="1.5"/>
+    <!-- Flaky layers highlight -->
+    <path d="M -38,-48 Q 0,-64 38,-48" fill="none" stroke="#fae0a8" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M -52,-20 Q -25,-42 0,-42 Q 25,-42 52,-20" fill="none" stroke="#7a3e06" stroke-width="2" opacity="0.5"/>
+    <path d="M -30,-30 Q 0,-40 30,-30" fill="none" stroke="#fff3d1" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+  </g>
+  <text x="300" y="345" text-anchor="middle" fill="#C9A84C" font-family="Cinzel, Georgia, serif" font-size="15" letter-spacing="4">MEDIALUNAS ARTESANALES</text>
+</svg>

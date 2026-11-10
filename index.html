@@ -53,7 +53,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=18">
+    <link rel="stylesheet" href="css/styles.css?v=19">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-761TF78LM4"></script>
     <script>
@@ -78,7 +78,7 @@
             <li><a href="#specialties" data-i18n="nav_specialties">Specialties</a></li>
             <li><a href="#events" data-i18n="nav_events">Events</a></li>
             <li><a href="#quote" data-i18n="nav_quote">Quote</a></li>
-
+            <li><a href="#delivery" data-i18n="nav_delivery">🥐 Delivery</a></li>
             <li><a href="#contact" class="btn-primary" data-i18n="nav_book">Book Now</a></li>
             <li class="mobile-only">
                 <div class="lang-switcher mobile-lang-switcher">
@@ -562,6 +562,124 @@
         </div>
     </section>
 
+    <!-- PASTELERÍA & DELIVERY -->
+    <section id="delivery" class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <span style="font-family:var(--font-heading);font-size:0.7rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase;" data-i18n="del_eyebrow">Artisan Argentine Bakery</span>
+                <h2 style="margin-top:0.5rem;"><span data-i18n="del_title_1">Bakery &amp;</span> <span class="highlight" data-i18n="del_title_highlight">Delivery</span></h2>
+                <div class="divider"><span>🥐</span></div>
+                <p data-i18n="del_sub">Order freshly baked Argentine medialunas and dulce de leche alfajorcitos delivered straight to your door in Copenhagen (minimum 24–48h notice).</p>
+            </div>
+
+            <!-- 3 PRODUCT CARDS -->
+            <div class="grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 3rem;">
+                <!-- Card 1: Medialunas -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="img/medialunas_placeholder.svg" alt="Docena de Medialunas Argentinas">
+                        <span class="card-badge" data-i18n="del_p1_badge">12 Units</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="del_p1_title">Dozen Medialunas</h3>
+                        <p data-i18n="del_p1_desc">12 freshly baked Argentine butter medialunas with traditional sweet glaze. Soft, flaky and irresistible.</p>
+                        <div class="bakery-card-footer">
+                            <span class="bakery-price-tag" data-i18n="del_p1_price">250 Kr / dozen</span>
+                            <div class="qty-control">
+                                <button type="button" class="qty-btn" data-bakery-action="minus" data-bakery-item="medialunas" aria-label="Decrease Medialunas">−</button>
+                                <span class="qty-val" id="qty-medialunas">1</span>
+                                <button type="button" class="qty-btn" data-bakery-action="plus" data-bakery-item="medialunas" aria-label="Increase Medialunas">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Alfajorcitos -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="img/alfajores_placeholder.svg" alt="Docena de Alfajorcitos de Dulce de Leche">
+                        <span class="card-badge" data-i18n="del_p2_badge">12 Units</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="del_p2_title">Dozen Dulce de Leche Alfajorcitos</h3>
+                        <p data-i18n="del_p2_desc">12 handmade cookies generously filled with authentic Argentine dulce de leche and rolled in coconut.</p>
+                        <div class="bakery-card-footer">
+                            <span class="bakery-price-tag" data-i18n="del_p2_price">250 Kr / dozen</span>
+                            <div class="qty-control">
+                                <button type="button" class="qty-btn" data-bakery-action="minus" data-bakery-item="alfajores" aria-label="Decrease Alfajorcitos">−</button>
+                                <span class="qty-val" id="qty-alfajores">0</span>
+                                <button type="button" class="qty-btn" data-bakery-action="plus" data-bakery-item="alfajores" aria-label="Increase Alfajorcitos">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Combo Criollo -->
+                <div class="card">
+                    <div class="card-img">
+                        <img src="img/combo_criollo_placeholder.svg" alt="Combo Criollo 6 Medialunas + 6 Alfajorcitos">
+                        <span class="card-badge" style="background: var(--gold); color: var(--bg-dark); font-weight: 700;" data-i18n="del_p3_badge">Special Combo</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="del_p3_title">Combo Criollo (6 + 6)</h3>
+                        <p data-i18n="del_p3_desc">The best of both worlds: 6 artisan medialunas + 6 dulce de leche alfajorcitos in one box at a special price.</p>
+                        <div class="bakery-card-footer">
+                            <span class="bakery-price-tag" data-i18n="del_p3_price">240 Kr / box</span>
+                            <div class="qty-control">
+                                <button type="button" class="qty-btn" data-bakery-action="minus" data-bakery-item="combo" aria-label="Decrease Combo">−</button>
+                                <span class="qty-val" id="qty-combo">0</span>
+                                <button type="button" class="qty-btn" data-bakery-action="plus" data-bakery-item="combo" aria-label="Increase Combo">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DELIVERY FORM & ORDER SUMMARY -->
+            <div class="calculator-container reveal">
+                <div class="calc-form">
+                    <h3 style="color:var(--gold); margin-bottom:1.2rem; font-size:1.15rem;" data-i18n="del_form_title">Delivery Details</h3>
+                    <div class="form-group">
+                        <label for="bakery-method" data-i18n="del_method_lbl">Delivery Modality</label>
+                        <select id="bakery-method" class="calc-input" data-i18n-opt="del_method_opt1,del_method_opt2">
+                            <option value="standard" data-i18n="del_method_opt1">Home Delivery in Copenhagen (+60 Kr — FREE from 500 Kr)</option>
+                            <option value="weekend" data-i18n="del_method_opt2">Weekend Morning Delivery — Sat/Sun (+60 Kr — FREE from 500 Kr)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bakery-address" data-i18n="del_addr_lbl">Address &amp; Postal Code (Copenhagen)</label>
+                        <input type="text" id="bakery-address" class="calc-input" data-i18n-ph="del_addr_ph" placeholder="Eg: Nørrebrogade 45, 2200 København">
+                    </div>
+                    <div class="form-group">
+                        <label for="bakery-date" data-i18n="del_date_lbl">Preferred Delivery Date (min. 24–48h notice)</label>
+                        <input type="date" id="bakery-date" class="calc-input">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label for="bakery-notes" data-i18n="del_notes_lbl">Notes / Preferences (Optional)</label>
+                        <input type="text" id="bakery-notes" class="calc-input" data-i18n-ph="del_notes_ph" placeholder="Eg: Medialunas with dulce de leche, doorbell, preferred time...">
+                    </div>
+                </div>
+
+                <div class="calc-summary">
+                    <h3 data-i18n="del_summary_title">Your Bakery Order</h3>
+                    <div class="summary-details">
+                        <div id="bakery-summary-items"></div>
+                        <div class="summary-row" id="bakery-shipping-row">
+                            <span data-i18n="del_shipping_lbl">Delivery (Copenhagen)</span>
+                            <span id="bakery-shipping-price">60 Kr</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span data-i18n="del_total_lbl">Total to Pay</span>
+                            <span id="bakery-total" class="highlight">310 Kr</span>
+                        </div>
+                    </div>
+                    <button type="button" id="btn-bakery-whatsapp" class="btn-primary btn-full" style="margin-top:1.5rem;" data-i18n="del_btn_wa">💬 Order via WhatsApp</button>
+                    <p style="font-size:0.8rem;text-align:center;margin-top:1rem;color:var(--text-muted);" data-i18n="del_pay_note">* We confirm availability via WhatsApp and send you a MobilePay / payment link.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACTO -->
     <section id="contact" class="section"><span id="contacto"></span>
         <div class="container contact-container">
@@ -681,7 +799,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/i18n.js?v=25"></script>
-    <script src="js/main.js?v=32"></script>
+    <script src="js/i18n.js?v=26"></script>
+    <script src="js/main.js?v=33"></script>
 </body>
 </html>
