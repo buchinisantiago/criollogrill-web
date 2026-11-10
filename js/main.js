@@ -533,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const bakeryState = { medialunas: 1, alfajores: 0, combo: 0 };
     const BAKERY_PRICES = { medialunas: 250, alfajores: 250, combo: 240 };
     const BAKERY_DELIVERY_FEE = 60;
-    const BAKERY_FREE_THRESHOLD = 500;
 
     function getBakeryLabels(lang) {
         if (lang === 'es') {
@@ -542,17 +541,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 alfajores:  '🍪 Docena de Alfajorcitos (12u)',
                 combo:      '🎁 Combo Criollo (6 Med. + 6 Alf.)',
                 empty:      'Seleccioná al menos 1 caja arriba para armar tu pedido.',
-                free:       'GRATIS',
+                pickupTag:  'Pick-up (Sin cargo)',
                 alertEmpty: 'Por favor, seleccioná al menos 1 caja para hacer tu pedido.',
-                waIntro:    '¡Hola Criollo Grill! Quiero hacer un pedido de Pastelería & Delivery:',
-                waMethod1:  'Envío a domicilio en Copenhague',
-                waMethod2:  'Entrega de Fin de Semana (Sáb/Dom mañana)',
-                waShipping: 'Envío',
+                waIntro:    '¡Hola Criollo Grill! Quiero hacer un pedido de Pastelería:',
+                waMethod0:  'Coordinar Pick-up / Retiro (0 Kr)',
+                waMethod1:  'Envío a domicilio en Copenhague (+60 Kr)',
+                waMethod2:  'Entrega de Fin de Semana — Sáb/Dom (+60 Kr)',
+                waShipping: 'Modalidad',
                 waAddress:  'Dirección',
                 waDate:     'Fecha deseada',
                 waNotes:    'Notas',
                 waTotal:    'Total a pagar',
-                waOutro:    'Quedo atento/a para confirmar disponibilidad y pagar por MobilePay.'
+                waOutro:    'Quedo atento/a para coordinar y pagar por MobilePay.'
             };
         }
         if (lang === 'dk') {
@@ -561,12 +561,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 alfajores:  '🍪 12 stk. Dulce de Leche Alfajorcitos',
                 combo:      '🎁 Combo Criollo (6 Med. + 6 Alf.)',
                 empty:      'Vælg mindst 1 æske ovenfor for at sammensætte din bestilling.',
-                free:       'GRATIS',
+                pickupTag:  'Pick-up (0 Kr)',
                 alertEmpty: 'Vælg venligst mindst 1 æske for at bestille.',
-                waIntro:    'Hej Criollo Grill! Jeg vil gerne bestille Bageri & Levering:',
-                waMethod1:  'Hjemmelevering i København',
-                waMethod2:  'Weekendlevering (Lør/Søn morgen)',
-                waShipping: 'Levering',
+                waIntro:    'Hej Criollo Grill! Jeg vil gerne bestille fra Bageriet:',
+                waMethod0:  'Aftal Afhentning / Pick-up (0 Kr)',
+                waMethod1:  'Hjemmelevering i København (+60 Kr)',
+                waMethod2:  'Weekendlevering — Lør/Søn morgen (+60 Kr)',
+                waShipping: 'Leveringsmetode',
                 waAddress:  'Adresse',
                 waDate:     'Ønsket dato',
                 waNotes:    'Noter',
@@ -579,17 +580,18 @@ document.addEventListener('DOMContentLoaded', () => {
             alfajores:  '🍪 Dozen Alfajorcitos (12u)',
             combo:      '🎁 Combo Criollo (6 Med. + 6 Alf.)',
             empty:      'Select at least 1 box above to build your order.',
-            free:       'FREE',
+            pickupTag:  'Pick-up (0 Kr)',
             alertEmpty: 'Please select at least 1 box to place your order.',
-            waIntro:    "Hello Criollo Grill! I'd like to place a Bakery & Delivery order:",
-            waMethod1:  'Home Delivery in Copenhagen',
-            waMethod2:  'Weekend Morning Delivery (Sat/Sun)',
-            waShipping: 'Delivery',
+            waIntro:    "Hello Criollo Grill! I'd like to place a Bakery order:",
+            waMethod0:  'Coordinate Pick-up (0 Kr)',
+            waMethod1:  'Home Delivery in Copenhagen (+60 Kr)',
+            waMethod2:  'Weekend Morning Delivery — Sat/Sun (+60 Kr)',
+            waShipping: 'Delivery / Pick-up',
             waAddress:  'Address',
             waDate:     'Preferred Date',
             waNotes:    'Notes',
             waTotal:    'Total to Pay',
-            waOutro:    "I'd like to confirm availability and pay via MobilePay."
+            waOutro:    "I'd like to coordinate and pay via MobilePay."
         };
     }
 
@@ -627,18 +629,25 @@ document.addEventListener('DOMContentLoaded', () => {
             bakerySummaryItems.appendChild(emptyDiv);
         }
 
+        const methodVal = bakeryMethod ? bakeryMethod.value : 'standard';
+        const isPickup = methodVal === 'pickup';
+        const addrGroup = document.getElementById('bakery-address-group');
+        if (addrGroup) {
+            addrGroup.style.display = isPickup ? 'none' : 'block';
+        }
+
         let shipping = 0;
-        if (totalBoxes > 0) {
-            shipping = subtotal >= BAKERY_FREE_THRESHOLD ? 0 : BAKERY_DELIVERY_FEE;
+        if (totalBoxes > 0 && !isPickup) {
+            shipping = BAKERY_DELIVERY_FEE;
         }
 
         if (bakeryShippingPrice) {
             if (totalBoxes === 0) {
                 bakeryShippingPrice.textContent = '0 Kr';
-            } else if (shipping === 0) {
-                bakeryShippingPrice.innerHTML = `0 Kr <span class="bakery-free-badge">${L.free}</span>`;
+            } else if (isPickup) {
+                bakeryShippingPrice.innerHTML = `<span class="bakery-free-badge">${L.pickupTag}</span>`;
             } else {
-                bakeryShippingPrice.textContent = `${shipping} Kr`;
+                bakeryShippingPrice.textContent = `+${shipping} Kr`;
             }
         }
 
@@ -658,10 +667,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         msg += `${qty}x ${L[key]} — ${(qty * BAKERY_PRICES[key]).toLocaleString()} Kr\n`;
                     }
                 });
-                const methodVal = bakeryMethod ? bakeryMethod.value : 'standard';
-                const methodLabel = methodVal === 'weekend' ? L.waMethod2 : L.waMethod1;
-                msg += `\n🚚 *${L.waShipping}:* ${methodLabel} (${shipping === 0 ? L.free : shipping + ' Kr'})\n`;
-                if (bakeryAddress && bakeryAddress.value.trim()) {
+                let methodLabel = L.waMethod1;
+                if (methodVal === 'pickup') methodLabel = L.waMethod0;
+                else if (methodVal === 'weekend') methodLabel = L.waMethod2;
+                msg += `\n🚚 *${L.waShipping}:* ${methodLabel}\n`;
+                if (!isPickup && bakeryAddress && bakeryAddress.value.trim()) {
                     msg += `📍 *${L.waAddress}:* ${bakeryAddress.value.trim()}\n`;
                 }
                 if (bakeryDate && bakeryDate.value) {
