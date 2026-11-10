@@ -524,11 +524,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const bakeryNotes        = document.getElementById('bakery-notes');
 
     if (bakeryDate) {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const yyyy = tomorrow.getFullYear();
-        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
-        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        const minDate = new Date();
+        minDate.setDate(minDate.getDate() + 3);
+        const yyyy = minDate.getFullYear();
+        const mm = String(minDate.getMonth() + 1).padStart(2, '0');
+        const dd = String(minDate.getDate()).padStart(2, '0');
         bakeryDate.min = `${yyyy}-${mm}-${dd}`;
         if (!bakeryDate.value) bakeryDate.value = `${yyyy}-${mm}-${dd}`;
     }
