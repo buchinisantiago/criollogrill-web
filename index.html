@@ -362,6 +362,17 @@
                 <p data-i18n="blog_sub">Learn more about the Argentine grill tradition and our services.</p>
             </div>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card reveal">
+                    <div class="card-img">
+                        <img src="img/medialunas_caseras.jpg" alt="Medialunas Argentinas Caseras en Copenhague" style="height: 250px; object-fit: cover; width: 100%;">
+                        <span class="card-badge" style="background: var(--gold); color: var(--bg-dark); font-weight: 700;" data-i18n="blog_6_badge">NEW</span>
+                    </div>
+                    <div class="card-content" style="padding-bottom:2rem;">
+                        <h3 data-i18n="blog_6_title">Artisan Argentine Medialunas in Copenhagen</h3>
+                        <p style="margin-bottom:1.5rem;font-size:0.9rem;" data-i18n="blog_6_desc">Freshly baked butter medialunas with traditional sweet glaze—the ultimate Argentine classic for your mornings and mates in Denmark.</p>
+                        <a href="blog-medialunas-argentinas.html" class="btn-outline" style="display:inline-block;padding:0.6rem 1.5rem;font-size:0.8rem;" data-i18n="blog_6_btn">Read more</a>
+                    </div>
+                </div>
 <div class="card reveal">
                     <div class="card-img">
                         <img src="img/panqueques_parrilla.jpg" alt="Postres Argentinos a la Parrilla" style="height: 250px; object-fit: cover; width: 100%;">
@@ -580,7 +591,7 @@
                 <!-- Card 1: Medialunas -->
                 <div class="card">
                     <div class="card-img">
-                        <img src="img/medialunas_placeholder.svg" alt="Docena de Medialunas Argentinas">
+                        <img src="img/medialunas_caseras.jpg" alt="Docena de Medialunas Argentinas" style="height: 220px; object-fit: cover; width: 100%;">
                         <span class="card-badge" data-i18n="del_p1_badge">12 Units</span>
                     </div>
                     <div class="card-content">
@@ -649,10 +660,9 @@
                     <h3 style="color:var(--gold); margin-bottom:1.2rem; font-size:1.15rem;" data-i18n="del_form_title">Delivery or Pick-up Details</h3>
                     <div class="form-group">
                         <label for="bakery-method" data-i18n="del_method_lbl">Delivery / Pick-up Option</label>
-                        <select id="bakery-method" class="calc-input" data-i18n-opt="del_method_opt0,del_method_opt1,del_method_opt2">
+                        <select id="bakery-method" class="calc-input" data-i18n-opt="del_method_opt0,del_method_opt1">
                             <option value="pickup" data-i18n="del_method_opt0">Coordinate Pick-up (No delivery fee — 0 Kr)</option>
-                            <option value="standard" data-i18n="del_method_opt1" selected>Home Delivery in Copenhagen (+60 Kr delivery fee)</option>
-                            <option value="weekend" data-i18n="del_method_opt2">Weekend Morning Delivery — Sat/Sun (+60 Kr delivery fee)</option>
+                            <option value="standard" data-i18n="del_method_opt1" selected>Home Delivery in Copenhagen (+300 Kr delivery fee)</option>
                         </select>
                     </div>
                     <div class="form-group" id="bakery-address-group">
@@ -675,11 +685,11 @@
                         <div id="bakery-summary-items"></div>
                         <div class="summary-row" id="bakery-shipping-row">
                             <span data-i18n="del_shipping_lbl">Delivery / Pick-up</span>
-                            <span id="bakery-shipping-price">+60 Kr</span>
+                            <span id="bakery-shipping-price">+300 Kr</span>
                         </div>
                         <div class="summary-row total-row">
                             <span data-i18n="del_total_lbl">Total to Pay</span>
-                            <span id="bakery-total" class="highlight">310 Kr</span>
+                            <span id="bakery-total" class="highlight">550 Kr</span>
                         </div>
                     </div>
                     <button type="button" id="btn-bakery-whatsapp" class="btn-primary btn-full" style="margin-top:1.5rem;" data-i18n="del_btn_wa">💬 Order via WhatsApp</button>
@@ -808,7 +818,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/i18n.js?v=28"></script>
-    <script src="js/main.js?v=35"></script>
+    <script src="js/i18n.js?v=29"></script>
+    <script src="js/main.js?v=36"></script>
 </body>
 </html>

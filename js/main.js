@@ -535,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bakeryState = { medialunas: 1, alfajores: 0, combo: 0 };
     const BAKERY_PRICES = { medialunas: 250, alfajores: 250, combo: 240 };
-    const BAKERY_DELIVERY_FEE = 60;
+    const BAKERY_DELIVERY_FEE = 300;
 
     function getBakeryLabels(lang) {
         if (lang === 'es') {
@@ -548,8 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alertEmpty: 'Por favor, seleccioná al menos 1 caja para hacer tu pedido.',
                 waIntro:    '¡Hola Criollo Grill! Quiero hacer un pedido de Pastelería:',
                 waMethod0:  'Coordinar Pick-up / Retiro (0 Kr)',
-                waMethod1:  'Envío a domicilio en Copenhague (+60 Kr)',
-                waMethod2:  'Entrega de Fin de Semana — Sáb/Dom (+60 Kr)',
+                waMethod1:  'Envío a domicilio en Copenhague (+300 Kr)',
                 waShipping: 'Modalidad',
                 waAddress:  'Dirección',
                 waDate:     'Fecha deseada',
@@ -568,8 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alertEmpty: 'Vælg venligst mindst 1 æske for at bestille.',
                 waIntro:    'Hej Criollo Grill! Jeg vil gerne bestille fra Bageriet:',
                 waMethod0:  'Aftal Afhentning / Pick-up (0 Kr)',
-                waMethod1:  'Hjemmelevering i København (+60 Kr)',
-                waMethod2:  'Weekendlevering — Lør/Søn morgen (+60 Kr)',
+                waMethod1:  'Hjemmelevering i København (+300 Kr)',
                 waShipping: 'Leveringsmetode',
                 waAddress:  'Adresse',
                 waDate:     'Ønsket dato',
@@ -587,8 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alertEmpty: 'Please select at least 1 box to place your order.',
             waIntro:    "Hello Criollo Grill! I'd like to place a Bakery order:",
             waMethod0:  'Coordinate Pick-up (0 Kr)',
-            waMethod1:  'Home Delivery in Copenhagen (+60 Kr)',
-            waMethod2:  'Weekend Morning Delivery — Sat/Sun (+60 Kr)',
+            waMethod1:  'Home Delivery in Copenhagen (+300 Kr)',
             waShipping: 'Delivery / Pick-up',
             waAddress:  'Address',
             waDate:     'Preferred Date',
@@ -672,7 +669,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 let methodLabel = L.waMethod1;
                 if (methodVal === 'pickup') methodLabel = L.waMethod0;
-                else if (methodVal === 'weekend') methodLabel = L.waMethod2;
                 msg += `\n🚚 *${L.waShipping}:* ${methodLabel}\n`;
                 if (!isPickup && bakeryAddress && bakeryAddress.value.trim()) {
                     msg += `📍 *${L.waAddress}:* ${bakeryAddress.value.trim()}\n`;
