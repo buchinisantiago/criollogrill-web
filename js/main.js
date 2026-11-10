@@ -157,7 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── SUPABASE CALCULATOR ───────────────────────────────────
     const SUPABASE_URL      = 'https://qgriwpjsslovkkmnlntg.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_ZnEVeUYjF7ZII5An9ku5rw_1CrNo3Gl';
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabase = (window.supabase && typeof window.supabase.createClient === 'function')
+        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        : null;
 
     let CONFIG = {
         carnePremiumKg: 210,
@@ -174,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     async function loadConfig() {
+        if (!supabase) return;
         try {
             const { data, error } = await supabase
                 .from('criollo_config').select('*').eq('id', 1).single();
@@ -990,6 +993,23 @@ document.addEventListener('DOMContentLoaded', () => {
     waInput.addEventListener('keypress', (e) => {
         if(e.key === 'Enter') sendMsg();
     });
+
+    const updateWaLang = () => {
+        const lang = window.getCurrentLang();
+        const msgEl = widget.querySelector('.wa-message');
+        if (msgEl) {
+            if (lang === 'en') msgEl.textContent = "Hi, how are you? How can I help you?";
+            else if (lang === 'dk') msgEl.textContent = "Hej, hvordan har du det? Kan jeg hjælpe dig?";
+            else msgEl.textContent = "Hola ¿cómo estás? ¿te puedo ayudar?";
+        }
+        if (waInput) {
+            if (lang === 'en') waInput.placeholder = "Write a message...";
+            else if (lang === 'dk') waInput.placeholder = "Skriv en besked...";
+            else waInput.placeholder = "Escribe un mensaje...";
+        }
+    };
+    updateWaLang();
+    window.addEventListener('languageChanged', updateWaLang);
 
     // Chat starts closed; opens only on click
 });

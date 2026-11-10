@@ -596,10 +596,9 @@ function applyLang(lang) {
       if (keys[i] && t[keys[i].trim()]) opt.text = t[keys[i].trim()];
     });
   });
-  // Active flag highlight
+  // Active flag highlight (both desktop and mobile switchers)
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-  if (activeBtn) activeBtn.classList.add('active');
+  document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(b => b.classList.add('active'));
   localStorage.setItem('criollo_lang', lang);
   document.documentElement.lang = lang === 'dk' ? 'da' : lang;
   document.querySelectorAll('meta[data-i18n-meta]').forEach(el => {
@@ -613,7 +612,9 @@ function applyLang(lang) {
 window.applyLang = applyLang;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('criollo_lang') || 'en';
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  const saved = (urlLang && window.translations[urlLang]) ? urlLang : (localStorage.getItem('criollo_lang') || 'en');
   applyLang(saved);
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
