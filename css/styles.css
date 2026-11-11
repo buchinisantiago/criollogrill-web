@@ -272,9 +272,9 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
 .hero {
   height: 100vh;
   min-height: 700px;
-  background-image: url('../img/hero_asado_1778408699439.png');
+  background-image: url('../img/hero_domo_asado.jpg?v=4');
   background-size: cover;
-  background-position: center;
+  background-position: center 55%;
   background-attachment: fixed;
   position: relative;
   display: flex;
@@ -287,9 +287,9 @@ p  { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); font-weight
   position: absolute; inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(8,8,8,0.55) 0%,
-    rgba(8,8,8,0.3) 40%,
-    rgba(8,8,8,0.85) 85%,
+    rgba(8,8,8,0.72) 0%,
+    rgba(8,8,8,0.62) 45%,
+    rgba(8,8,8,0.88) 85%,
     rgba(8,8,8,1) 100%
   );
 }
